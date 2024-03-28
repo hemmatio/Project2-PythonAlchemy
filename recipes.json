@@ -2342,5 +2342,9 @@
  {
    "NAME": "Zombie",
    "RECIPES": "corpse, life"
+ },
+ {
+   "NAME": "Drake",
+   "RECIPES": "tree, human"
  }
 ]
