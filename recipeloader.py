@@ -85,6 +85,35 @@ class Graph:
         v1.neighbours.update({item2: v0})
         v2.neighbours.update({item1: v0})
 
+    def combine(self, item1, item2) -> None:
+        """
+        Combine item1 and item2, add the combined item to self.discovered
+        """
+        discovered_items = {vertex.item for vertex in self.discovered}
+        if item1 not in discovered_items or item2 not in discovered_items:
+            print('You may not craft with items you have not yet discovered.')
+            return
+        if item2 not in self._vertices[item1].neighbours:
+            print('This is not a valid crafting recipe.')
+            return
+        else:
+            crafted_item = self._vertices[item1].neighbours[item2]
+            if crafted_item in self.discovered:
+                print(f"You have already discovered {crafted_item.item}.")
+                return
+            self.discovered.add(crafted_item)
+            print(f'You have discovered {crafted_item.item}! Good job lil nigga') #TODO: DONT GET CANCELLED
+
+    def inventory(self) -> None:
+        """
+        Print the user's discovered items
+        """
+        total = len(self._vertices)
+        print('INVENTORY:')
+        for vertex in self.discovered:
+            print('     ' + vertex.item)
+        print(f'You have discovered {len(self.discovered)}/{total} items so far.')
+
 
 if __name__ == "__main__":
     with open('recipes.json') as file:
