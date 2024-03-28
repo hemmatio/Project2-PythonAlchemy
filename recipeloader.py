@@ -2,11 +2,12 @@ from __future__ import annotations
 from typing import Any, Optional
 import json
 
-
-def split_text(text: str) -> Optional[list[tuple]]:
+def split_text(text: str) -> list[tuple]:
     """splits the combined elements at the /
     for example: 'rain, smoke / rain, smog' becomes [(rain, smoke), (rain, fog)]
-    if the text is $DEFAULT return None"""
+    if the text is $DEFAULT return an empty list"""
+    if text.lower() == '$default':
+        return []
     returnval = []
     split = str.split(text, '/')
     for tup in split:
@@ -43,7 +44,7 @@ class Graph:
     def __init__(self, file: json):
         self._vertices = {}
         self.discovered = set()
-        self.load_vertices(json)
+        self.load_vertices(file)
 
     def load_vertices(self, file: json) -> None:
         """Loads all vertices form the file"""
@@ -59,6 +60,7 @@ class Graph:
             for combo in recipes:
                 item1, item2 = combo
                 self.add_edge(item_created, item1, item2)
+        self.discovered.update({self._vertices[]})  # TODO: a
 
 
     def add_vertex(self, item: str) -> None:
@@ -80,3 +82,8 @@ class Graph:
         v0, v1, v2 = self._vertices[item_created], self._vertices[item1], self._vertices[item2]
         v1.neighbours.update({item2: v0})
         v2.neighbours.update({item1: v0})
+
+
+if __name__ == "__main__":
+    with open('recipes.json') as file:
+        g = Graph(file)
