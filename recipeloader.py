@@ -49,6 +49,7 @@ class Graph:
     def load_vertices(self, file: json) -> None:
         """Loads all vertices form the file"""
         data = json.load(file)
+        discoverd = {}
         item_created, recipes = '', []
         for row in data:
             for key in row:
@@ -57,11 +58,12 @@ class Graph:
                 else:  # key == 'RECIPES'
                     recipes = split_text(row[key].lower())
 
+            if not recipes:
+                self.add_vertex(item_created)
+                self.discovered.add(self._vertices[item_created])
             for combo in recipes:
                 item1, item2 = combo
                 self.add_edge(item_created, item1, item2)
-        self.discovered.update({self._vertices[]})  # TODO: a
-
 
     def add_vertex(self, item: str) -> None:
         """Add a vertex with the given item to this graph"""
