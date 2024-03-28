@@ -3,11 +3,17 @@ from typing import Any, Optional
 import json
 
 
-def spilt_text(text: str) -> Optional[list[tuple]]:
-    """spilts the combined elements at the /
+def split_text(text: str) -> Optional[list[tuple]]:
+    """splits the combined elements at the /
     for example: 'rain, smoke / rain, smog' becomes [(rain, smoke), (rain, fog)]
     if the text is $DEFAULT return None"""
-
+    returnval = []
+    split = str.split(text, '/')
+    for tup in split:
+        tupl = tuple(str.split(tup, ','))
+        tupl = tupl[0].strip(), tupl[1].strip()
+        returnval.append(tupl)
+    return returnval
 
 class _Vertex:
     """
@@ -38,7 +44,7 @@ class Graph:
         self._vertices = {}
         self.discovered = set()
 
-    def load_vertexes(self, file: json):
+    def load_vertices(self, file: json):
         data = json.load(file)
         for row in data:
             for key in row:
