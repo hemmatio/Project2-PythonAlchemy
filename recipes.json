@@ -1,0 +1,2350 @@
+[
+ {
+   "NAME": "Resulting Element",
+   "RECIPES": "Ingredient Combination(s)"
+ },
+ {
+   "NAME": "Acid Rain",
+   "RECIPES": "rain, smoke / rain, smog"
+ },
+ {
+   "NAME": "Air",
+   "RECIPES": "$DEFAULT"
+ },
+ {
+   "NAME": "Airplane",
+   "RECIPES": "bird, steel / bird, metal"
+ },
+ {
+   "NAME": "Alarm Clock",
+   "RECIPES": "clock, sound"
+ },
+ {
+   "NAME": "Alcohol",
+   "RECIPES": "fruit, time / juice, time"
+ },
+ {
+   "NAME": "Algae",
+   "RECIPES": "water, plant / sea, plant / ocean, plant"
+ },
+ {
+   "NAME": "Alien",
+   "RECIPES": "life, space"
+ },
+ {
+   "NAME": "Allergy",
+   "RECIPES": "human, dust"
+ },
+ {
+   "NAME": "Alligator",
+   "RECIPES": "lizard, swamp / lizard, river"
+ },
+ {
+   "NAME": "Alpaca",
+   "RECIPES": "mountain, sheep"
+ },
+ {
+   "NAME": "Ambulance",
+   "RECIPES": "car, hospital / car, doctor"
+ },
+ {
+   "NAME": "Angel",
+   "RECIPES": "human, bird"
+ },
+ {
+   "NAME": "Angler",
+   "RECIPES": "human, fishing rod"
+ },
+ {
+   "NAME": "Ant",
+   "RECIPES": "grass, wild animal / wild animal, sugar"
+ },
+ {
+   "NAME": "Antarctica",
+   "RECIPES": "snow, desert / ice, desert"
+ },
+ {
+   "NAME": "Aquarium",
+   "RECIPES": "water, glass / glass, fish"
+ },
+ {
+   "NAME": "Archipelago",
+   "RECIPES": "isle, isle"
+ },
+ {
+   "NAME": "Armadillo",
+   "RECIPES": "wild animal, armor"
+ },
+ {
+   "NAME": "Armor",
+   "RECIPES": "tool, metal / tool, steel"
+ },
+ {
+   "NAME": "Ash",
+   "RECIPES": "volcano, energy"
+ },
+ {
+   "NAME": "Astronaut",
+   "RECIPES": "human, moon / rocket, human / human, space station / human, space"
+ },
+ {
+   "NAME": "Astronaut Ice Cream",
+   "RECIPES": "ice cream, astronaut"
+ },
+ {
+   "NAME": "Atmosphere",
+   "RECIPES": "air, pressure / sky, pressure"
+ },
+ {
+   "NAME": "Atomic Bomb",
+   "RECIPES": "energy, explosion"
+ },
+ {
+   "NAME": "Aurora",
+   "RECIPES": "sun, Antarctica / sky, Antarctica / Antarctica, atmosphere"
+ },
+ {
+   "NAME": "Avalanche",
+   "RECIPES": "energy, snow"
+ },
+ {
+   "NAME": "Axe",
+   "RECIPES": "blade, wood"
+ },
+ {
+   "NAME": "Bacon",
+   "RECIPES": "pig, fire"
+ },
+ {
+   "NAME": "Bacteria",
+   "RECIPES": "swamp, life"
+ },
+ {
+   "NAME": "Baker",
+   "RECIPES": "human, flour / human, bread / human, dough"
+ },
+ {
+   "NAME": "Bakery",
+   "RECIPES": "house, baker / house, bread"
+ },
+ {
+   "NAME": "Banana",
+   "RECIPES": "fruit, monkey"
+ },
+ {
+   "NAME": "banana bread",
+   "RECIPES": "bread, banana"
+ },
+ {
+   "NAME": "Bandage",
+   "RECIPES": "blood, fabric"
+ },
+ {
+   "NAME": "Bank",
+   "RECIPES": "house, money / house, gold / house, safe"
+ },
+ {
+   "NAME": "Barn",
+   "RECIPES": "cow, house / livestock, house / house, hay"
+ },
+ {
+   "NAME": "Bat",
+   "RECIPES": "mouse, bird / mouse, sky"
+ },
+ {
+   "NAME": "Batman",
+   "RECIPES": "bat, human"
+ },
+ {
+   "NAME": "Batter",
+   "RECIPES": "flour, milk"
+ },
+ {
+   "NAME": "Bayonet",
+   "RECIPES": "gun, blade / gun, sword"
+ },
+ {
+   "NAME": "BBQ",
+   "RECIPES": "campfire, meat / campfire, garden"
+ },
+ {
+   "NAME": "Beach",
+   "RECIPES": "sea, sand / ocean, sand"
+ },
+ {
+   "NAME": "Beaver",
+   "RECIPES": "wild animal, wood / wild animal, dam"
+ },
+ {
+   "NAME": "Bee",
+   "RECIPES": "flower, wild animal"
+ },
+ {
+   "NAME": "Beehive",
+   "RECIPES": "bee, house / bee, tree"
+ },
+ {
+   "NAME": "Beer",
+   "RECIPES": "alcohol, wheat"
+ },
+ {
+   "NAME": "Bicycle",
+   "RECIPES": "wheel, wheel"
+ },
+ {
+   "NAME": "Bird",
+   "RECIPES": "air, life / life, sky / egg, air / egg, sky"
+ },
+ {
+   "NAME": "Birdhouse",
+   "RECIPES": "bird, house"
+ },
+ {
+   "NAME": "Black Hole",
+   "RECIPES": "star, pressure"
+ },
+ {
+   "NAME": "Blade",
+   "RECIPES": "metal, stone"
+ },
+ {
+   "NAME": "Blender",
+   "RECIPES": "glass, blade / blade, electricity"
+ },
+ {
+   "NAME": "Blizzard",
+   "RECIPES": "snow, snow / snow, storm / snow, wind"
+ },
+ {
+   "NAME": "Blood",
+   "RECIPES": "human, blade"
+ },
+ {
+   "NAME": "Blueprint",
+   "RECIPES": "engineer, paper"
+ },
+ {
+   "NAME": "Boat",
+   "RECIPES": "water, wood"
+ },
+ {
+   "NAME": "Boiler",
+   "RECIPES": "steam, metal"
+ },
+ {
+   "NAME": "Bone",
+   "RECIPES": "corpse, time"
+ },
+ {
+   "NAME": "Bonsai Tree",
+   "RECIPES": "tree, pottery / tree, scissors"
+ },
+ {
+   "NAME": "Book",
+   "RECIPES": "paper, wood / paper, story"
+ },
+ {
+   "NAME": "Bread",
+   "RECIPES": "dough, fire"
+ },
+ {
+   "NAME": "Brick",
+   "RECIPES": "clay, fire / mud, fire / mud, sun / clay, sun"
+ },
+ {
+   "NAME": "Bridge",
+   "RECIPES": "river, wood / river, metal / river, steel"
+ },
+ {
+   "NAME": "Broom",
+   "RECIPES": "wood, hay"
+ },
+ {
+   "NAME": "Bullet",
+   "RECIPES": "gunpowder, metal"
+ },
+ {
+   "NAME": "Bulletproof Vest",
+   "RECIPES": "bullet, armor"
+ },
+ {
+   "NAME": "Bus",
+   "RECIPES": "car, car"
+ },
+ {
+   "NAME": "Butcher",
+   "RECIPES": "human, meat"
+ },
+ {
+   "NAME": "Butter",
+   "RECIPES": "energy, milk / milk, pressure"
+ },
+ {
+   "NAME": "Butterfly",
+   "RECIPES": "flower, wild animal"
+ },
+ {
+   "NAME": "Cactus",
+   "RECIPES": "desert, plant / sand, plant"
+ },
+ {
+   "NAME": "Cake",
+   "RECIPES": "dough, candle"
+ },
+ {
+   "NAME": "Camel",
+   "RECIPES": "desert, wild animal / desert, horse / livestock, desert"
+ },
+ {
+   "NAME": "Campfire",
+   "RECIPES": "fire, wood"
+ },
+ {
+   "NAME": "Candle",
+   "RECIPES": "wax, thread / wax, fire"
+ },
+ {
+   "NAME": "Candy Cane",
+   "RECIPES": "sugar, Christmas tree"
+ },
+ {
+   "NAME": "Cannon",
+   "RECIPES": "gunpowder, pirate ship / gunpowder, castle"
+ },
+ {
+   "NAME": "Cape",
+   "RECIPES": "hero, fabric"
+ },
+ {
+   "NAME": "Car",
+   "RECIPES": "wheel, metal"
+ },
+ {
+   "NAME": "Caramel",
+   "RECIPES": "sugar, fire"
+ },
+ {
+   "NAME": "Carbon Dioxide",
+   "RECIPES": "human, oxygen / plant, night / tree, night"
+ },
+ {
+   "NAME": "Carrot",
+   "RECIPES": "snowman, vegetable / sun, snowman"
+ },
+ {
+   "NAME": "Cart",
+   "RECIPES": "wheel, wood"
+ },
+ {
+   "NAME": "Cashmere",
+   "RECIPES": "tool, mountain goat / thread, mountain goat / fabric, mountain goat / scissors, mountain goat / wool, mountain goat"
+ },
+ {
+   "NAME": "Castle",
+   "RECIPES": "house, knight"
+ },
+ {
+   "NAME": "Cat",
+   "RECIPES": "wild animal, milk"
+ },
+ {
+   "NAME": "Catnip",
+   "RECIPES": "cat, plant"
+ },
+ {
+   "NAME": "Cauldron",
+   "RECIPES": "metal, witch / steel, witch / fireplace, witch / campfire, witch"
+ },
+ {
+   "NAME": "Caviar",
+   "RECIPES": "hard roe, human"
+ },
+ {
+   "NAME": "Centaur",
+   "RECIPES": "horse, human"
+ },
+ {
+   "NAME": "Cereal",
+   "RECIPES": "wheat, milk"
+ },
+ {
+   "NAME": "Chain",
+   "RECIPES": "metal, rope / steel, rope"
+ },
+ {
+   "NAME": "Chainsaw",
+   "RECIPES": "axe, electricity"
+ },
+ {
+   "NAME": "Chameleon",
+   "RECIPES": "lizard, rainbow"
+ },
+ {
+   "NAME": "Charcoal",
+   "RECIPES": "fire, wood"
+ },
+ {
+   "NAME": "Cheese",
+   "RECIPES": "time, milk"
+ },
+ {
+   "NAME": "Cheeseburger",
+   "RECIPES": "cheese, hamburger"
+ },
+ {
+   "NAME": "Chicken",
+   "RECIPES": "egg, livestock / livestock, bird / bird, farmer"
+ },
+ {
+   "NAME": "Chicken Soup",
+   "RECIPES": "water, chicken"
+ },
+ {
+   "NAME": "Chicken wing",
+   "RECIPES": "chicken, bone"
+ },
+ {
+   "NAME": "Chimney",
+   "RECIPES": "house, fireplace / smoke, brick / fireplace, brick"
+ },
+ {
+   "NAME": "Christmas Stocking",
+   "RECIPES": "wool, fireplace"
+ },
+ {
+   "NAME": "Christmas Tree",
+   "RECIPES": "light bulb, tree / tree, star"
+ },
+ {
+   "NAME": "Cigarette",
+   "RECIPES": "tobacco, paper"
+ },
+ {
+   "NAME": "City",
+   "RECIPES": "village, village / skyscraper, skyscraper"
+ },
+ {
+   "NAME": "Clay",
+   "RECIPES": "sand, mud"
+ },
+ {
+   "NAME": "Clock",
+   "RECIPES": "time, tool / time, wheel / time, electricity"
+ },
+ {
+   "NAME": "Cloud",
+   "RECIPES": "air, steam"
+ },
+ {
+   "NAME": "Coal",
+   "RECIPES": "pressure, plant / sun, snowman"
+ },
+ {
+   "NAME": "Coconut",
+   "RECIPES": "palm, fruit"
+ },
+ {
+   "NAME": "Coconut Milk",
+   "RECIPES": "coconut, tool / milk, coconut"
+ },
+ {
+   "NAME": "Coffin",
+   "RECIPES": "wood, corpse"
+ },
+ {
+   "NAME": "Cold",
+   "RECIPES": "human, rain"
+ },
+ {
+   "NAME": "Computer",
+   "RECIPES": "electricity, nerd / wire, nerd / tool, nerd"
+ },
+ {
+   "NAME": "Computer Mouse",
+   "RECIPES": "mouse, computer"
+ },
+ {
+   "NAME": "Confetti",
+   "RECIPES": "paper, blade / paper, scissors"
+ },
+ {
+   "NAME": "Cookbook",
+   "RECIPES": "book, recipe / recipe, recipe"
+ },
+ {
+   "NAME": "Constellation",
+   "RECIPES": "star, star"
+ },
+ {
+   "NAME": "Cookie",
+   "RECIPES": "dough, sugar"
+ },
+ {
+   "NAME": "Corpse",
+   "RECIPES": "human, gun / human, grim reaper"
+ },
+ {
+   "NAME": "Cotton",
+   "RECIPES": "plant, cloud"
+ },
+ {
+   "NAME": "Cow",
+   "RECIPES": "grass, livestock"
+ },
+ {
+   "NAME": "Crayon",
+   "RECIPES": "rainbow, pencil / rainbow, wax"
+ },
+ {
+   "NAME": "Crow",
+   "RECIPES": "bird, scarecrow / bird, field"
+ },
+ {
+   "NAME": "Crown",
+   "RECIPES": "gold, monarch / metal, monarch"
+ },
+ {
+   "NAME": "Crystal Ball",
+   "RECIPES": "witch, glass / wizard, glass"
+ },
+ {
+   "NAME": "Cuckoo",
+   "RECIPES": "clock, bird"
+ },
+ {
+   "NAME": "Cyborg",
+   "RECIPES": "human, robot"
+ },
+ {
+   "NAME": "Cyclist",
+   "RECIPES": "bicycle, human"
+ },
+ {
+   "NAME": "Dam",
+   "RECIPES": "beaver, river / beaver, tree / beaver, wood / wall, river"
+ },
+ {
+   "NAME": "Darth Vader",
+   "RECIPES": "jedi, fire / jedi, lava"
+ },
+ {
+   "NAME": "Day",
+   "RECIPES": "sun, time / night, sun / time, night / sky, sun"
+ },
+ {
+   "NAME": "Desert",
+   "RECIPES": "sand, sand / sand, cactus"
+ },
+ {
+   "NAME": "Dew",
+   "RECIPES": "water, grass / fog, grass"
+ },
+ {
+   "NAME": "Diamond",
+   "RECIPES": "pressure, coal"
+ },
+ {
+   "NAME": "Dinosaur",
+   "RECIPES": "lizard, time"
+ },
+ {
+   "NAME": "Doctor",
+   "RECIPES": "human, hospital"
+ },
+ {
+   "NAME": "Dog",
+   "RECIPES": "wild animal, human"
+ },
+ {
+   "NAME": "Doge",
+   "RECIPES": "dog, computer"
+ },
+ {
+   "NAME": "Doghouse",
+   "RECIPES": "dog, house"
+ },
+ {
+   "NAME": "Don Quixote",
+   "RECIPES": "windmill, knight"
+ },
+ {
+   "NAME": "Donut",
+   "RECIPES": "dough, oil"
+ },
+ {
+   "NAME": "Double Rainbow!",
+   "RECIPES": "rainbow, rainbow"
+ },
+ {
+   "NAME": "Dough",
+   "RECIPES": "flour, water"
+ },
+ {
+   "NAME": "Dragon",
+   "RECIPES": "lizard, fire"
+ },
+ {
+   "NAME": "Drone",
+   "RECIPES": "airplane, robot"
+ },
+ {
+   "NAME": "Drum",
+   "RECIPES": "wood, leather"
+ },
+ {
+   "NAME": "Drunk",
+   "RECIPES": "human, alcohol / beer, human / human, wine"
+ },
+ {
+   "NAME": "Dry Ice",
+   "RECIPES": "carbon dioxide, cold / ice, carbon dioxide"
+ },
+ {
+   "NAME": "Duck",
+   "RECIPES": "bird, lake / water, bird / bird, pond / time, duckling"
+ },
+ {
+   "NAME": "Duckling",
+   "RECIPES": "egg, duck"
+ },
+ {
+   "NAME": "Dune",
+   "RECIPES": "sand, wind / desert, wind / beach, wind"
+ },
+ {
+   "NAME": "Dust",
+   "RECIPES": "earth, air / sun, vampire / day, vampire"
+ },
+ {
+   "NAME": "Dynamite",
+   "RECIPES": "gunpowder, wire"
+ },
+ {
+   "NAME": "Eagle",
+   "RECIPES": "mountain, bird"
+ },
+ {
+   "NAME": "Earth",
+   "RECIPES": "$DEFAULT"
+ },
+ {
+   "NAME": "Earthquake",
+   "RECIPES": "earth, energy / earth, wave"
+ },
+ {
+   "NAME": "Eclipse",
+   "RECIPES": "sun, moon"
+ },
+ {
+   "NAME": "Egg",
+   "RECIPES": "life, stone / bird, bird / turtle, turtle / lizard, lizard"
+ },
+ {
+   "NAME": "Egg Timer",
+   "RECIPES": "egg, clock / egg, watch"
+ },
+ {
+   "NAME": "Electric Car",
+   "RECIPES": "car, electricity"
+ },
+ {
+   "NAME": "Electric Eel",
+   "RECIPES": "fish, electricity"
+ },
+ {
+   "NAME": "Electrician",
+   "RECIPES": "human, electricity / human, wire"
+ },
+ {
+   "NAME": "Electricity",
+   "RECIPES": "metal, energy / solar cell, sun / wind turbine, wind / light, solar cell"
+ },
+ {
+   "NAME": "Email",
+   "RECIPES": "letter, computer / letter, internet"
+ },
+ {
+   "NAME": "Energy",
+   "RECIPES": "air, fire / plant, sun"
+ },
+ {
+   "NAME": "Engineer",
+   "RECIPES": "human, tool"
+ },
+ {
+   "NAME": "Eruption",
+   "RECIPES": "volcano, energy"
+ },
+ {
+   "NAME": "Excalibur",
+   "RECIPES": "sword, stone"
+ },
+ {
+   "NAME": "Explosion",
+   "RECIPES": "gunpowder, fire"
+ },
+ {
+   "NAME": "Fabric",
+   "RECIPES": "thread, tool"
+ },
+ {
+   "NAME": "Fairy Tale",
+   "RECIPES": "story, monarch / story, castle / knight, story / dragon, story"
+ },
+ {
+   "NAME": "Family",
+   "RECIPES": "human, house"
+ },
+ {
+   "NAME": "Family tree",
+   "RECIPES": "tree, family"
+ },
+ {
+   "NAME": "Farm",
+   "RECIPES": "farmer, house / farmer, barn"
+ },
+ {
+   "NAME": "Farmer",
+   "RECIPES": "human, plant / field, human / human, pitchfork"
+ },
+ {
+   "NAME": "Faun",
+   "RECIPES": "goat, human"
+ },
+ {
+   "NAME": "Fence",
+   "RECIPES": "wall, wood"
+ },
+ {
+   "NAME": "Field",
+   "RECIPES": "earth, farmer / earth, tool"
+ },
+ {
+   "NAME": "Fire",
+   "RECIPES": "$DEFAULT"
+ },
+ {
+   "NAME": "Fire Extinguisher",
+   "RECIPES": "fire, carbon dioxide / pressure, carbon dioxide / metal, carbon dioxide"
+ },
+ {
+   "NAME": "Fireman",
+   "RECIPES": "human, fire / human, firetruck"
+ },
+ {
+   "NAME": "Fireplace",
+   "RECIPES": "house, campfire / campfire, brick / campfire, wall"
+ },
+ {
+   "NAME": "Firetruck",
+   "RECIPES": "fireman, car"
+ },
+ {
+   "NAME": "Fireworks",
+   "RECIPES": "explosion, sky"
+ },
+ {
+   "NAME": "Fish",
+   "RECIPES": "hard roe, time"
+ },
+ {
+   "NAME": "Fish and Chips",
+   "RECIPES": "fish, French fries"
+ },
+ {
+   "NAME": "Fishing Rod",
+   "RECIPES": "tool, fish / wood, fish"
+ },
+ {
+   "NAME": "Flamethrower",
+   "RECIPES": "fire, gun"
+ },
+ {
+   "NAME": "Flashlight",
+   "RECIPES": "tool, light"
+ },
+ {
+   "NAME": "Flood",
+   "RECIPES": "rain, rain / rain, time"
+ },
+ {
+   "NAME": "Flour",
+   "RECIPES": "wheat, stone / windmill, wheat"
+ },
+ {
+   "NAME": "Flower",
+   "RECIPES": "plant, garden"
+ },
+ {
+   "NAME": "Flute",
+   "RECIPES": "wood, wind"
+ },
+ {
+   "NAME": "Flying Fish",
+   "RECIPES": "fish, bird / sky, fish"
+ },
+ {
+   "NAME": "Flying Squirrel",
+   "RECIPES": "squirrel, bird / squirrel, wind / squirrel, airplane / sky, squirrel"
+ },
+ {
+   "NAME": "Fog",
+   "RECIPES": "earth, cloud"
+ },
+ {
+   "NAME": "Forest",
+   "RECIPES": "tree, tree"
+ },
+ {
+   "NAME": "Fortune Cookie",
+   "RECIPES": "paper, cookie"
+ },
+ {
+   "NAME": "Fossil",
+   "RECIPES": "dinosaur, time / dinosaur, earth / stone, dinosaur"
+ },
+ {
+   "NAME": "Fountain",
+   "RECIPES": "statue, water"
+ },
+ {
+   "NAME": "Fox",
+   "RECIPES": "chicken, wild animal"
+ },
+ {
+   "NAME": "Frankenstein",
+   "RECIPES": "zombie, electricity / electricity, corpse"
+ },
+ {
+   "NAME": "French fries",
+   "RECIPES": "oil, vegetable"
+ },
+ {
+   "NAME": "Fridge",
+   "RECIPES": "metal, cold / electricity, cold / metal, ice"
+ },
+ {
+   "NAME": "Frog",
+   "RECIPES": "wild animal, pond"
+ },
+ {
+   "NAME": "Fruit",
+   "RECIPES": "tree, farmer / sun, tree"
+ },
+ {
+   "NAME": "Fruit Tree",
+   "RECIPES": "fruit, tree"
+ },
+ {
+   "NAME": "Galaxy",
+   "RECIPES": "star, star"
+ },
+ {
+   "NAME": "Garden",
+   "RECIPES": "plant, plant / flower, flower / plant, grass / house, grass"
+ },
+ {
+   "NAME": "Gardener",
+   "RECIPES": "human, garden"
+ },
+ {
+   "NAME": "Geyser",
+   "RECIPES": "steam, earth"
+ },
+ {
+   "NAME": "Ghost",
+   "RECIPES": "graveyard, night / castle, night"
+ },
+ {
+   "NAME": "Gift",
+   "RECIPES": "Santa, Christmas tree / Santa, Christmas stocking / Santa, cookie / Santa, chimney / Santa, fireplace"
+ },
+ {
+   "NAME": "Gingerbread house",
+   "RECIPES": "house, dough / house, gingerbread man"
+ },
+ {
+   "NAME": "Gingerbread man",
+   "RECIPES": "life, dough"
+ },
+ {
+   "NAME": "Glacier",
+   "RECIPES": "ice, mountain"
+ },
+ {
+   "NAME": "Glass",
+   "RECIPES": "fire, sand / sand, electricity"
+ },
+ {
+   "NAME": "Glasses",
+   "RECIPES": "glass, metal / glass, glass"
+ },
+ {
+   "NAME": "Gnome",
+   "RECIPES": "garden, statue"
+ },
+ {
+   "NAME": "Goat",
+   "RECIPES": "livestock, mountain"
+ },
+ {
+   "NAME": "Godzilla",
+   "RECIPES": "dinosaur, city"
+ },
+ {
+   "NAME": "Gold",
+   "RECIPES": "metal, sun / metal, rainbow"
+ },
+ {
+   "NAME": "Golem",
+   "RECIPES": "clay, life"
+ },
+ {
+   "NAME": "Granite",
+   "RECIPES": "lava, pressure"
+ },
+ {
+   "NAME": "Grass",
+   "RECIPES": "plant, earth"
+ },
+ {
+   "NAME": "Grave",
+   "RECIPES": "coffin, earth / corpse, earth"
+ },
+ {
+   "NAME": "Gravestone",
+   "RECIPES": "grave, stone"
+ },
+ {
+   "NAME": "Graveyard",
+   "RECIPES": "grave, grave / gravestone, gravestone"
+ },
+ {
+   "NAME": "Greenhouse",
+   "RECIPES": "plant, glass / window, window"
+ },
+ {
+   "NAME": "Grenade",
+   "RECIPES": "explosion, metal"
+ },
+ {
+   "NAME": "Grilled cheese",
+   "RECIPES": "cheese, toast"
+ },
+ {
+   "NAME": "Grim Reaper",
+   "RECIPES": "human, scythe / corpse, scythe"
+ },
+ {
+   "NAME": "Gun",
+   "RECIPES": "metal, bullet"
+ },
+ {
+   "NAME": "Gunpowder",
+   "RECIPES": "fire, dust"
+ },
+ {
+   "NAME": "Hail",
+   "RECIPES": "rain, ice / ice, storm / ice, cloud"
+ },
+ {
+   "NAME": "Ham",
+   "RECIPES": "meat, smoke"
+ },
+ {
+   "NAME": "Hamburger",
+   "RECIPES": "meat, bread"
+ },
+ {
+   "NAME": "Hammer",
+   "RECIPES": "metal, wood"
+ },
+ {
+   "NAME": "Hamster",
+   "RECIPES": "wheel, mouse"
+ },
+ {
+   "NAME": "Hard Roe",
+   "RECIPES": "egg, water / egg, sea / egg, ocean / egg, pond / fish, fish"
+ },
+ {
+   "NAME": "Harp",
+   "RECIPES": "angel, music"
+ },
+ {
+   "NAME": "Hay",
+   "RECIPES": "farmer, grass / grass, scythe / grass, sun"
+ },
+ {
+   "NAME": "Hay bale",
+   "RECIPES": "hay, hay"
+ },
+ {
+   "NAME": "Hedge",
+   "RECIPES": "plant, fence / leaf, fence"
+ },
+ {
+   "NAME": "Helicopter",
+   "RECIPES": "blade, airplane / windmill, airplane"
+ },
+ {
+   "NAME": "Herb",
+   "RECIPES": "plant, sickness / sickness, leaf"
+ },
+ {
+   "NAME": "Hero",
+   "RECIPES": "knight, dragon"
+ },
+ {
+   "NAME": "Hippo",
+   "RECIPES": "horse, river / horse, water"
+ },
+ {
+   "NAME": "Honey",
+   "RECIPES": "bee, flower / bee, beehive"
+ },
+ {
+   "NAME": "Horizon",
+   "RECIPES": "sky, earth / sea, sky / ocean, sky"
+ },
+ {
+   "NAME": "Horse",
+   "RECIPES": "hay, livestock"
+ },
+ {
+   "NAME": "Horseshoe",
+   "RECIPES": "metal, horse"
+ },
+ {
+   "NAME": "Hospital",
+   "RECIPES": "house, sickness / house, ambulance / house, doctor"
+ },
+ {
+   "NAME": "Hourglass",
+   "RECIPES": "sand, glass"
+ },
+ {
+   "NAME": "House",
+   "RECIPES": "wall, wall"
+ },
+ {
+   "NAME": "Human",
+   "RECIPES": "earth, life"
+ },
+ {
+   "NAME": "Hummingbird",
+   "RECIPES": "bird, flower"
+ },
+ {
+   "NAME": "Hurricane",
+   "RECIPES": "wind, energy"
+ },
+ {
+   "NAME": "Husky",
+   "RECIPES": "snow, dog / ice, dog"
+ },
+ {
+   "NAME": "Ice",
+   "RECIPES": "water, cold"
+ },
+ {
+   "NAME": "Iceberg",
+   "RECIPES": "sea, ice / ocean, ice / sea, Antarctica / ocean, Antarctica"
+ },
+ {
+   "NAME": "Ice Cream",
+   "RECIPES": "milk, ice"
+ },
+ {
+   "NAME": "Ice cream truck",
+   "RECIPES": "car, ice cream"
+ },
+ {
+   "NAME": "Iced tea",
+   "RECIPES": "ice, tea / cold, tea"
+ },
+ {
+   "NAME": "Idea",
+   "RECIPES": "human, light bulb / light bulb, nerd"
+ },
+ {
+   "NAME": "Igloo",
+   "RECIPES": "house, ice / house, snow"
+ },
+ {
+   "NAME": "Internet",
+   "RECIPES": "computer, computer / computer, wire / computer, web"
+ },
+ {
+   "NAME": "Isle",
+   "RECIPES": "ocean, volcano / volcano, sea"
+ },
+ {
+   "NAME": "Ivy",
+   "RECIPES": "plant, wall"
+ },
+ {
+   "NAME": "Jack-O'-Lantern",
+   "RECIPES": "pumpkin, fire / blade, pumpkin / pumpkin, candle"
+ },
+ {
+   "NAME": "Jam",
+   "RECIPES": "juice, sugar"
+ },
+ {
+   "NAME": "Jedi",
+   "RECIPES": "lightsaber, human / knight, lightsaber"
+ },
+ {
+   "NAME": "Jerky",
+   "RECIPES": "meat, sun / meat, salt"
+ },
+ {
+   "NAME": "Juice",
+   "RECIPES": "water, fruit / pressure, fruit"
+ },
+ {
+   "NAME": "Keyboard Cat",
+   "RECIPES": "cat, music"
+ },
+ {
+   "NAME": "Kite",
+   "RECIPES": "wind, paper / sky, paper"
+ },
+ {
+   "NAME": "Knight",
+   "RECIPES": "human, armor"
+ },
+ {
+   "NAME": "Lake",
+   "RECIPES": "water, pond / river, dam"
+ },
+ {
+   "NAME": "Lamp",
+   "RECIPES": "metal, light bulb"
+ },
+ {
+   "NAME": "Lasso",
+   "RECIPES": "cow, rope / horse, rope"
+ },
+ {
+   "NAME": "Lava",
+   "RECIPES": "earth, fire"
+ },
+ {
+   "NAME": "Lava Lamp",
+   "RECIPES": "lava, lamp"
+ },
+ {
+   "NAME": "Lawn Mower",
+   "RECIPES": "grass, tool / electricity, scythe"
+ },
+ {
+   "NAME": "Leaf",
+   "RECIPES": "tree, wind"
+ },
+ {
+   "NAME": "Leather",
+   "RECIPES": "cow, blade / pig, blade"
+ },
+ {
+   "NAME": "Lemonade",
+   "RECIPES": "fruit, water"
+ },
+ {
+   "NAME": "Letter",
+   "RECIPES": "paper, pencil"
+ },
+ {
+   "NAME": "Library",
+   "RECIPES": "house, book"
+ },
+ {
+   "NAME": "Life",
+   "RECIPES": "swamp, energy / love, time"
+ },
+ {
+   "NAME": "Light",
+   "RECIPES": "light bulb, electricity / electricity, flashlight"
+ },
+ {
+   "NAME": "Light Bulb",
+   "RECIPES": "electricity, glass"
+ },
+ {
+   "NAME": "Lighthouse",
+   "RECIPES": "light, house / light, beach / light, ocean / light, sea"
+ },
+ {
+   "NAME": "Lightsaber",
+   "RECIPES": "light, sword / energy, sword / electricity, sword"
+ },
+ {
+   "NAME": "Lion",
+   "RECIPES": "wild animal, cat"
+ },
+ {
+   "NAME": "Livestock",
+   "RECIPES": "farmer, life / wild animal, human / farmer, wild animal"
+ },
+ {
+   "NAME": "Lizard",
+   "RECIPES": "egg, swamp"
+ },
+ {
+   "NAME": "Log cabin",
+   "RECIPES": "wood, house"
+ },
+ {
+   "NAME": "Love",
+   "RECIPES": "human, human"
+ },
+ {
+   "NAME": "Lumberjack",
+   "RECIPES": "axe, human / human, chainsaw"
+ },
+ {
+   "NAME": "Mac and Cheese",
+   "RECIPES": "cheese, pasta"
+ },
+ {
+   "NAME": "Mailman",
+   "RECIPES": "human, letter"
+ },
+ {
+   "NAME": "Manatee",
+   "RECIPES": "cow, sea"
+ },
+ {
+   "NAME": "Map",
+   "RECIPES": "paper, earth"
+ },
+ {
+   "NAME": "Mars",
+   "RECIPES": "rust, planet"
+ },
+ {
+   "NAME": "Marshmallows",
+   "RECIPES": "sugar, campfire"
+ },
+ {
+   "NAME": "Mayonnaise",
+   "RECIPES": "egg, oil"
+ },
+ {
+   "NAME": "Meat",
+   "RECIPES": "cow, tool / livestock, butcher / cow, butcher / pig, butcher / pig, tool / blade, livestock"
+ },
+ {
+   "NAME": "Medusa",
+   "RECIPES": "human, snake"
+ },
+ {
+   "NAME": "Mermaid",
+   "RECIPES": "human, fish"
+ },
+ {
+   "NAME": "Metal",
+   "RECIPES": "fire, stone"
+ },
+ {
+   "NAME": "Meteor",
+   "RECIPES": "meteoroid, atmosphere / sky, meteoroid"
+ },
+ {
+   "NAME": "Meteoroid",
+   "RECIPES": "stone, space"
+ },
+ {
+   "NAME": "Microscope",
+   "RECIPES": "glass, bacteria / bacteria, glasses"
+ },
+ {
+   "NAME": "Milk",
+   "RECIPES": "farmer, cow / cow, human"
+ },
+ {
+   "NAME": "Milk Shake",
+   "RECIPES": "milk, ice cream"
+ },
+ {
+   "NAME": "Minotaur",
+   "RECIPES": "human, cow"
+ },
+ {
+   "NAME": "Mirror",
+   "RECIPES": "glass, metal"
+ },
+ {
+   "NAME": "Mold",
+   "RECIPES": "time, bread"
+ },
+ {
+   "NAME": "Monarch",
+   "RECIPES": "human, castle / Excalibur, human / crown, human"
+ },
+ {
+   "NAME": "Money",
+   "RECIPES": "paper, gold"
+ },
+ {
+   "NAME": "Monkey",
+   "RECIPES": "tree, wild animal"
+ },
+ {
+   "NAME": "Moon",
+   "RECIPES": "sky, cheese / sky, stone"
+ },
+ {
+   "NAME": "Moss",
+   "RECIPES": "plant, stone / algae, stone"
+ },
+ {
+   "NAME": "Moth",
+   "RECIPES": "moon, butterfly / night, butterfly"
+ },
+ {
+   "NAME": "Motorcycle",
+   "RECIPES": "bicycle, energy / bicycle, steel"
+ },
+ {
+   "NAME": "Mountain",
+   "RECIPES": "earthquake, earth"
+ },
+ {
+   "NAME": "Mountain Goat",
+   "RECIPES": "mountain, goat / goat, mountain range"
+ },
+ {
+   "NAME": "Mountain Range",
+   "RECIPES": "mountain, mountain"
+ },
+ {
+   "NAME": "Mouse",
+   "RECIPES": "cheese, wild animal"
+ },
+ {
+   "NAME": "Mousetrap",
+   "RECIPES": "wood, cheese / metal, cheese"
+ },
+ {
+   "NAME": "Mud",
+   "RECIPES": "water, earth"
+ },
+ {
+   "NAME": "Mummy",
+   "RECIPES": "corpse, pyramid"
+ },
+ {
+   "NAME": "Music",
+   "RECIPES": "human, flute / human, sound"
+ },
+ {
+   "NAME": "Narwhal",
+   "RECIPES": "unicorn, ocean / unicorn, water / sea, unicorn"
+ },
+ {
+   "NAME": "Needle",
+   "RECIPES": "metal, thread / metal, hay"
+ },
+ {
+   "NAME": "Nerd",
+   "RECIPES": "human, glasses"
+ },
+ {
+   "NAME": "Nessie",
+   "RECIPES": "story, lake"
+ },
+ {
+   "NAME": "Nest",
+   "RECIPES": "bird, tree / bird, hay / egg, hay"
+ },
+ {
+   "NAME": "Newspaper",
+   "RECIPES": "paper, paper"
+ },
+ {
+   "NAME": "Night",
+   "RECIPES": "moon, time / time, day / sky, moon"
+ },
+ {
+   "NAME": "Ninja",
+   "RECIPES": "shuriken, human"
+ },
+ {
+   "NAME": "Ninja Turtle",
+   "RECIPES": "turtle, ninja"
+ },
+ {
+   "NAME": "Nut",
+   "RECIPES": "tree, squirrel / fruit, squirrel"
+ },
+ {
+   "NAME": "Oasis",
+   "RECIPES": "desert, water"
+ },
+ {
+   "NAME": "Obsidian",
+   "RECIPES": "lava, water"
+ },
+ {
+   "NAME": "Ocean",
+   "RECIPES": "sea, sea / water, sea"
+ },
+ {
+   "NAME": "Oil",
+   "RECIPES": "sunflower, pressure"
+ },
+ {
+   "NAME": "Oil Lamp",
+   "RECIPES": "clay, oil / potter, oil / oil, rope / glass, oil / fire, oil"
+ },
+ {
+   "NAME": "Omelette",
+   "RECIPES": "egg, fire"
+ },
+ {
+   "NAME": "Optical Fiber",
+   "RECIPES": "wire, light"
+ },
+ {
+   "NAME": "Orchard",
+   "RECIPES": "fruit tree, fruit tree / field, fruit tree"
+ },
+ {
+   "NAME": "Origami",
+   "RECIPES": "bird, paper"
+ },
+ {
+   "NAME": "Ostrich",
+   "RECIPES": "bird, earth / bird, sand"
+ },
+ {
+   "NAME": "Owl",
+   "RECIPES": "night, bird / bird, wizard"
+ },
+ {
+   "NAME": "Oxygen",
+   "RECIPES": "plant, sun / plant, carbon dioxide"
+ },
+ {
+   "NAME": "Ozone",
+   "RECIPES": "oxygen, oxygen / oxygen, electricity"
+ },
+ {
+   "NAME": "Paint",
+   "RECIPES": "water, rainbow / water, pencil"
+ },
+ {
+   "NAME": "Palm",
+   "RECIPES": "isle, tree / tree, beach"
+ },
+ {
+   "NAME": "Paper",
+   "RECIPES": "wood, pressure"
+ },
+ {
+   "NAME": "Paper Airplane",
+   "RECIPES": "airplane, paper"
+ },
+ {
+   "NAME": "Parachute",
+   "RECIPES": "pilot, fabric / pilot, umbrella"
+ },
+ {
+   "NAME": "Parrot",
+   "RECIPES": "bird, pirate"
+ },
+ {
+   "NAME": "Pasta",
+   "RECIPES": "flour, egg"
+ },
+ {
+   "NAME": "Peacock",
+   "RECIPES": "bird, rainbow"
+ },
+ {
+   "NAME": "Pegasus",
+   "RECIPES": "bird, horse / sky, horse / bird, unicorn"
+ },
+ {
+   "NAME": "Pencil",
+   "RECIPES": "wood, coal / wood, charcoal"
+ },
+ {
+   "NAME": "Pencil Sharpener",
+   "RECIPES": "blade, pencil"
+ },
+ {
+   "NAME": "Penguin",
+   "RECIPES": "ice, wild animal / ice, bird / bird, snow"
+ },
+ {
+   "NAME": "Penicillin",
+   "RECIPES": "doctor, mold"
+ },
+ {
+   "NAME": "Perfume",
+   "RECIPES": "water, rose / water, flower / steam, rose / steam, flower / alcohol, rose / alcohol, flower"
+ },
+ {
+   "NAME": "Petroleum",
+   "RECIPES": "fossil, time / fossil, pressure"
+ },
+ {
+   "NAME": "Phoenix",
+   "RECIPES": "fire, bird"
+ },
+ {
+   "NAME": "Picnic",
+   "RECIPES": "grass, sandwich / beach, sandwich"
+ },
+ {
+   "NAME": "Pie",
+   "RECIPES": "dough, fruit"
+ },
+ {
+   "NAME": "Pig",
+   "RECIPES": "livestock, mud"
+ },
+ {
+   "NAME": "Pigeon",
+   "RECIPES": "bird, city / bird, letter / bird, statue"
+ },
+ {
+   "NAME": "Piggy Bank",
+   "RECIPES": "pig, money / pottery, pig"
+ },
+ {
+   "NAME": "Pillow",
+   "RECIPES": "cotton, fabric"
+ },
+ {
+   "NAME": "Pilot",
+   "RECIPES": "airplane, human / seaplane, human"
+ },
+ {
+   "NAME": "Pinocchio",
+   "RECIPES": "wood, life"
+ },
+ {
+   "NAME": "Pipe",
+   "RECIPES": "tobacco, wood"
+ },
+ {
+   "NAME": "Piranha",
+   "RECIPES": "fish, blood"
+ },
+ {
+   "NAME": "Pirate",
+   "RECIPES": "sword, sailor / sailor, pirate ship"
+ },
+ {
+   "NAME": "Pirate Ship",
+   "RECIPES": "sailboat, pirate / boat, pirate"
+ },
+ {
+   "NAME": "Pitchfork",
+   "RECIPES": "tool, hay"
+ },
+ {
+   "NAME": "Pizza",
+   "RECIPES": "cheese, dough"
+ },
+ {
+   "NAME": "Planet",
+   "RECIPES": "earth, space"
+ },
+ {
+   "NAME": "Plankton",
+   "RECIPES": "water, life / sea, life"
+ },
+ {
+   "NAME": "Plant",
+   "RECIPES": "rain, earth"
+ },
+ {
+   "NAME": "Platypus",
+   "RECIPES": "beaver, duck"
+ },
+ {
+   "NAME": "Pond",
+   "RECIPES": "water, garden"
+ },
+ {
+   "NAME": "Popsicle",
+   "RECIPES": "juice, ice"
+ },
+ {
+   "NAME": "Pottery",
+   "RECIPES": "fire, clay / clay, wheel / clay, tool"
+ },
+ {
+   "NAME": "Pressure",
+   "RECIPES": "earth, earth / air, air"
+ },
+ {
+   "NAME": "Printer",
+   "RECIPES": "paper, computer"
+ },
+ {
+   "NAME": "Prism",
+   "RECIPES": "glass, rainbow"
+ },
+ {
+   "NAME": "Pterodactyl",
+   "RECIPES": "air, dinosaur / bird, dinosaur"
+ },
+ {
+   "NAME": "Puddle",
+   "RECIPES": "snowman, flamethrower / sun, ice / sun, snowman"
+ },
+ {
+   "NAME": "Pumpkin",
+   "RECIPES": "vegetable, fire / vegetable, light"
+ },
+ {
+   "NAME": "Pyramid",
+   "RECIPES": "desert, stone / desert, grave"
+ },
+ {
+   "NAME": "Quicksand",
+   "RECIPES": "sand, swamp"
+ },
+ {
+   "NAME": "Rabbit",
+   "RECIPES": "wild animal, carrot"
+ },
+ {
+   "NAME": "Rain",
+   "RECIPES": "water, air"
+ },
+ {
+   "NAME": "Rainbow",
+   "RECIPES": "rain, sun / rain, light"
+ },
+ {
+   "NAME": "Rat",
+   "RECIPES": "wild animal, pirate ship / sailboat, wild animal"
+ },
+ {
+   "NAME": "Recipe",
+   "RECIPES": "flour, paper / paper, baker"
+ },
+ {
+   "NAME": "Reindeer",
+   "RECIPES": "Santa, wild animal / livestock, Santa"
+ },
+ {
+   "NAME": "Ring",
+   "RECIPES": "diamond, metal / diamond, gold"
+ },
+ {
+   "NAME": "River",
+   "RECIPES": "mountain, water / rain, mountain"
+ },
+ {
+   "NAME": "Robot",
+   "RECIPES": "metal, life / steel, life / life, armor"
+ },
+ {
+   "NAME": "Rocket",
+   "RECIPES": "airplane, space"
+ },
+ {
+   "NAME": "Roller Coaster",
+   "RECIPES": "train, mountain / mountain, cart"
+ },
+ {
+   "NAME": "Roomba",
+   "RECIPES": "robot, vacuum cleaner"
+ },
+ {
+   "NAME": "Rope",
+   "RECIPES": "thread, thread"
+ },
+ {
+   "NAME": "Rose",
+   "RECIPES": "plant, love / flower, love"
+ },
+ {
+   "NAME": "Ruins",
+   "RECIPES": "time, castle / time, house"
+ },
+ {
+   "NAME": "Ruler",
+   "RECIPES": "wood, pencil"
+ },
+ {
+   "NAME": "Rust",
+   "RECIPES": "air, metal / metal, oxygen / steel, oxygen / air, steel"
+ },
+ {
+   "NAME": "RV",
+   "RECIPES": "car, house"
+ },
+ {
+   "NAME": "Saddle",
+   "RECIPES": "horse, leather"
+ },
+ {
+   "NAME": "Safe",
+   "RECIPES": "metal, money / metal, gold / steel, money / steel, gold"
+ },
+ {
+   "NAME": "Safety Glasses",
+   "RECIPES": "explosion, glasses / tool, glasses / engineer, glasses"
+ },
+ {
+   "NAME": "Sailboat",
+   "RECIPES": "boat, wind / boat, fabric"
+ },
+ {
+   "NAME": "Sailor",
+   "RECIPES": "human, boat / human, sailboat"
+ },
+ {
+   "NAME": "Salt",
+   "RECIPES": "sea, sun / ocean, sun / fire, sea / fire, ocean"
+ },
+ {
+   "NAME": "Sand",
+   "RECIPES": "air, stone"
+ },
+ {
+   "NAME": "Sand Castle",
+   "RECIPES": "sand, castle"
+ },
+ {
+   "NAME": "Sandpaper",
+   "RECIPES": "sand, paper"
+ },
+ {
+   "NAME": "Sandstone",
+   "RECIPES": "stone, sand"
+ },
+ {
+   "NAME": "Sandstorm",
+   "RECIPES": "sand, energy / sand, storm / sand, hurricane"
+ },
+ {
+   "NAME": "Sandwich",
+   "RECIPES": "bread, ham / cheese, bread / bread, bacon"
+ },
+ {
+   "NAME": "Santa",
+   "RECIPES": "human, Christmas tree"
+ },
+ {
+   "NAME": "Saturn",
+   "RECIPES": "ring, planet"
+ },
+ {
+   "NAME": "Scalpel",
+   "RECIPES": "blade, doctor / blade, hospital"
+ },
+ {
+   "NAME": "Scarecrow",
+   "RECIPES": "human, hay"
+ },
+ {
+   "NAME": "Scissors",
+   "RECIPES": "blade, blade"
+ },
+ {
+   "NAME": "Scorpion",
+   "RECIPES": "wild animal, sand / wild animal, dune"
+ },
+ {
+   "NAME": "Scythe",
+   "RECIPES": "blade, grass / blade, wheat"
+ },
+ {
+   "NAME": "Sea",
+   "RECIPES": "water, water"
+ },
+ {
+   "NAME": "Seagull",
+   "RECIPES": "bird, sea / bird, ocean / bird, beach"
+ },
+ {
+   "NAME": "Seahorse",
+   "RECIPES": "horse, sea / ocean, horse / fish, horse"
+ },
+ {
+   "NAME": "Seal",
+   "RECIPES": "dog, sea"
+ },
+ {
+   "NAME": "Seaplane",
+   "RECIPES": "airplane, water / airplane, ocean / airplane, sea"
+ },
+ {
+   "NAME": "Seasickness",
+   "RECIPES": "sickness, sea / sickness, ocean / boat, sickness / steamboat, sickness / sailboat, sickness"
+ },
+ {
+   "NAME": "Seaweed",
+   "RECIPES": "plant, sea / plant, ocean"
+ },
+ {
+   "NAME": "Sewing Machine",
+   "RECIPES": "electricity, needle / robot, needle"
+ },
+ {
+   "NAME": "Shark",
+   "RECIPES": "ocean, wild animal / sea, wild animal / sea, blood / blood, ocean"
+ },
+ {
+   "NAME": "Sheep",
+   "RECIPES": "cloud, livestock"
+ },
+ {
+   "NAME": "Sheet Music",
+   "RECIPES": "paper, music"
+ },
+ {
+   "NAME": "Shuriken",
+   "RECIPES": "star, blade"
+ },
+ {
+   "NAME": "Sickness",
+   "RECIPES": "human, bacteria / human, sickness / human, rain"
+ },
+ {
+   "NAME": "Skateboard",
+   "RECIPES": "snowboard, wheel"
+ },
+ {
+   "NAME": "Skeleton",
+   "RECIPES": "corpse, time / bone, bone"
+ },
+ {
+   "NAME": "Ski Goggles",
+   "RECIPES": "glasses, snow"
+ },
+ {
+   "NAME": "Sky",
+   "RECIPES": "air, cloud"
+ },
+ {
+   "NAME": "Skyscraper",
+   "RECIPES": "house, sky"
+ },
+ {
+   "NAME": "Sledge",
+   "RECIPES": "snow, cart / snow, wagon"
+ },
+ {
+   "NAME": "Sloth",
+   "RECIPES": "wild animal / time"
+ },
+ {
+   "NAME": "Smog",
+   "RECIPES": "smoke, fog / fog, city"
+ },
+ {
+   "NAME": "Smoke",
+   "RECIPES": "fire, wood"
+ },
+ {
+   "NAME": "Smoke Signal",
+   "RECIPES": "campfire, fabric / smoke, fabric"
+ },
+ {
+   "NAME": "Smoothie",
+   "RECIPES": "fruit, blender"
+ },
+ {
+   "NAME": "Snake",
+   "RECIPES": "wild animal, wire"
+ },
+ {
+   "NAME": "Snow",
+   "RECIPES": "steam, cold"
+ },
+ {
+   "NAME": "Snowball",
+   "RECIPES": "snow, human"
+ },
+ {
+   "NAME": "Snowboard",
+   "RECIPES": "wood, snow / snow, surfer"
+ },
+ {
+   "NAME": "Snow globe",
+   "RECIPES": "glass, snow / snow, crystal ball"
+ },
+ {
+   "NAME": "Snowman",
+   "RECIPES": "snow, human / snowball, snowball / snow, carrot / snowball, carrot"
+ },
+ {
+   "NAME": "Snowmobile",
+   "RECIPES": "snow, motorcycle / snow, car"
+ },
+ {
+   "NAME": "Soap",
+   "RECIPES": "oil, ash"
+ },
+ {
+   "NAME": "Soap Bubble",
+   "RECIPES": "air, soap / water, soap"
+ },
+ {
+   "NAME": "Soda",
+   "RECIPES": "water, carbon dioxide / juice, carbon dioxide"
+ },
+ {
+   "NAME": "Solar Cell",
+   "RECIPES": "sun, tool"
+ },
+ {
+   "NAME": "Solar System",
+   "RECIPES": "sun, planet"
+ },
+ {
+   "NAME": "Sound",
+   "RECIPES": "air, wave"
+ },
+ {
+   "NAME": "Space",
+   "RECIPES": "sky, star / sun, star / moon, star"
+ },
+ {
+   "NAME": "Spaceship",
+   "RECIPES": "airplane, astronaut"
+ },
+ {
+   "NAME": "Space Station",
+   "RECIPES": "space, house"
+ },
+ {
+   "NAME": "Spaghetti",
+   "RECIPES": "thread, pasta"
+ },
+ {
+   "NAME": "Sphinx",
+   "RECIPES": "human, lion"
+ },
+ {
+   "NAME": "Spider",
+   "RECIPES": "wild animal, thread"
+ },
+ {
+   "NAME": "Sprinkles",
+   "RECIPES": "sugar, confetti"
+ },
+ {
+   "NAME": "Squirrel",
+   "RECIPES": "mouse, tree"
+ },
+ {
+   "NAME": "Star",
+   "RECIPES": "sky, night / night, telescope"
+ },
+ {
+   "NAME": "Starfish",
+   "RECIPES": "fish, star / sea, star / ocean, star"
+ },
+ {
+   "NAME": "Statue",
+   "RECIPES": "stone, tool / human, medusa"
+ },
+ {
+   "NAME": "Steak",
+   "RECIPES": "fire, cow / meat, BBQ"
+ },
+ {
+   "NAME": "Steam",
+   "RECIPES": "water, fire / water, energy"
+ },
+ {
+   "NAME": "Steamboat",
+   "RECIPES": "steam engine, water / steam engine, boat"
+ },
+ {
+   "NAME": "Steam Engine",
+   "RECIPES": "boiler, tool / boiler, wheel"
+ },
+ {
+   "NAME": "Steel",
+   "RECIPES": "metal, coal"
+ },
+ {
+   "NAME": "Steel Wool",
+   "RECIPES": "steel, wool / wire, wool"
+ },
+ {
+   "NAME": "Stethoscope",
+   "RECIPES": "tool, doctor"
+ },
+ {
+   "NAME": "Stone",
+   "RECIPES": "air, lava"
+ },
+ {
+   "NAME": "Storm",
+   "RECIPES": "energy, cloud / cloud, electricity"
+ },
+ {
+   "NAME": "Story",
+   "RECIPES": "human, campfire"
+ },
+ {
+   "NAME": "Sugar",
+   "RECIPES": "fruit, energy / juice, fire / juice, energy"
+ },
+ {
+   "NAME": "Sun",
+   "RECIPES": "fire, sky"
+ },
+ {
+   "NAME": "Sundial",
+   "RECIPES": "clock, sun"
+ },
+ {
+   "NAME": "Sunflower",
+   "RECIPES": "plant, sun / flower, sun"
+ },
+ {
+   "NAME": "Sunglasses",
+   "RECIPES": "sun, glasses / beach, glasses"
+ },
+ {
+   "NAME": "Super nova",
+   "RECIPES": "explosion, star"
+ },
+ {
+   "NAME": "Surfer",
+   "RECIPES": "human, wave"
+ },
+ {
+   "NAME": "Sushi",
+   "RECIPES": "fish, seaweed / caviar, seaweed"
+ },
+ {
+   "NAME": "Swamp",
+   "RECIPES": "mud, plant / mud, grass"
+ },
+ {
+   "NAME": "Sweater",
+   "RECIPES": "wool, tool / human, wool"
+ },
+ {
+   "NAME": "Swim Goggles",
+   "RECIPES": "glasses, water"
+ },
+ {
+   "NAME": "Swimmer",
+   "RECIPES": "human, swim goggles"
+ },
+ {
+   "NAME": "Sword",
+   "RECIPES": "blade, metal / blade, steel"
+ },
+ {
+   "NAME": "Swordfish",
+   "RECIPES": "fish, sword"
+ },
+ {
+   "NAME": "Tank",
+   "RECIPES": "car, armor / car, gun"
+ },
+ {
+   "NAME": "Taser",
+   "RECIPES": "gun, electricity"
+ },
+ {
+   "NAME": "Tea",
+   "RECIPES": "water, leaf"
+ },
+ {
+   "NAME": "Telescope",
+   "RECIPES": "glass, sky / glass, star / glass, space"
+ },
+ {
+   "NAME": "Tent",
+   "RECIPES": "wood, fabric / house, fabric"
+ },
+ {
+   "NAME": "The One Ring",
+   "RECIPES": "volcano, ring"
+ },
+ {
+   "NAME": "Thread",
+   "RECIPES": "cotton, tool / wheel, wool"
+ },
+ {
+   "NAME": "Tide",
+   "RECIPES": "sea, moon / ocean, moon"
+ },
+ {
+   "NAME": "Time",
+   "RECIPES": "sand, glass"
+ },
+ {
+   "NAME": "Titanic",
+   "RECIPES": "steamboat, iceberg"
+ },
+ {
+   "NAME": "Toast",
+   "RECIPES": "sandwich, fire / bread, fire"
+ },
+ {
+   "NAME": "Tobacco",
+   "RECIPES": "plant, fire"
+ },
+ {
+   "NAME": "Tool",
+   "RECIPES": "metal, human"
+ },
+ {
+   "NAME": "Toucan",
+   "RECIPES": "bird, rainbow"
+ },
+ {
+   "NAME": "Tractor",
+   "RECIPES": "farmer, car / field, car"
+ },
+ {
+   "NAME": "Train",
+   "RECIPES": "steam engine, steel / steam engine, metal / steam engine, wheel / steam engine, wagon"
+ },
+ {
+   "NAME": "Treasure",
+   "RECIPES": "pirate, treasure map"
+ },
+ {
+   "NAME": "Treasure map",
+   "RECIPES": "pirate, map"
+ },
+ {
+   "NAME": "Tree",
+   "RECIPES": "plant, time"
+ },
+ {
+   "NAME": "Treehouse",
+   "RECIPES": "tree, house"
+ },
+ {
+   "NAME": "Trojan Horse",
+   "RECIPES": "horse, wood"
+ },
+ {
+   "NAME": "Tsunami",
+   "RECIPES": "ocean, earthquake / sea, earthquake"
+ },
+ {
+   "NAME": "Tunnel",
+   "RECIPES": "engineer, mountain"
+ },
+ {
+   "NAME": "Turtle",
+   "RECIPES": "egg, sand"
+ },
+ {
+   "NAME": "Twilight",
+   "RECIPES": "day, night"
+ },
+ {
+   "NAME": "Tyrannosaurus Rex",
+   "RECIPES": "meat, dinosaur"
+ },
+ {
+   "NAME": "UFO",
+   "RECIPES": "rocket, alien / airplane, alien"
+ },
+ {
+   "NAME": "Umbrella",
+   "RECIPES": "tool, rain / rain, fabric"
+ },
+ {
+   "NAME": "Unicorn",
+   "RECIPES": "rainbow, horse / rainbow, life / double rainbow!, horse / double rainbow!, life"
+ },
+ {
+   "NAME": "Vacuum Cleaner",
+   "RECIPES": "electricity, broom"
+ },
+ {
+   "NAME": "Vampire",
+   "RECIPES": "human, blood / human, vampire"
+ },
+ {
+   "NAME": "Vase",
+   "RECIPES": "plant, pottery / pottery, flower"
+ },
+ {
+   "NAME": "Vegetable",
+   "RECIPES": "field, fruit"
+ },
+ {
+   "NAME": "Village",
+   "RECIPES": "house, house"
+ },
+ {
+   "NAME": "Vinegar",
+   "RECIPES": "time, wine / air, wine / wine, oxygen"
+ },
+ {
+   "NAME": "Volcano",
+   "RECIPES": "lava, earth / lava, mountain / fire, mountain"
+ },
+ {
+   "NAME": "Vulture",
+   "RECIPES": "bird, corpse"
+ },
+ {
+   "NAME": "Wagon",
+   "RECIPES": "cart, horse"
+ },
+ {
+   "NAME": "Wall",
+   "RECIPES": "brick, brick"
+ },
+ {
+   "NAME": "Wallet",
+   "RECIPES": "leather, money"
+ },
+ {
+   "NAME": "Wand",
+   "RECIPES": "wizard, wood"
+ },
+ {
+   "NAME": "Warrior",
+   "RECIPES": "sword, human"
+ },
+ {
+   "NAME": "Watch",
+   "RECIPES": "human, clock"
+ },
+ {
+   "NAME": "Water",
+   "RECIPES": "$DEFAULT"
+ },
+ {
+   "NAME": "Water Gun",
+   "RECIPES": "water, gun"
+ },
+ {
+   "NAME": "Water Lilly",
+   "RECIPES": "flower, pond"
+ },
+ {
+   "NAME": "Water Pipe",
+   "RECIPES": "water, pipe"
+ },
+ {
+   "NAME": "Waterfall",
+   "RECIPES": "mountain, river"
+ },
+ {
+   "NAME": "Waterwheel",
+   "RECIPES": "water, wheel / wheel, river"
+ },
+ {
+   "NAME": "Wave",
+   "RECIPES": "ocean, wind / sea, wind"
+ },
+ {
+   "NAME": "Wax",
+   "RECIPES": "bee, beehive"
+ },
+ {
+   "NAME": "Web",
+   "RECIPES": "spider, thread"
+ },
+ {
+   "NAME": "Werewolf",
+   "RECIPES": "wolf, human / werewolf, human"
+ },
+ {
+   "NAME": "Wheat",
+   "RECIPES": "field, farmer / plant, farmer"
+ },
+ {
+   "NAME": "Wheel",
+   "RECIPES": "tool, wood"
+ },
+ {
+   "NAME": "Wild Animal",
+   "RECIPES": "forest, life"
+ },
+ {
+   "NAME": "Wild Boar",
+   "RECIPES": "pig, wild animal / pig, forest"
+ },
+ {
+   "NAME": "Wind",
+   "RECIPES": "pressure, air / air, energy"
+ },
+ {
+   "NAME": "Windmill",
+   "RECIPES": "house, wind / wheel, wind"
+ },
+ {
+   "NAME": "Wind Turbine",
+   "RECIPES": "windmill, electricity"
+ },
+ {
+   "NAME": "Window",
+   "RECIPES": "glass, house"
+ },
+ {
+   "NAME": "Wine",
+   "RECIPES": "fruit, alcohol"
+ },
+ {
+   "NAME": "Wire",
+   "RECIPES": "electricity, metal"
+ },
+ {
+   "NAME": "Witch",
+   "RECIPES": "human, broom / wizard, broom"
+ },
+ {
+   "NAME": "Wizard",
+   "RECIPES": "human, energy"
+ },
+ {
+   "NAME": "Wolf",
+   "RECIPES": "dog, forest / wild animal, moon / wild animal, dog"
+ },
+ {
+   "NAME": "Wood",
+   "RECIPES": "tool, tree"
+ },
+ {
+   "NAME": "Woodpecker",
+   "RECIPES": "bird, wood"
+ },
+ {
+   "NAME": "Wool",
+   "RECIPES": "sheep, tool / scissors, sheep"
+ },
+ {
+   "NAME": "Wrapping Paper",
+   "RECIPES": "gift, paper"
+ },
+ {
+   "NAME": "X-ray",
+   "RECIPES": "light, bone / light, skeleton"
+ },
+ {
+   "NAME": "Yak",
+   "RECIPES": "cow, mountain"
+ },
+ {
+   "NAME": "Yoda",
+   "RECIPES": "jedi, swamp"
+ },
+ {
+   "NAME": "Yogurt",
+   "RECIPES": "milk, bacteria"
+ },
+ {
+   "NAME": "Zombie",
+   "RECIPES": "corpse, life"
+ }
+]
