@@ -43,14 +43,23 @@ class Graph:
     def __init__(self, file: json):
         self._vertices = {}
         self.discovered = set()
+        self.load_vertices(json)
 
-    def load_vertices(self, file: json):
+    def load_vertices(self, file: json) -> None:
+        """Loads all vertices form the file"""
         data = json.load(file)
+        item_created, recipes = '', []
         for row in data:
             for key in row:
-                combine = row[key].sp
+                if key == 'NAME':
+                    item_created = row[key].lower()
+                else:  # key == 'RECIPES'
+                    recipes = split_text(row[key].lower())
 
-            self.add_edge()
+            for combo in recipes:
+                item1, item2 = combo
+                self.add_edge(item_created, item1, item2)
+
 
     def add_vertex(self, item: str) -> None:
         """Add a vertex with the given item to this graph"""
