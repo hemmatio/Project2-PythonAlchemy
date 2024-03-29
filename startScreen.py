@@ -12,6 +12,12 @@ def get_font(size):
     return pygame.font.Font("assets/font.ttf", size)
 
 def play():
+    """
+     This displays the main game for the classic mode of little alchemy.
+     There are two text boxes to combine elements. The user types in the two
+     elements they wish to combine, and the backend determines if its a valid combination.
+     There will be a bar on the side containing the name of all of the elements found so far.
+     """
     while True:
         play_mouse_pos = pygame.mouse.get_pos()
 
@@ -21,7 +27,7 @@ def play():
         play_rect = play_text.get_rect(center=(640, 260))
         Screen.blit(play_text, play_rect)
 
-        play_back= Button(image=None, pos=(640, 460),
+        play_back = Button(image=None, pos=(640, 460),
                             text_input="BACK", font=get_font(75), base_color="White", hovering_color="Green")
 
         play_back.changeColor(play_mouse_pos)
