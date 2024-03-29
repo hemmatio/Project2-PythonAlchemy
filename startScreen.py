@@ -19,23 +19,16 @@ def play():
      There will be a bar on the side containing the name of all of the elements found so far.
      """
     boxes = []
-    text = get_font(45).render('GeeksForGeeks', True, green, blue)
-    text_rect = text.get_rect()
-    text_rect.center = (750, 400)
+
     while True:
         play_mouse_pos = pygame.mouse.get_pos()
-
+        text = get_font(45).render('water', True, 'White', 'Blue')
+        text_rect = text.get_rect()
+        text_rect.center = (750, 400)
         Screen.fill("black")
 
-        display_surface.blit(text, textRect)
-
-
-
-
-
-
-
-
+        Screen.blit(text, text_rect)
+        boxes.append(text_rect)
         play_back = Button(image=None, pos=(640, 460),
                             text_input="BACK", font=get_font(75), base_color="White", hovering_color="Green")
 
@@ -47,17 +40,15 @@ def play():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if play_back.checkForInput(play_mouse_pos):
-                    main_menu()
-                if box.collidepoint(event.pos):
-                    active_box = num
-                if event.type == pygame.MOUSEBUTTONUP:
-                        active_box = None
-                if event.type == pygame.MOUSEMOTION:
-                    if active_box != None:
-                        boxes[active_box].move_ip(event.rel)
+                if text_rect.collidepoint(event.pos):
+                    active_box = 0
+            if event.type == pygame.MOUSEBUTTONUP:
+                active_box = None
+            if event.type == pygame.MOUSEMOTION:
+                if active_box != None:
+                    boxes[active_box].move_ip(event.rel)
 
-        pygame.display.update()
+        pygame.display.flip()
 def options():
     while True:
         options_mouse_pos = pygame.mouse.get_pos()
