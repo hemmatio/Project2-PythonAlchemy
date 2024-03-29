@@ -18,14 +18,21 @@ def play():
      elements they wish to combine, and the backend determines if its a valid combination.
      There will be a bar on the side containing the name of all of the elements found so far.
      """
+    boxes = []
     while True:
         play_mouse_pos = pygame.mouse.get_pos()
 
         Screen.fill("black")
 
-        play_text = get_font(45).render("This is the PLAY screen.", True, "White")
-        play_rect = play_text.get_rect(center=(640, 260))
-        Screen.blit(play_text, play_rect)
+        for box in boxes:
+            pygame.draw.rect(screen, "purple", box)
+
+
+
+
+
+
+
 
         play_back = Button(image=None, pos=(640, 460),
                             text_input="BACK", font=get_font(75), base_color="White", hovering_color="Green")
@@ -40,6 +47,10 @@ def play():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_back.checkForInput(play_mouse_pos):
                     main_menu()
+                for num, box in enumerate(boxes):
+                    if box.collidepoint(event.pos):
+                        active_box = num
+
 
         pygame.display.update()
 def options():
