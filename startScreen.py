@@ -19,13 +19,15 @@ def play():
      There will be a bar on the side containing the name of all of the elements found so far.
      """
     boxes = []
+    text = get_font(45).render('GeeksForGeeks', True, green, blue)
+    text_rect = text.get_rect()
+    text_rect.center = (750, 400)
     while True:
         play_mouse_pos = pygame.mouse.get_pos()
 
         Screen.fill("black")
 
-        for box in boxes:
-            pygame.draw.rect(screen, "purple", box)
+        display_surface.blit(text, textRect)
 
 
 
@@ -47,10 +49,13 @@ def play():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_back.checkForInput(play_mouse_pos):
                     main_menu()
-                for num, box in enumerate(boxes):
-                    if box.collidepoint(event.pos):
-                        active_box = num
-
+                if box.collidepoint(event.pos):
+                    active_box = num
+                if event.type == pygame.MOUSEBUTTONUP:
+                        active_box = None
+                if event.type == pygame.MOUSEMOTION:
+                    if active_box != None:
+                        boxes[active_box].move_ip(event.rel)
 
         pygame.display.update()
 def options():
