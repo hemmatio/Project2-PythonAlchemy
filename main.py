@@ -48,6 +48,25 @@ def play():
     text_color = pygame.Color('white')
     font = pygame.font.Font(None, 32)
 
+
+    sidebar_width = 200
+    sidebar = pygame.Rect(screen_width - sidebar_width, 0, sidebar_width, screen_height)
+    # Scroll variables
+    scroll_y = 0  # Initial scroll position
+    scroll_speed = 0  # Current scroll speed
+    max_scroll_speed = 20  # Max speed the scroll can reach
+    scroll_acceleration = 1  # How much the scroll speed increases per scroll
+    scroll_friction = 0.9  # Friction applied to scroll speed per frame
+
+    # Sidebar and scrollbar dimensions
+    sidebar_width = 200
+    sidebar = pygame.Rect(screen_width - sidebar_width, 0, sidebar_width, screen_height)
+    scrollbar_width = 20
+
+    # Trash button
+    trash_button = Element(50, screen_height - 100, 140, 50, "Trash", font, text_color, pygame.Color("red"))
+
+
     # Elements
     elements = []
     active_element = None
@@ -79,6 +98,28 @@ def play():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if sidebar.collidepoint(event.pos):
+                    if event.button == 4:  # Scroll up
+                        scroll_speed = min(scroll_speed + scroll_acceleration, max_scroll_speed)
+                    if event.button == 5:  # Scroll down
+                        scroll_speed = max(scroll_speed - scroll_acceleration, -max_scroll_speed)
+
+                # Apply scroll speed and friction
+            scroll_y += scroll_speed
+            scroll_speed *= scroll_friction
+
+            # Clamp the scroll_y position
+            content_height = len(elements) * 60  # Adjust as needed
+            scroll_y = min(0, max(screen_height - content_height, scroll_y))
+
+            # Check if the trash button is clicked
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if trash_button.is_clicked(event.pos):
+                    # Clear the main area here by resetting the elements list or as required
+                    pass
+
 
             if active_element != None:
                 for element in elements:
@@ -113,6 +154,40 @@ def play():
             Screen.fill(background_color)
             for element in elements:
                 element.draw(Screen)
+
+
+        # Draw the sidebar
+        pygame.draw.rect(Screen, pygame.Color("darkgrey"), sidebar)
+
+        # Draw the trash button
+        trash_button.draw(Screen)
+
+        # Draw the scrollable content in the sidebar
+        for i, element in enumerate(elements):
+            # Calculate the position to draw based on scroll_y
+            element_y = i * 60 + scroll_y  # Assuming each element is 60px high
+            if 0 <= element_y < screen_height - sidebar_width:  # Check if the element is within the view
+                element_sidebar_rect = pygame.Rect(screen_width - sidebar_width + 10, element_y,
+                                                   sidebar_width - 20, 50)
+                pygame.draw.rect(Screen, element.rectangle_color, element_sidebar_rect)
+                element_text_surface = font.render(element.text, True, text_color)
+                element_text_rect = element_text_surface.get_rect(center=element_sidebar_rect.center)
+                Screen.blit(element_text_surface, element_text_rect)
+
+            # Draw the scrollbar background
+            scrollbar_background_rect = pygame.Rect(screen_width - scrollbar_width, 0, scrollbar_width,
+                                                    screen_height)
+            pygame.draw.rect(Screen, pygame.Color("darkgrey"), scrollbar_background_rect)
+
+            # Calculate scrollbar thumb height and position
+            visible_ratio = screen_height / content_height
+            scrollbar_thumb_height = visible_ratio * screen_height
+            scrollbar_thumb_y = -scroll_y * visible_ratio
+            scrollbar_thumb_rect = pygame.Rect(screen_width - scrollbar_width, scrollbar_thumb_y, scrollbar_width,
+                                               scrollbar_thumb_height)
+
+            # Draw the scrollbar thumb
+            pygame.draw.rect(Screen, pygame.Color("grey"), scrollbar_thumb_rect)
 
         pygame.display.flip()
     pygame.quit()
