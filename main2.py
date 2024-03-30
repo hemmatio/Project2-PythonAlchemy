@@ -53,6 +53,10 @@ def play():
     sidebar_width = 250
     sidebar = pygame.Rect(screen_width - sidebar_width, 0, sidebar_width, screen_height)
 
+    # initializing the trash bin
+    trash_bin_icon = pygame.image.load("trash.png")  # Load the trash bin icon
+    trash_bin_rect = trash_bin_icon.get_rect(
+        topleft=(10, screen_height - trash_bin_icon.get_height() - 10))  # Position it at the bottom left
 
     # initializing elementary elements
     elements = []
@@ -113,6 +117,12 @@ def play():
                     elements[stock_index].move_ip(*event.rel)
                     letgo = 1
 
+            #trash bin function
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if trash_bin_rect.collidepoint(event.pos):  # Check if the trash bin is clicked
+                    elements = []
+
+
             # Combine items if not holding
             if not holding and letgo == 1:
                 for element in elements:
@@ -125,6 +135,8 @@ def play():
                             elements.remove(element)
                             letgo = 0
                             break
+
+        Screen.blit(trash_bin_icon, trash_bin_rect)  # Draw the trash bin icon
 
             #     for num, element in enumerate(elements):
             #         if element.is_clicked(event.pos):
