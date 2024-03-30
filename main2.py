@@ -1,5 +1,8 @@
+import sys
+
 import pygame
 import recipeloader
+import random
 from button import Button
 class Element():
     def __init__(self, x, y, width, height, text, font, text_color, rectangle_color):
@@ -103,7 +106,7 @@ def play():
                 stock_index = None
                 for discover in discovered:
                     if discover.is_clicked(event.pos):
-                        elements.append(Element(500, 350, 140, 50, discover.text, font, text_color, item_color))
+                        elements.append(Element(400 + random.randint(-100, 100), 300 + random.randint(-100, 100), 140, 50, discover.text, font, text_color, item_color))
 
                 # drags the item
                 for num, element in enumerate(elements):

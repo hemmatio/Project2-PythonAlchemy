@@ -568,7 +568,7 @@
    "RECIPES": "dough, oil"
  },
  {
-   "NAME": "Double Rainbow!",
+   "NAME": "Duo Rainbow!",
    "RECIPES": "rainbow, rainbow"
  },
  {
@@ -2157,7 +2157,7 @@
  },
  {
    "NAME": "Unicorn",
-   "RECIPES": "rainbow, horse / rainbow, life / double rainbow!, horse / double rainbow!, life"
+   "RECIPES": "rainbow, horse / rainbow, life / duo rainbow!, horse / duo rainbow!, life"
  },
  {
    "NAME": "Vacuum Cleaner",
