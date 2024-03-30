@@ -64,6 +64,7 @@ def play():
     elements = [] #TODO: FILL
     discovered = []
     i = 0
+    k = 0
     active_element = None
     for element in recipeloader.g.discovered:
         discovered.append(Element(screen_width - 175, 50 + i, 140, 50, element.item, font, text_color, item_color))
@@ -81,7 +82,7 @@ def play():
         pygame.draw.rect(Screen, pygame.Color("#efebe0"), sidebar)
 
         #adding elements to sidebar
-        for element in elements:
+        for element in discovered[k*10:(k+1)*10]:
             element.draw(Screen)
 
 

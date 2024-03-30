@@ -152,7 +152,7 @@ def play():
 
 
             Screen.fill(background_color)
-            for element in elements:
+            for element in discov:
                 element.draw(Screen)
 
 
