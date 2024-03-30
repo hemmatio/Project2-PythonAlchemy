@@ -61,11 +61,12 @@ def play():
     scroll_friction = 0.5
 
     # initializing elementary elements
-    elements = []
+    elements = [] #TODO: FILL
+    discovered = []
     i = 0
     active_element = None
     for element in recipeloader.g.discovered:
-        elements.append(Element(screen_width - 175, 50 + i, 140, 50, element.item, font, text_color, item_color))
+        discovered.append(Element(screen_width - 175, 50 + i, 140, 50, element.item, font, text_color, item_color))
         i += 60
 
 
