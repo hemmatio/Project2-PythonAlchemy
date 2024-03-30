@@ -1,162 +1,184 @@
-# """
-# Python Alchemy for CSC111 by YC, BG, OH, NN
-# class _Vertex and class Graph originally sourced from CSC111 prep starter code.
-# """
-#
-# from __future__ import annotations
-# from typing import Any
-#
-#
-# class _Vertex:
-#     """A vertex in a graph.
-#
-#     Instance Attributes:
-#         - item: The data stored in this vertex.
-#         - neighbours: The vertices that are adjacent to this vertex.
-#
-#     Representation Invariants:
-#         - self not in self.neighbours
-#         - all(self in u.neighbours for u in self.neighbours)
-#     """
-#     item: Any
-#     neighbours: set[_Vertex]
-#
-#     def __init__(self, item: Any, neighbours: set[_Vertex]) -> None:
-#         """Initialize a new vertex with the given item and neighbours."""
-#         self.item = item
-#         self.neighbours = neighbours
-#
-#     def degree(self) -> int:
-#         """Return the degree of this vertex."""
-#         return len(self.neighbours)
-#
-#     def check_connected(self, target_item: Any, visited: set[_Vertex]) -> bool:
-#         """Return whether this vertex is connected to a vertex corresponding to the target_item,
-#         WITHOUT using any of the vertices in visited.
-#
-#         Preconditions:
-#             - self not in visited
-#         """
-#         if self.item == target_item:
-#             # Our base case: the target_item is the current vertex
-#             return True
-#         else:
-#             visited.add(self)  # Add self to the set of visited vertices
-#             for u in self.neighbours:
-#                 if u not in visited:  # Only recurse on vertices that haven't been visited
-#                     if u.check_connected(target_item, visited):
-#                         return True
-#
-#             return False
-#
-#
-# class Graph:
-#     """A graph.
-#
-#     Representation Invariants:
-#         - all(item == self._vertices[item].item for item in self._vertices)
-#     """
-#     # Private Instance Attributes:
-#     #     - _vertices:
-#     #         A collection of the vertices contained in this graph.
-#     #         Maps item to _Vertex object.
-#     _vertices: dict[Any, _Vertex]
-#
-#     def __init__(self) -> None:
-#         """Initialize an empty graph (no vertices or edges)."""
-#         self._vertices = {}
-#
-#     def add_vertex(self, item: Any) -> None:
-#         """Add a vertex with the given item to this graph.
-#
-#         The new vertex is not adjacent to any other vertices.
-#
-#         Preconditions:
-#             - item not in self._vertices
-#         """
-#         if item not in self._vertices:
-#             self._vertices[item] = _Vertex(item, set())
-#
-#     def add_edge(self, item1: Any, item2: Any) -> None:
-#         """Add an edge between the two vertices with the given items in this graph.
-#
-#         Raise a ValueError if item1 or item2 do not appear as vertices in this graph.
-#
-#         Preconditions:
-#             - item1 != item2
-#         """
-#         if item1 in self._vertices and item2 in self._vertices:
-#             v1 = self._vertices[item1]
-#             v2 = self._vertices[item2]
-#
-#             # Add the new edge
-#             v1.neighbours.add(v2)
-#             v2.neighbours.add(v1)
-#         else:
-#             # We didn't find an existing vertex for both items.
-#             raise ValueError
-#
-#     def adjacent(self, item1: Any, item2: Any) -> bool:
-#         """Return whether item1 and item2 are adjacent vertices in this graph.
-#
-#         Return False if item1 or item2 do not appear as vertices in this graph.
-#         """
-#         if item1 in self._vertices and item2 in self._vertices:
-#             v1 = self._vertices[item1]
-#             return any(v2.item == item2 for v2 in v1.neighbours)
-#         else:
-#             # We didn't find an existing vertex for both items.
-#             return False
-#
-#     def connected(self, item1: Any, item2: Any) -> bool:
-#         """Return whether item1 and item2 are connected vertices in this graph.
-#
-#         Return False if item1 or item2 do not appear as vertices in this graph.
-#
-#         >>> g = Graph()
-#         >>> g.add_vertex(1)
-#         >>> g.add_vertex(2)
-#         >>> g.add_vertex(3)
-#         >>> g.add_vertex(4)
-#         >>> g.add_edge(1, 2)
-#         >>> g.add_edge(2, 3)
-#         >>> g.connected(1, 3)
-#         True
-#         >>> g.connected(1, 4)
-#         False
-#         """
-#         if item1 in self._vertices and item2 in self._vertices:
-#             v1 = self._vertices[item1]
-#             return v1.check_connected(item2, set())  # Pass in an empty "visited" set
-#         else:
-#             return False
-#
-#     def get_neighbours(self, item: Any) -> set:
-#         """Return a set of the neighbours of the given item.
-#
-#         Note that the *items* are returned, not the _Vertex objects themselves.
-#
-#         Raise a ValueError if item does not appear as a vertex in this graph.
-#         """
-#         if item in self._vertices:
-#             v = self._vertices[item]
-#             return {neighbour.item for neighbour in v.neighbours}
-#         else:
-#             raise ValueError
-#
-#     def get_all_vertices(self, kind: str = '') -> set:
-#         """Return a set of all vertex items in this graph.
-#
-#         If kind != '', only return the items of the given vertex kind.
-#
-#         Preconditions:
-#             - kind in {'', 'user', 'book'}
-#         """
-#         if kind != '':
-#             return {v.item for v in self._vertices.values() if v.kind == kind}
-#         else:
-#             return set(self._vertices.keys())
-#
-#     def get_vertices(self) -> dict[Any, _Vertex]:
-#         """Return all the vertices in this graph. (As opposed to a set of their items)"""
-#         return self._vertices
+import pygame
+import recipeloader
+from button import Button
+class Element():
+    def __init__(self, x, y, width, height, text, font, text_color, rectangle_color):
+        self.rect = pygame.Rect(x, y, width, height)
+        self.text = text
+        self.font = font
+        self.text_surface = font.render(text, True, text_color)
+        self.rectangle_color = rectangle_color
+        self.text_rect = self.text_surface.get_rect(center=self.rect.center)
+
+    def draw(self, screen):
+        pygame.draw.rect(screen, self.rectangle_color, self.rect)
+        screen.blit(self.text_surface, self.text_rect)
+
+    def is_clicked(self, mouse_pos):
+        return self.rect.collidepoint(mouse_pos)
+
+    def move_ip(self, dx, dy):
+        # Move the element based on deltas
+        self.rect.move_ip(dx, dy)
+        self.text_rect = self.text_surface.get_rect(center=self.rect.center)
+
+pygame.init()
+
+screen_width, screen_height = 1200, 700
+Screen = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption("Menu")
+
+BackGround = pygame.image.load("singed.jpeg")
+
+def get_font(size):
+    return pygame.font.Font("assets/font.ttf", size)
+
+def play():
+    """
+     This displays the main game for the classic mode of little alchemy.
+     There are two text boxes to combine elements. The user types in the two
+     elements they wish to combine, and the backend determines if its a valid combination.
+     There will be a bar on the side containing the name of all of the elements found so far.
+     """
+    #bla
+    pygame.display.set_caption("Little Alchemist")
+
+    # Colors and Font
+    background_color = pygame.Color('grey')
+    text_color = pygame.Color('white')
+    font = pygame.font.Font(None, 32)
+
+    # Elements
+    elements = []
+    active_element = None
+    water = Element(50, 50,140,  50, "water", font, text_color, pygame.Color("blue"))
+    fire = Element(50, 110,140,  50, "fire", font, text_color, pygame.Color("blue"))
+    earth = Element(50, 170,140,  50, "earth", font, text_color, pygame.Color("blue"))
+    air = Element(50, 230,140,  50, "air", font, text_color, pygame.Color("blue"))
+    clone = Element(50, 1000,140,  50, "clone", font, text_color, pygame.Color("blue"))
+    elements.append(water)
+    elements.append(fire)
+    elements.append(earth)
+    elements.append(air)
+    elements.append(clone)
+
+
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                for num, element in enumerate(elements):
+                    if element.is_clicked(event.pos):
+                        active_element = num
+
+            if event.type == pygame.MOUSEBUTTONUP:
+                active_element = None
+            if event.type == pygame.MOUSEMOTION:
+                if active_element != None:
+                    elements[active_element].move_ip(*event.rel)
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+            if active_element != None:
+                for element in elements:
+                    if element != elements[active_element] and pygame.Rect.colliderect(elements[active_element].rect, element.rect):
+                        if recipeloader.g.itemobtained(element.text, elements[active_element].text) != "zebi":
+                            elements.append(Element(500, 50,140,  50, recipeloader.g.itemobtained(element.text, elements[active_element].text), font, text_color, pygame.Color("blue")))
+                            elementremoved1 = element.text
+                            elementremoved2 = elements[active_element].text
+                            elements.remove(elements[active_element])
+                            elements.remove(element)
+                            if elementremoved2 in {"water", "fire", "air", "earth"}:
+                                if elementremoved2 == "water":
+                                    elements.append(Element(50, 50,140,  50, "water", font, text_color, pygame.Color("blue")))
+                                if elementremoved2 == "earth":
+                                    elements.append(Element(50, 170,140,  50, "earth", font, text_color, pygame.Color("blue")))
+                                if elementremoved2 == "fire":
+                                    elements.append(Element(50, 110,140,  50, "fire", font, text_color, pygame.Color("blue")))
+                                if elementremoved2 == "air":
+                                    elements.append(Element(50, 230,140,  50, "air", font, text_color, pygame.Color("blue")))
+                            if elementremoved1 in {"water", "fire", "air", "earth"}:
+                                if elementremoved1 == "water":
+                                    elements.append(Element(50, 50,140,  50, "water", font, text_color, pygame.Color("blue")))
+                                if elementremoved1 == "earth":
+                                    elements.append(Element(50, 170,140,  50, "earth", font, text_color, pygame.Color("blue")))
+                                if elementremoved1 == "fire":
+                                    elements.append(Element(50, 110,140,  50, "fire", font, text_color, pygame.Color("blue")))
+                                if elementremoved1 == "air":
+                                    elements.append(Element(50, 230,140,  50, "air", font, text_color, pygame.Color("blue")))
+                            break
+
+
+            Screen.fill(background_color)
+            for element in elements:
+                element.draw(Screen)
+
+        pygame.display.flip()
+    pygame.quit()
+def options():
+    while True:
+        options_mouse_pos = pygame.mouse.get_pos()
+
+        Screen.fill("white")
+
+        options_text = get_font(45).render("This is the OPTIONS screen.", True, "Black")
+        options_rect = options_text.get_rect(center=(640, 260))
+        Screen.blit(options_text, options_rect)
+
+        options_back = Button(image=None, pos=(640, 460),
+                              text_input="BACK", font=get_font(75), base_color="Black", hovering_color="Green")
+
+        options_back.changeColor(options_mouse_pos)
+        options_back.update(Screen)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if options_back.checkForInput(options_mouse_pos):
+                    main_menu()
+
+        pygame.display.update()
+
+def main_menu():
+    """
+    This displays the start screen. This will include a title, start button,
+    game mode, and quit button.
+    """
+    pygame.display.set_caption("Menu")
+
+    while True:
+        Screen.blit(BackGround, (0, 0))
+        menu_mouse_pos = pygame.mouse.get_pos()
+        menu_text = get_font(100).render("MAIN MENU", True, "#b68f40")
+        menu_rect = menu_text.get_rect(center=(640,100))
+
+        play_button = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(640, 250),
+                             text_input="PLAY",font = get_font(75), base_color = "#d7fcd4", hovering_color = "White")
+        options_button = Button(image=pygame.image.load("assets/Options Rect.png"), pos=(640, 400),
+                             text_input="OPTIONS", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
+        quit_button = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(640, 550),
+                             text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
+        Screen.blit(menu_text, menu_rect)
+
+        for button in [play_button, options_button, quit_button]:
+            button.changeColor(menu_mouse_pos)
+            button.update(Screen)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if play_button.checkForInput(menu_mouse_pos):
+                    play()
+                if options_button.checkForInput(menu_mouse_pos):
+                    options()
+                if quit_button.checkForInput(menu_mouse_pos):
+                    pygame.quit()
+                    sys.exit()
+        pygame.display.update()
+
+main_menu()
