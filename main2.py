@@ -100,6 +100,7 @@ def play():
             # spawns the element in the middle of the screen or drags element
             if event.type == pygame.MOUSEBUTTONDOWN:
                 # spawns in middle
+                stock_index = None
                 for discover in discovered:
                     if discover.is_clicked(event.pos):
                         elements.append(Element(500, 350, 140, 50, discover.text, font, text_color, item_color))
@@ -126,7 +127,8 @@ def play():
             # Combine items if not holding
             if not holding and letgo == 1:
                 for element in elements:
-                    if element != elements[stock_index] and pygame.Rect.colliderect(elements[stock_index].rect, element.rect):
+                    if (stock_index and
+                            element != elements[stock_index] and pygame.Rect.colliderect(elements[stock_index].rect, element.rect)):
                         valid_combo, item_created = recipeloader.g.combine(element.text, elements[stock_index].text)
                         if valid_combo:
                             x, y = pygame.mouse.get_pos()
@@ -138,25 +140,7 @@ def play():
 
         Screen.blit(trash_bin_icon, trash_bin_rect)  # Draw the trash bin icon
 
-            #     for num, element in enumerate(elements):
-            #         if element.is_clicked(event.pos):
-            #             stock_index = num
-            #             active_element = num
-            #
-            # if event.type == pygame.MOUSEBUTTONUP:
-            #     active_element = None
-            # if event.type == pygame.MOUSEMOTION:
-            #     if active_element != None:
-            #         elements[active_element].move_ip(*event.rel)
-            #
-            # if active_element == None:
-            #     for element in elements:
-            #         if element != elements[stock_index] and pygame.Rect.colliderect(elements[stock_index].rect, element.rect):
-            #             if recipeloader.g.itemobtained(element.text, elements[stock_index].text) != "zebi":
-            #                 elements.append(Element(500, 50, 140,  50, recipeloader.g.itemobtained(element.text, elements[stock_index].text), font, text_color, pygame.Color("blue")))
-            #                 elements.remove(elements[stock_index])
-            #                 elements.remove(element)
-            #                 break
+
         pygame.display.flip()
     pygame.quit()
 def options():
