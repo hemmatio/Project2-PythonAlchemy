@@ -39,11 +39,11 @@ class Graph:
     discovered: set[vertex]
     """
     _vertices: dict[str, _Vertex]
-    discovered: set[_Vertex]
+    discovered: list[_Vertex]
 
     def __init__(self, file: json):
         self._vertices = {}
-        self.discovered = set()
+        self.discovered = []
         self.load_vertices(file)
 
     def load_vertices(self, file: json) -> None:
@@ -60,7 +60,7 @@ class Graph:
 
             if not recipes:
                 self.add_vertex(item_created)
-                self.discovered.add(self._vertices[item_created])
+                self.discovered.append(self._vertices[item_created])
             for combo in recipes:
                 item1, item2 = combo
                 self.add_edge(item_created, item1, item2)
@@ -101,7 +101,7 @@ class Graph:
             if crafted_item in self.discovered:
                 print(f"You have already discovered {crafted_item.item}.")
                 return
-            self.discovered.add(crafted_item)
+            self.discovered.append(crafted_item)
             print(f'You have discovered {crafted_item.item}! Good job') #TODO: DONT GET CANCELLED
 
     def itemobtained(self, item1, item2) -> str:
@@ -114,7 +114,7 @@ class Graph:
         if item2 not in self._vertices[item1].neighbours:
             return "zebi"
         crafted_item = self._vertices[item1].neighbours[item2]
-        self.discovered.add(crafted_item)
+        self.discovered.append(crafted_item)
         return crafted_item.item
 
     def inventory(self) -> None:

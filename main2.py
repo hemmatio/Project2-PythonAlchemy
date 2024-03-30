@@ -62,14 +62,8 @@ def play():
 
     # initializing elementary elements
     elements = [] #TODO: FILL
-    discovered = []
-    i = 0
     k = 0
     active_element = None
-    for element in recipeloader.g.discovered:
-        discovered.append(Element(screen_width - 175, 50 + i, 140, 50, element.item, font, text_color, item_color))
-        i += 60
-
 
 
 
@@ -81,9 +75,23 @@ def play():
         # drawing sidebar
         pygame.draw.rect(Screen, pygame.Color("#efebe0"), sidebar)
 
-        #adding elements to sidebar
-        for element in discovered[k*10:(k+1)*10]:
+        # adding scroll when down arrow is clicked
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if k + 11 < len(recipeloader.g.discovered):
+                    k = k + 1
+
+            if event.type == pygame.KEYUP:
+                if k - 1 >= 0:
+                    k = k - 1
+
+        # adding elements to sidebar
+        j = 0
+        for value in recipeloader.g.discovered[k:(k + 11)]:
+            element = Element(screen_width - 175, 60 + j, 140, 50, value.item, font, text_color, item_color)
             element.draw(Screen)
+            j += 60
+
 
 
 
@@ -157,4 +165,18 @@ def main_menu():
 
 recipeloader.g.combine("water", "earth")
 recipeloader.g.combine("air", "water")
+recipeloader.g.combine("fire","water")
+recipeloader.g.combine("earth","fire")
+recipeloader.g.combine("rain","rain")
+recipeloader.g.combine("rain","earth")
+recipeloader.g.combine("water","earth")
+recipeloader.g.combine("fire","mud")
+recipeloader.g.combine("brick","brick")
+recipeloader.g.combine("wall","wall")
+recipeloader.g.combine("house","house")
+recipeloader.g.combine("earth","air")
+recipeloader.g.combine("lava","water")
+recipeloader.g.combine("lava","air")
+recipeloader.g.combine("lava","earth")
+
 main_menu()
