@@ -85,24 +85,26 @@ class Graph:
         v1.neighbours.update({item2: v0})
         v2.neighbours.update({item1: v0})
 
-    def combine(self, item1, item2) -> None:
+    def combine(self, item1, item2) -> tuple[bool, Optional[str]]:
         """
-        Combine item1 and item2, add the combined item to self.discovered
+        Combine item1 and item2, add the combined item to self.discovered returns whether
+        there is a valid combination and the created items name
         """
         discovered_items = {vertex.item for vertex in self.discovered}
         if item1 not in discovered_items or item2 not in discovered_items:
-            print('You may not craft with items you have not yet discovered.')
-            return
+            # print('You may not craft with items you have not yet discovered.')
+            return (False, None)
         if item2 not in self._vertices[item1].neighbours:
-            print('This is not a valid crafting recipe.')
-            return
+            # print('This is not a valid crafting recipe.')
+            return (False, None)
         else:
             crafted_item = self._vertices[item1].neighbours[item2]
             if crafted_item in self.discovered:
-                print(f"You have already discovered {crafted_item.item}.")
-                return
+                # print(f"You have already discovered {crafted_item.item}.")
+                return (True, crafted_item.item)
             self.discovered.append(crafted_item)
-            print(f'You have discovered {crafted_item.item}! Good job') #TODO: DONT GET CANCELLED
+            # print(f'You have discovered {crafted_item.item}! Good job')
+            return (True, crafted_item.item)
 
     def itemobtained(self, item1, item2) -> str:
         """

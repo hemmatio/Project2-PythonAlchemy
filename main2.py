@@ -53,18 +53,13 @@ def play():
     sidebar_width = 250
     sidebar = pygame.Rect(screen_width - sidebar_width, 0, sidebar_width, screen_height)
 
-    # scroll variables
-    scroll_y = 0
-    scroll_speed = 0
-    max_scroll_speed = 5
-    scroll_acceleration = 0.5
-    scroll_friction = 0.5
 
     # initializing elementary elements
-    elements = [] #TODO: FILL
+    elements = []
     k = 0
-    active_element = None
-
+    holding = False
+    letgo = 0
+    stock_index = 0
 
 
     while True:
@@ -75,26 +70,81 @@ def play():
         # drawing sidebar
         pygame.draw.rect(Screen, pygame.Color("#efebe0"), sidebar)
 
-        # adding scroll when down arrow is clicked
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if k + 11 < len(recipeloader.g.discovered):
-                    k = k + 1
-
-            if event.type == pygame.KEYUP:
-                if k - 1 >= 0:
-                    k = k - 1
-
         # adding elements to sidebar
         j = 0
-        for value in recipeloader.g.discovered[k:(k + 11)]:
-            element = Element(screen_width - 175, 60 + j, 140, 50, value.item, font, text_color, item_color)
+        discovered = []
+        for value in recipeloader.g.discovered[k:(k + 10)]:
+            element = Element(screen_width - 185, 40 + j, 140, 50, value.item, font, text_color, item_color)
+            discovered.append(element)
             element.draw(Screen)
             j += 60
+        #prints all elements on the screen
+        for element in elements:
+            element.draw(Screen)
 
+        for event in pygame.event.get():
 
+            # adding scroll when down arrow is clicked
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_DOWN:
+                    if k + 10 < len(recipeloader.g.discovered):
+                        k = k + 1
+                if event.key == pygame.K_UP:
+                    if k - 1 >= 0:
+                        k = k - 1
 
+            # spawns the element in the middle of the screen or drags element
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                # spawns in middle
+                for discover in discovered:
+                    if discover.is_clicked(event.pos):
+                        elements.append(Element(500, 350, 140, 50, discover.text, font, text_color, item_color))
 
+                # drags the item
+                for num, element in enumerate(elements):
+                    if element.is_clicked(event.pos):
+                        stock_index = num
+                        holding = True
+
+            if event.type == pygame.MOUSEBUTTONUP:
+                holding = False
+            if event.type == pygame.MOUSEMOTION:
+                if holding:
+                    elements[stock_index].move_ip(*event.rel)
+                    letgo = 1
+
+            # Combine items if not holding
+            if not holding and letgo == 1:
+                for element in elements:
+                    if element != elements[stock_index] and pygame.Rect.colliderect(elements[stock_index].rect, element.rect):
+                        valid_combo, item_created = recipeloader.g.combine(element.text, elements[stock_index].text)
+                        if valid_combo:
+                            x, y = pygame.mouse.get_pos()
+                            elements.append(Element(x - 70, y - 25, 140,  50, item_created, font, text_color, pygame.Color("blue")))
+                            elements.remove(elements[stock_index])
+                            elements.remove(element)
+                            letgo = 0
+                            break
+
+            #     for num, element in enumerate(elements):
+            #         if element.is_clicked(event.pos):
+            #             stock_index = num
+            #             active_element = num
+            #
+            # if event.type == pygame.MOUSEBUTTONUP:
+            #     active_element = None
+            # if event.type == pygame.MOUSEMOTION:
+            #     if active_element != None:
+            #         elements[active_element].move_ip(*event.rel)
+            #
+            # if active_element == None:
+            #     for element in elements:
+            #         if element != elements[stock_index] and pygame.Rect.colliderect(elements[stock_index].rect, element.rect):
+            #             if recipeloader.g.itemobtained(element.text, elements[stock_index].text) != "zebi":
+            #                 elements.append(Element(500, 50, 140,  50, recipeloader.g.itemobtained(element.text, elements[stock_index].text), font, text_color, pygame.Color("blue")))
+            #                 elements.remove(elements[stock_index])
+            #                 elements.remove(element)
+            #                 break
         pygame.display.flip()
     pygame.quit()
 def options():
@@ -163,20 +213,19 @@ def main_menu():
         pygame.display.update()
 
 
-recipeloader.g.combine("water", "earth")
-recipeloader.g.combine("air", "water")
-recipeloader.g.combine("fire","water")
-recipeloader.g.combine("earth","fire")
-recipeloader.g.combine("rain","rain")
-recipeloader.g.combine("rain","earth")
-recipeloader.g.combine("water","earth")
-recipeloader.g.combine("fire","mud")
-recipeloader.g.combine("brick","brick")
-recipeloader.g.combine("wall","wall")
-recipeloader.g.combine("house","house")
-recipeloader.g.combine("earth","air")
-recipeloader.g.combine("lava","water")
-recipeloader.g.combine("lava","air")
-recipeloader.g.combine("lava","earth")
+# recipeloader.g.combine("water", "earth")
+# recipeloader.g.combine("air", "water")
+# recipeloader.g.combine("fire","water")
+# recipeloader.g.combine("earth","fire")
+# recipeloader.g.combine("rain","rain")
+# recipeloader.g.combine("rain","earth")
+# recipeloader.g.combine("fire","mud")
+# recipeloader.g.combine("brick","brick")
+# recipeloader.g.combine("wall","wall")
+# recipeloader.g.combine("house","house")
+# recipeloader.g.combine("earth","air")
+# recipeloader.g.combine("lava","water")
+# recipeloader.g.combine("lava","air")
+# recipeloader.g.combine("lava","earth")
 
 main_menu()
