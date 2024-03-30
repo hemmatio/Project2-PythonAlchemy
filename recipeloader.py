@@ -102,7 +102,20 @@ class Graph:
                 print(f"You have already discovered {crafted_item.item}.")
                 return
             self.discovered.add(crafted_item)
-            print(f'You have discovered {crafted_item.item}! Good job lil nigga') #TODO: DONT GET CANCELLED
+            print(f'You have discovered {crafted_item.item}! Good job') #TODO: DONT GET CANCELLED
+
+    def itemobtained(self, item1, item2) -> str:
+        """
+        ommited
+        :param item1:
+        :param item2:
+        :return:
+        """
+        if item2 not in self._vertices[item1].neighbours:
+            return "zebi"
+        crafted_item = self._vertices[item1].neighbours[item2]
+        self.discovered.add(crafted_item)
+        return crafted_item.item
 
     def inventory(self) -> None:
         """
@@ -115,6 +128,5 @@ class Graph:
         print(f'You have discovered {len(self.discovered)}/{total} items so far.')
 
 
-if __name__ == "__main__":
-    with open('recipes.json') as file:
-        g = Graph(file)
+with open('recipes.json') as file:
+    g = Graph(file)
