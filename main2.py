@@ -125,6 +125,7 @@ def play():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if trash_bin_rect.collidepoint(event.pos):  # Check if the trash bin is clicked
                     elements = []
+                    stock_index = None
 
 
             # Combine items if not holding
