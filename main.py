@@ -51,7 +51,7 @@ screen_width, screen_height = 1200, 700
 Screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Menu")
 
-BackGround = pygame.image.load("singed.jpeg")
+BackGround = pygame.image.load("assets/singed.jpeg")
 
 def get_font(size):
     return pygame.font.Font("assets/font.ttf", size)
@@ -77,7 +77,7 @@ def play():
     sidebar = pygame.Rect(screen_width - sidebar_width, 0, sidebar_width, screen_height)
 
     # initializing the trash bin
-    trash_bin_icon = pygame.image.load("trash.png")  # Load the trash bin icon
+    trash_bin_icon = pygame.image.load("assets/trash.png")  # Load the trash bin icon
     trash_bin_rect = trash_bin_icon.get_rect(
         topleft=(10, screen_height - trash_bin_icon.get_height() - 10))  # Position it at the bottom left
 
