@@ -101,10 +101,10 @@ class Graph:
             crafted_item = self._vertices[item1].neighbours[item2]
             if crafted_item in self.discovered:
                 # print(f"You have already discovered {crafted_item.item}.")
-                return (True, crafted_item.item)
+                return (True, crafted_item.item.title())
             self.discovered.append(crafted_item)
             # print(f'You have discovered {crafted_item.item}! Good job')
-            return (True, crafted_item.item)
+            return (True, crafted_item.item.title())
 
     def itemobtained(self, item1, item2) -> str:
         """

@@ -7,14 +7,14 @@ from button import Button
 class Element():
     def __init__(self, x, y, width, height, text, font, text_color, rectangle_color):
         self.rect = pygame.Rect(x, y, width, height)
-        self.text = text
+        self.text = text.title()
         self.font = font
-        self.text_surface = font.render(text, True, text_color)
+        self.text_surface = self.render_with_outline(text, font, text_color, pygame.Color('black'), 1)
         self.rectangle_color = rectangle_color
         self.text_rect = self.text_surface.get_rect(center=self.rect.center)
 
     def draw(self, screen):
-        pygame.draw.rect(screen, self.rectangle_color, self.rect)
+        pygame.draw.rect(screen, self.rectangle_color, self.rect, 2)
         screen.blit(self.text_surface, self.text_rect)
 
     def is_clicked(self, mouse_pos):
@@ -24,6 +24,26 @@ class Element():
         # Move the element based on deltas
         self.rect.move_ip(dx, dy)
         self.text_rect = self.text_surface.get_rect(center=self.rect.center)
+
+    def render_with_outline(self, text, font, text_color, outline_color, outline_width):
+        base = font.render(text, True, text_color)
+        # The size of the outline surface should be larger than the base by twice the outline width on all sides
+        outline_size = (base.get_width() + 2 * outline_width, base.get_height() + 2 * outline_width)
+        outline = pygame.Surface(outline_size, pygame.SRCALPHA)
+
+        # Get the positions to blit the base text onto the outline surface, centered
+        base_pos = (outline_width, outline_width)
+
+        # Render the outline by drawing the text in the outline color offset in all directions
+        offsets = [(-outline_width, -outline_width), (-outline_width, outline_width),
+                   (outline_width, -outline_width), (outline_width, outline_width)]
+        for dx, dy in offsets:
+            temp_surf = font.render(text, True, outline_color)
+            outline.blit(temp_surf, (base_pos[0] + dx, base_pos[1] + dy))
+
+        # Blit the base text onto the outline surface
+        outline.blit(base, base_pos)
+        return outline
 
 pygame.init()
 
@@ -44,13 +64,13 @@ def play():
      There will be a bar on the side containing the name of all of the elements found so far.
      """
     #bla
-    pygame.display.set_caption("Little Alchemist")
+    pygame.display.set_caption("Python Alchemy")
 
     # Colors and Font
     background_color = pygame.Color('#f7f6f1')
-    text_color = pygame.Color('white')
-    font = pygame.font.Font(None, 32)
-    item_color = pygame.Color("blue")
+    text_color = pygame.Color("#bc259d")
+    font = pygame.font.Font("assets/Roboto-Regular.ttf", 24)
+    item_color = pygame.Color(0)
 
     #initializing the sidebar
     sidebar_width = 250
@@ -60,6 +80,17 @@ def play():
     trash_bin_icon = pygame.image.load("trash.png")  # Load the trash bin icon
     trash_bin_rect = trash_bin_icon.get_rect(
         topleft=(10, screen_height - trash_bin_icon.get_height() - 10))  # Position it at the bottom left
+
+    # initilazing the logo
+    logo_icon = pygame.image.load("assets/Logo.png")
+    logo_rect = logo_icon.get_rect(
+        topleft=(5, 2))
+
+    # initilzazing the arrows
+    up_icon = pygame.image.load("assets/up.png")
+    up_rect = up_icon.get_rect(topleft=(screen_width - 134, 8))
+    down_icon = pygame.image.load("assets/down.png")
+    down_rect = down_icon.get_rect(topleft=(screen_width - 134, screen_height - 67))
 
     # initializing elementary elements
     elements = []
@@ -77,11 +108,28 @@ def play():
         # drawing sidebar
         pygame.draw.rect(Screen, pygame.Color("#efebe0"), sidebar)
 
-        # adding elements to sidebar
+        # drawing logo
+        Screen.blit(logo_icon, logo_rect)
+
+        # adding elements to sidebar and the little circles
         j = 0
         discovered = []
-        for value in recipeloader.g.discovered[k:(k + 10)]:
-            element = Element(screen_width - 185, 40 + j, 140, 50, value.item, font, text_color, item_color)
+        for i, value in enumerate(recipeloader.g.discovered[k:(k + 10)], start=k + 1):  # Enumerate with start=k
+            # Create text surface for index
+            font2 = pygame.font.Font("assets/Roboto-Regular.ttf", 22)
+            index_text = font2.render(str(i), True, pygame.Color(0))
+
+            # Adjust position if the index is double-digit
+            index_x = screen_width - 225 if i < 10 else screen_width - 232
+            index_y = 50 + j
+            pygame.draw.circle(Screen, (150, 150, 150, 50), (screen_width - 219, index_y + 14), 17)
+
+            # Position index text beside the element
+            index_rect = index_text.get_rect(topleft=(index_x, index_y))
+            Screen.blit(index_text, index_rect)
+
+            # Create and draw element
+            element = Element(screen_width - 190, 40 + j, 140, 45, value.item.title(), font, text_color, item_color)
             discovered.append(element)
             element.draw(Screen)
             j += 60
@@ -101,12 +149,12 @@ def play():
                         k = k - 1
 
             # spawns the element in the middle of the screen or drags element
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 # spawns in middle
                 stock_index = None
                 for discover in discovered:
                     if discover.is_clicked(event.pos):
-                        elements.append(Element(400 + random.randint(-100, 100), 300 + random.randint(-100, 100), 140, 50, discover.text, font, text_color, item_color))
+                        elements.append(Element(400 + random.randint(-100, 100), 300 + random.randint(-100, 100), 140, 45, discover.text.title(), font, text_color, item_color))
 
                 # drags the item
                 for num, element in enumerate(elements):
@@ -118,14 +166,21 @@ def play():
                 holding = False
             if event.type == pygame.MOUSEMOTION:
                 if holding:
-                    elements[stock_index].move_ip(*event.rel)
-                    letgo = 1
+                    if len(elements) > 0:
+                        elements[stock_index].move_ip(*event.rel)
+                        letgo = 1
 
-            #trash bin function
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            #trash bin and arrow function
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 if trash_bin_rect.collidepoint(event.pos):  # Check if the trash bin is clicked
                     elements = []
                     stock_index = None
+                if up_rect.collidepoint(event.pos):
+                    if k - 1 >= 0:
+                        k = k - 1
+                if down_rect.collidepoint(event.pos):
+                    if k + 10 < len(recipeloader.g.discovered):
+                        k = k + 1
 
 
             # Combine items if not holding
@@ -133,16 +188,23 @@ def play():
                 for element in elements:
                     if (stock_index and
                             element != elements[stock_index] and pygame.Rect.colliderect(elements[stock_index].rect, element.rect)):
-                        valid_combo, item_created = recipeloader.g.combine(element.text, elements[stock_index].text)
+                        valid_combo, item_created = recipeloader.g.combine(element.text.lower(), elements[stock_index].text.lower())
                         if valid_combo:
                             x, y = pygame.mouse.get_pos()
-                            elements.append(Element(x - 70, y - 25, 140,  50, item_created, font, text_color, pygame.Color("blue")))
+                            elements.append(Element(x - 70, y - 25, 140,  45, item_created, font, text_color, item_color))
                             elements.remove(elements[stock_index])
                             elements.remove(element)
                             letgo = 0
                             break
 
-        Screen.blit(trash_bin_icon, trash_bin_rect)  # Draw the trash bin icon
+        # Draw the trash bin
+        Screen.blit(trash_bin_icon, trash_bin_rect)
+
+        # Draws the little arrows when you can go up and down
+        if k - 1 >= 0:
+            Screen.blit(up_icon, up_rect)
+        if k + 10 < len(recipeloader.g.discovered):
+            Screen.blit(down_icon, down_rect)
 
 
         pygame.display.flip()
@@ -213,19 +275,19 @@ def main_menu():
         pygame.display.update()
 
 
-# recipeloader.g.combine("water", "earth")
-# recipeloader.g.combine("air", "water")
-# recipeloader.g.combine("fire","water")
-# recipeloader.g.combine("earth","fire")
-# recipeloader.g.combine("rain","rain")
-# recipeloader.g.combine("rain","earth")
-# recipeloader.g.combine("fire","mud")
-# recipeloader.g.combine("brick","brick")
-# recipeloader.g.combine("wall","wall")
-# recipeloader.g.combine("house","house")
-# recipeloader.g.combine("earth","air")
-# recipeloader.g.combine("lava","water")
-# recipeloader.g.combine("lava","air")
-# recipeloader.g.combine("lava","earth")
+recipeloader.g.combine("water", "earth")
+recipeloader.g.combine("air", "water")
+recipeloader.g.combine("fire","water")
+recipeloader.g.combine("earth","fire")
+recipeloader.g.combine("rain","rain")
+recipeloader.g.combine("rain","earth")
+recipeloader.g.combine("fire","mud")
+recipeloader.g.combine("brick","brick")
+recipeloader.g.combine("wall","wall")
+recipeloader.g.combine("house","house")
+recipeloader.g.combine("earth","air")
+recipeloader.g.combine("lava","water")
+recipeloader.g.combine("lava","air")
+recipeloader.g.combine("lava","earth")
 
 main_menu()
