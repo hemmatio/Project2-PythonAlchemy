@@ -170,7 +170,7 @@ def play():
                         elements[stock_index].move_ip(*event.rel)
                         letgo = 1
 
-            #trash bin and arrow function
+            #trash bin and arrow function and back to main menu
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 if trash_bin_rect.collidepoint(event.pos):  # Check if the trash bin is clicked
                     elements = []
@@ -181,6 +181,14 @@ def play():
                 if down_rect.collidepoint(event.pos):
                     if k + 10 < len(recipeloader.g.discovered):
                         k = k + 1
+
+                if logo_rect.collidepoint(event.pos):
+                    if elements:
+                        for element in elements:
+                            if not logo_rect.colliderect(element.rect):
+                                main_menu()
+                    else:
+                        main_menu()
 
 
             # Combine items if not holding
@@ -275,19 +283,19 @@ def main_menu():
         pygame.display.update()
 
 
-recipeloader.g.combine("water", "earth")
-recipeloader.g.combine("air", "water")
-recipeloader.g.combine("fire","water")
-recipeloader.g.combine("earth","fire")
-recipeloader.g.combine("rain","rain")
-recipeloader.g.combine("rain","earth")
-recipeloader.g.combine("fire","mud")
-recipeloader.g.combine("brick","brick")
-recipeloader.g.combine("wall","wall")
-recipeloader.g.combine("house","house")
-recipeloader.g.combine("earth","air")
-recipeloader.g.combine("lava","water")
-recipeloader.g.combine("lava","air")
-recipeloader.g.combine("lava","earth")
+# recipeloader.g.combine("water", "earth")
+# recipeloader.g.combine("air", "water")
+# recipeloader.g.combine("fire","water")
+# recipeloader.g.combine("earth","fire")
+# recipeloader.g.combine("rain","rain")
+# recipeloader.g.combine("rain","earth")
+# recipeloader.g.combine("fire","mud")
+# recipeloader.g.combine("brick","brick")
+# recipeloader.g.combine("wall","wall")
+# recipeloader.g.combine("house","house")
+# recipeloader.g.combine("earth","air")
+# recipeloader.g.combine("lava","water")
+# recipeloader.g.combine("lava","air")
+# recipeloader.g.combine("lava","earth")
 
 main_menu()
