@@ -214,8 +214,6 @@ def play(chemistry: bool):
                         pygame.mixer.Sound.play(click_sound)
                         main_menu(chemistry)
 
-
-
             # Combine items if not holding
             if not holding and letgo == 1:
                 for element in elements:
