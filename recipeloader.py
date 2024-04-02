@@ -1,11 +1,38 @@
+"""
+File Outline
+===============================
+This file defines a simple graph-based system for tracking combinations of elements to
+create new elements. The system allows for loading elements and their combinations
+from a file, adding new elements, combining known elements to discover new ones, and
+tracking the inventory of discovered elements.
+
+Copyright and Usage Information
+===============================
+
+This file is provided solely for the private use of the teaching staff
+of CSC111 at the University of Toronto St. George campus. All forms of
+distribution of this code, whether as given or with any changes, are
+expressly prohibited.
+
+This file is Copyright (c) 2024 Omid Hemmati, Yianni Culmone, Neyl Nasr, Benjamin Gavriely
+"""
+
 from __future__ import annotations
-from typing import Any, Optional
+from typing import Optional
 import json
 
+
 def split_text(text: str) -> list[tuple]:
-    """splits the combined elements at the /
-    for example: 'rain, smoke / rain, smog' becomes [(rain, smoke), (rain, fog)]
-    if the text is $DEFAULT return an empty list"""
+    """
+    Splits the combined elements at the "/" and returns a list of tuples representing combinations.
+    If the input text is "$DEFAULT", returns an empty list.
+
+    Preconditions:
+    - text must be a non-empty string.
+
+    :param text: A string containing combinations separated by "/".
+    :return: A list of tuples, each containing a pair of elements.
+    """
     if text.lower() == '$default':
         return []
     returnval = []
@@ -16,38 +43,74 @@ def split_text(text: str) -> list[tuple]:
         returnval.append(tupl)
     return returnval
 
+
 class _Vertex:
     """
+    A class representing a vertex in a graph, used to model an element.
+
     Instance Attributes:
-    item: This will be the name of the element
-    neighbours: {element_combine: element_created}
+    - item: The name of the element.
+    - neighbours: A dictionary mapping combinations to the resulting element.
+
+    Representation Invariants:
+    - item must be a non-empty string.
+    - neighbours must be a dictionary with string keys and _Vertex values.
     """
 
     item: str
     neighbours: dict[str, _Vertex]
 
     def __init__(self, item: str) -> None:
-        """Initialize a new vertex with the given item and neighbours."""
+        """
+        Initialize a new vertex with the given item. Neighbours are initialized as empty.
+
+        :param item: The name of the element.
+        """
         self.item = item
         self.neighbours = {}
 
 
 class Graph:
     """
-    Instance Atrrributes
-    vertices: dict[str, _vertex]
-    discovered: set[vertex]
+    A graph class representing the relationships between elements through vertices and edges.
+
+    Instance Attributes:
+    - _vertices: A dictionary mapping element names to _Vertex instances.
+    - discovered: A list of _Vertex instances that have been discovered.
+
+    Representation Invariants:
+    - _vertices must be a dictionary with string keys and _Vertex values.
+    - discovered must be a list of _Vertex instances, and each instance must also exist in _vertices.
     """
     _vertices: dict[str, _Vertex]
     discovered: list[_Vertex]
 
     def __init__(self, file: json):
+        """
+        A graph class representing the relationships between elements through vertices and edges.
+
+        Instance Attributes:
+        - _vertices: A dictionary mapping element names to _Vertex instances.
+        - discovered: A list of _Vertex instances that have been discovered.
+
+        Representation Invariants:
+        - _vertices must be a dictionary with string keys and _Vertex values.
+        - discovered must be a list of _Vertex instances, and each instance must also exist in _vertices.
+        """
         self._vertices = {}
         self.discovered = []
         self.load_vertices(file)
 
     def load_vertices(self, file: json) -> None:
-        """Loads all vertices form the file"""
+        """
+        Loads all vertices from the file and updates the graph structure accordingly.
+
+        Preconditions:
+        - file must be a valid JSON file in the specified format for elements and recipes.
+        Example format can be found in recipes.json
+
+        :param file: A JSON file to load vertices from.
+        """
         data = json.load(file)
         item_created, recipes = '', []
         for row in data:
@@ -65,13 +128,29 @@ class Graph:
                 self.add_edge(item_created, item1, item2)
 
     def add_vertex(self, item: str) -> None:
-        """Add a vertex with the given item to this graph"""
+        """
+        Add a vertex with the given item name to the graph if it doesn't already exist.
+
+        Preconditions:
+        - item must be a non-empty string.
+
+        :param item: The name of the element to add as a vertex.
+        """
         if item not in self._vertices:
             self._vertices[item] = _Vertex(item)
 
     def add_edge(self, item_created: str, item1: str, item2: str) -> None:
-        """Add an edge between the two vertices with the given items in this graph.
-        Add the 2 vertex is they don't exist"""
+        """
+        Add an edge between two vertices, representing a combination that creates a new element.
+
+        Preconditions:
+        - item_created, item1, and item2 must be non-empty strings.
+        - The combination (item1, item2) must be valid and not already exist in the graph.
+
+        :param item_created: The name of the element created by combining item1 and item2.
+        :param item1: The name of the first element in the combination.
+        :param item2: The name of the second element in the combination.
+        """
         if item_created not in self._vertices:
             self.add_vertex(item_created)
         if item1 not in self._vertices:
@@ -86,8 +165,15 @@ class Graph:
 
     def combine(self, item1, item2) -> tuple[bool, Optional[str]]:
         """
-        Combine item1 and item2, add the combined item to self.discovered returns whether
-        there is a valid combination and the created items name
+        Attempts to combine two items and discover a new item. Updates the discovered list
+        if the combination is successful.
+
+        Preconditions:
+        - item1 and item2 must be strings corresponding to items already discovered.
+
+        :param item1: The name of the first item to combine.
+        :param item2: The name of the second item to combine.
+        :return: A tuple containing a boolean indicating success, and optionally the name of the discovered item.
         """
         discovered_items = {vertex.item for vertex in self.discovered}
         if item1 not in discovered_items or item2 not in discovered_items:
@@ -105,22 +191,10 @@ class Graph:
             # print(f'You have discovered {crafted_item.item}! Good job')
             return (True, crafted_item.item.title())
 
-    def itemobtained(self, item1, item2) -> str:
-        """
-        ommited
-        :param item1:
-        :param item2:
-        :return:
-        """
-        if item2 not in self._vertices[item1].neighbours:
-            return "zebi"
-        crafted_item = self._vertices[item1].neighbours[item2]
-        self.discovered.append(crafted_item)
-        return crafted_item.item
-
     def inventory(self) -> None:
         """
-        Print the user's discovered items
+        Prints a list of all the items that have been discovered so far, along with a
+        count of discovered items versus total items.
         """
         total = len(self._vertices)
         print('INVENTORY:')

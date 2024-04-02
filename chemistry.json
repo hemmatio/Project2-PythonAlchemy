@@ -45,7 +45,7 @@
     },
     {
         "NAME": "Water",
-        "RECIPES": "hydrogen gas, oxygen"
+        "RECIPES": "hydrogen gas, oxygen gas"
     },
     {
         "NAME": "Carbon Monoxide",
@@ -53,51 +53,47 @@
     },
     {
         "NAME": "Carbon Dioxide",
-        "RECIPES": "carbon, oxygen gas"
+        "RECIPES": "carbon monoxide, oxygen gas"
     },
     {
         "NAME": "Methane",
-        "RECIPES": "carbon, hydrogen"
+        "RECIPES": "carbon, hydrogen gas"
     },
     {
         "NAME": "Ethane",
-        "RECIPES": "methane, carbon"
+        "RECIPES": "methane, hydrogen gas"
     },
     {
         "NAME": "Propane",
-        "RECIPES": "ethane, carbon"
+        "RECIPES": "ethane, hydrogen gas"
     },
     {
         "NAME": "Butane",
-        "RECIPES": "propane, carbon"
+        "RECIPES": "propane, hydrogen gas"
     },
     {
         "NAME": "Pentane",
-        "RECIPES": "butane, carbon"
+        "RECIPES": "butane, hydrogen gas"
     },
     {
         "NAME": "Hexane",
-        "RECIPES": "pentane, carbon"
-    },
-    {
-        "NAME": "Methane",
-        "RECIPES": "carbon, hydrogen"
+        "RECIPES": "pentane, hydrogen gas"
     },
     {
         "NAME": "Acetic Acid",
-        "RECIPES": "ethanol, oxygen"
+        "RECIPES": "ethanol, oxygen gas"
     },
     {
         "NAME": "Formic Acid",
-        "RECIPES": "methanol, oxygen"
+        "RECIPES": "methanol, oxygen gas"
     },
     {
         "NAME": "Ethylene",
-        "RECIPES": "methane, methane"
+        "RECIPES": "ethane, hydrogen gas"
     },
     {
         "NAME": "Hydroxide",
-        "RECIPES": "hydrogen, oxygen"
+        "RECIPES": "water, oxygen gas"
     },
     {
         "NAME": "Methyl Thiol",
@@ -125,55 +121,55 @@
     },
     {
         "NAME": "Methyl Ether",
-        "RECIPES": "methane, oxygen"
+        "RECIPES": "methanol, hydroxide"
     },
     {
         "NAME": "Ethyl Ether",
-        "RECIPES": "ethane, oxygen"
+        "RECIPES": "ethanol, hydroxide"
     },
     {
         "NAME": "Propyl Ether",
-        "RECIPES": "propane, oxygen"
+        "RECIPES": "propanol, hydroxide"
     },
     {
         "NAME": "Butyl Ether",
-        "RECIPES": "butane, oxygen"
+        "RECIPES": "butanol, hydroxide"
     },
     {
         "NAME": "Pentyl Ether",
-        "RECIPES": "pentane, oxygen"
+        "RECIPES": "pentanol, hydroxide"
     },
     {
         "NAME": "Hexyl Ether",
-        "RECIPES": "hexane, oxygen"
+        "RECIPES": "hexanol, hydroxide"
     },
     {
         "NAME": "Methylbenzene",
-        "RECIPES": "methane, benzene"
+        "RECIPES": "benzene, methane"
     },
     {
         "NAME": "Ethylbenzene",
-        "RECIPES": "ethane, benzene"
+        "RECIPES": "benzene, ethane"
     },
     {
         "NAME": "Propylbenzene",
-        "RECIPES": "propane, benzene"
+        "RECIPES": "benzene, propane"
     },
     {
         "NAME": "Butylbenzene",
-        "RECIPES": "butane, benzene"
+        "RECIPES": "benzene, butane"
     },
     {
         "NAME": "Pentylbenzene",
-        "RECIPES": "pentane, benzene"
+        "RECIPES": "benzene, pentane"
     },
     {
         "NAME": "Hexylbenzene",
-        "RECIPES": "hexane, benzene"
+        "RECIPES": "benzene, hexane"
     },
     {
         "NAME": "Benzene",
-        "RECIPES": "propane, propane"
+        "RECIPES": "ethene, ethene"
     },
     {
         "NAME": "Methanol",
@@ -198,5 +194,85 @@
     {
         "NAME": "Hexanol",
         "RECIPES": "hexane, hydroxide"
+    },
+    {
+        "NAME": "Ammonia",
+        "RECIPES": "nitrogen, hydrogen gas"
+    },
+    {
+        "NAME": "Nitric Acid",
+        "RECIPES": "nitrogen, water"
+    },
+    {
+        "NAME": "Sulfuric Acid",
+        "RECIPES": "sulfur, water"
+    },
+    {
+        "NAME": "Phosphoric Acid",
+        "RECIPES": "phosphorus, water"
+    },
+    {
+        "NAME": "Glucose",
+        "RECIPES": "carbon dioxide, water"
+    },
+    {
+        "NAME": "Sodium Chloride",
+        "RECIPES": "sodium, chlorine gas"
+    },
+    {
+        "NAME": "Sodium Hydroxide",
+        "RECIPES": "sodium, water"
+    },
+    {
+        "NAME": "Calcium Carbonate",
+        "RECIPES": "calcium, carbon dioxide"
+    },
+    {
+        "NAME": "Silicon Dioxide",
+        "RECIPES": "silicon, oxygen gas"
+    },
+    {
+        "NAME": "Aluminum Oxide",
+        "RECIPES": "aluminum, oxygen gas"
+    },
+    {
+        "NAME": "Magnesium Hydroxide",
+        "RECIPES": "magnesium, water"
+    },
+    {
+        "NAME": "Acetone",
+        "RECIPES": "propanol, oxygen gas"
+    },
+    {
+        "NAME": "Benzaldehyde",
+        "RECIPES": "benzene, carbon monoxide"
+    },
+    {
+        "NAME": "Phenol",
+        "RECIPES": "benzene, water"
+    },
+    {
+        "NAME": "Ethylene Glycol",
+        "RECIPES": "ethylene, water"
+    },
+    {
+        "NAME": "Polyethylene",
+        "RECIPES": "ethylene, ethylene"
+    },
+    {
+        "NAME": "Polystyrene",
+        "RECIPES": "styrene, styrene"
+    },
+    {
+        "NAME": "PVC",
+        "RECIPES": "vinyl chloride, vinyl chloride"
+    },
+    {
+        "NAME": "Teflon",
+        "RECIPES": "tetrafluoroethylene, tetrafluoroethylene"
+    },
+    {
+        "NAME": "Nylon",
+        "RECIPES": "hexamethylenediamine, adipic acid"
     }
 ]
