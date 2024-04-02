@@ -8,7 +8,6 @@ tracking the inventory of discovered elements.
 
 Copyright and Usage Information
 ===============================
-
 This file is provided solely for the private use of the teaching staff
 of CSC111 at the University of Toronto St. George campus. All forms of
 distribution of this code, whether as given or with any changes, are

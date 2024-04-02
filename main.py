@@ -1,3 +1,22 @@
+"""
+File Outline
+===============================
+Python Alchemy is a game built using Graphs and Pygame, which simulates a virtual alchemy
+experience allowing players to combine different elements to discover new ones.
+The game features a main menu, options for customizing gameplay (including a chemistry mode),
+and the core gameplay where elements are combined through a drag-and-drop interface.
+Elements discovered are added to a sidebar, with the game progressing as more combinations are found.
+
+Copyright and Usage Information
+===============================
+This file is provided solely for the private use of the teaching staff
+of CSC111 at the University of Toronto St. George campus. All forms of
+distribution of this code, whether as given or with any changes, are
+expressly prohibited.
+
+This file is Copyright (c) 2024 Omid Hemmati, Yianni Culmone, Neyl Nasr, Benjamin Gavriely
+"""
+
 import sys
 from typing import Optional
 
@@ -7,8 +26,29 @@ import random
 from button import Button, ButtonStay
 
 
-class Element():
+class Element:
+    """
+        A class representing an interactive element within the game. Each element has a label,
+        can be clicked, moved, and drawn onto the game screen.
+
+        Representation Invariants:
+        - width and height must be positive integers representing a reasonable display resolution.
+        """
     def __init__(self, x, y, width, height, text, font, text_color, rectangle_color):
+        """
+        Initializes an Element with specified properties.
+
+        Preconditions:
+        - width > 0 and height > 0.
+        - text is a non-empty string.
+
+        :param x, y: Coordinates for the element's position.
+        :param width, height: Dimensions of the element.
+        :param text: Text displayed on the element.
+        :param font: Pygame font for the text.
+        :param text_color: Color of the text.
+        :param rectangle_color: Background color of the element.
+        """
         self.rect = pygame.Rect(x, y, width, height)
         self.text = text.title()
         self.font = font
@@ -17,18 +57,59 @@ class Element():
         self.text_rect = self.text_surface.get_rect(center=self.rect.center)
 
     def draw(self, screen):
+        """
+        Draws the element onto the specified screen.
+
+        Preconditions:
+        - screen must be a valid Pygame Surface object.
+
+        :param screen: the Pygame screen
+        """
         pygame.draw.rect(screen, self.rectangle_color, self.rect, 2)
         screen.blit(self.text_surface, self.text_rect)
 
     def is_clicked(self, mouse_pos):
+        """
+        Checks if the element is clicked based on the mouse position.
+        Returns True if the element is clicked, False otherwise.
+
+        Preconditions:
+        - mouse_pos must be a tuple of (x, y) coordinates.
+
+        :param mouse_pos: a tuple of coordinates.
+        """
         return self.rect.collidepoint(mouse_pos)
 
     def move_ip(self, dx, dy):
+        """
+        Moves the element by the specified deltas in the x and y directions.
+
+        Preconditions:
+        - dx and dy are integers.
+
+        :param dx: The delta x coordinate.
+        :param dy: The delta y coordinate.
+        """
         # Move the element based on deltas
         self.rect.move_ip(dx, dy)
         self.text_rect = self.text_surface.get_rect(center=self.rect.center)
 
     def render_with_outline(self, text, font, text_color, outline_color, outline_width):
+        """
+        Renders the element's text with an outline and returns a Surface object.
+
+        Preconditions:
+        - text is a non-empty string.
+        - outline_width > 0.
+
+        :param text: Text to render.
+        :param font: Pygame font used for the text.
+        :param text_color: Color of the text.
+        :param outline_color: Color of the outline.
+        :param outline_width: Width of the outline.
+
+        :return: A Pygame Surface object with the rendered text.
+        """
         base = font.render(text, True, text_color)
         # The size of the outline surface should be larger than the base by twice the outline width on all sides
         outline_size = (base.get_width() + 2 * outline_width, base.get_height() + 2 * outline_width)
@@ -48,7 +129,7 @@ class Element():
         outline.blit(base, base_pos)
         return outline
 
-pygame.init()
+pygame.init()  # TODO: All this code as well as the other initializing code needs to be ran under the main block. Also, the main block should be at the top of the file.
 
 screen_width, screen_height = 1200, 700
 Screen = pygame.display.set_mode((screen_width, screen_height))
@@ -57,16 +138,23 @@ pygame.display.set_caption("Menu")
 BackGround = pygame.image.load("assets/background.png")
 
 def get_font(size):
+    """
+    Gets a font using the provided font.ttf file in the assets folder
+    :param size: The size of the fonrt in pixels
+    :return: pygame font object
+    """
     return pygame.font.Font("assets/font.ttf", size)
 
 
 def play(chemistry: bool):
     """
-     This displays the main game for the classic mode of little alchemy.
-     There are two text boxes to combine elements. The user types in the two
-     elements they wish to combine, and the backend determines if its a valid combination.
-     There will be a bar on the side containing the name of all of the elements found so far.
-     """
+    Launches the main gameplay loop.
+
+    Preconditions:
+    - chemistry is a boolean indicating whether to use chemistry mode.
+
+    :param chemistry: If True, uses chemistry recipes; otherwise, uses default recipes.
+    """
     if not chemistry:
         with open('recipes.json') as file:
             g = recipeloader.Graph(file)
@@ -82,7 +170,7 @@ def play(chemistry: bool):
     font = pygame.font.Font("assets/Roboto-Regular.ttf", 24)
     item_color = pygame.Color(0)
 
-    #initializing the sidebar
+    # initializing the sidebar
     sidebar_width = 250
     sidebar = pygame.Rect(screen_width - sidebar_width, 0, sidebar_width, screen_height)
 
