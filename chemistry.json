@@ -42,7 +42,7 @@
     {
         "NAME": "Chlorine Gas",
         "RECIPES": "chlorine, chlorine"
-    }
+    },
     {
         "NAME": "Water",
         "RECIPES": "hydrogen gas, oxygen"
@@ -70,7 +70,7 @@
     {
         "NAME": "Butane",
         "RECIPES": "propane, carbon"
-    }
+    },
     {
         "NAME": "Pentane",
         "RECIPES": "butane, carbon"
@@ -78,7 +78,7 @@
     {
         "NAME": "Hexane",
         "RECIPES": "pentane, carbon"
-    }
+    },
     {
         "NAME": "Methane",
         "RECIPES": "carbon, hydrogen"
@@ -98,7 +98,7 @@
     {
         "NAME": "Hydroxide",
         "RECIPES": "hydrogen, oxygen"
-    }
+    },
     {
         "NAME": "Methyl Thiol",
         "RECIPES": "methane, sulfur"
@@ -122,7 +122,7 @@
     {
         "NAME": "Hexyl Thiol",
         "RECIPES": "hexane, sulfur"
-    }
+    },
     {
         "NAME": "Methyl Ether",
         "RECIPES": "methane, oxygen"
@@ -146,7 +146,7 @@
     {
         "NAME": "Hexyl Ether",
         "RECIPES": "hexane, oxygen"
-    }
+    },
     {
         "NAME": "Methylbenzene",
         "RECIPES": "methane, benzene"
@@ -170,11 +170,11 @@
     {
         "NAME": "Hexylbenzene",
         "RECIPES": "hexane, benzene"
-    }
+    },
     {
         "NAME": "Benzene",
         "RECIPES": "propane, propane"
-    }
+    },
     {
         "NAME": "Methanol",
         "RECIPES": "methane, hydroxide"
