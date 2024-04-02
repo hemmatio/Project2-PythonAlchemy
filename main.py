@@ -326,6 +326,11 @@ def play(chemistry: bool):
         if k + 10 < len(g.discovered):
             Screen.blit(down_icon, down_rect)
 
+        # Draws the number of items currently found
+        font3 = pygame.font.Font("assets/Roboto-Regular.ttf", 20)
+        discover_text = font3.render(f"Discovered: {len(g.discovered)} / {len(g._vertices)}", True, "Black")
+        discover_rect = discover_text.get_rect(topleft=(screen_width - 225, screen_height - 30))
+        Screen.blit(discover_text, discover_rect)
 
         pygame.display.flip()
 def options(chemistry: bool):
