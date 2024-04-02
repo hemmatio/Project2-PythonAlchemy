@@ -2331,6 +2331,10 @@
    "NAME": "Yak",
    "RECIPES": "cow, mountain"
  },
+  {
+    "NAME": "Satan",
+    "RECIPES": "human, rainbow"
+  },
  {
    "NAME": "Yoda",
    "RECIPES": "jedi, swamp"
