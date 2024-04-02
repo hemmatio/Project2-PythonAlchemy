@@ -92,6 +92,13 @@ def play():
     down_icon = pygame.image.load("assets/down.png")
     down_rect = down_icon.get_rect(topleft=(screen_width - 134, screen_height - 67))
 
+    # initializing the sounds
+    combine_sound1 = pygame.mixer.Sound("assets/combine1.wav")
+    combine_sound2 = pygame.mixer.Sound("assets/combine2.wav")
+    combine_sound3 = pygame.mixer.Sound("assets/combine3.wav")
+    combine_sounds = [combine_sound1, combine_sound2, combine_sound3]
+    click_sound = pygame.mixer.Sound("assets/click.wav")
+
     # initializing elementary elements
     elements = []
     k = 0
@@ -144,9 +151,11 @@ def play():
                 if event.key == pygame.K_DOWN:
                     if k + 10 < len(recipeloader.g.discovered):
                         k = k + 1
+                        pygame.mixer.Sound.play(click_sound)
                 if event.key == pygame.K_UP:
                     if k - 1 >= 0:
                         k = k - 1
+                        pygame.mixer.Sound.play(click_sound)
 
             # spawns the element in the middle of the screen or drags element
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
@@ -154,6 +163,7 @@ def play():
                 stock_index = None
                 for discover in discovered:
                     if discover.is_clicked(event.pos):
+                        pygame.mixer.Sound.play(click_sound)
                         elements.append(Element(400 + random.randint(-100, 100), 300 + random.randint(-100, 100), 140, 45, discover.text.title(), font, text_color, item_color))
 
                 # drags the item
@@ -173,6 +183,7 @@ def play():
             # trash bin and arrow function and back to main menu
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 if trash_bin_rect.collidepoint(event.pos):  # Check if the trash bin is clicked
+                    pygame.mixer.Sound.play(click_sound)
                     elements = []
                     stock_index = None
                 if up_rect.collidepoint(event.pos):
@@ -186,9 +197,12 @@ def play():
                     if elements:
                         for element in elements:
                             if not logo_rect.colliderect(element.rect):
+                                pygame.mixer.Sound.play(click_sound)
                                 main_menu()
                     else:
+                        pygame.mixer.Sound.play(click_sound)
                         main_menu()
+
 
 
             # Combine items if not holding
@@ -203,6 +217,7 @@ def play():
                             elements.remove(elements[stock_index])
                             elements.remove(element)
                             letgo = 0
+                            pygame.mixer.Sound.play(combine_sounds[random.randint(0, 2)])
                             break
 
         # Draw the trash bin
@@ -216,7 +231,6 @@ def play():
 
 
         pygame.display.flip()
-    pygame.quit()
 def options():
     while True:
         options_mouse_pos = pygame.mouse.get_pos()
@@ -283,19 +297,19 @@ def main_menu():
         pygame.display.update()
 
 
-# recipeloader.g.combine("water", "earth")
-# recipeloader.g.combine("air", "water")
-# recipeloader.g.combine("fire","water")
-# recipeloader.g.combine("earth","fire")
-# recipeloader.g.combine("rain","rain")
-# recipeloader.g.combine("rain","earth")
-# recipeloader.g.combine("fire","mud")
-# recipeloader.g.combine("brick","brick")
-# recipeloader.g.combine("wall","wall")
-# recipeloader.g.combine("house","house")
-# recipeloader.g.combine("earth","air")
-# recipeloader.g.combine("lava","water")
-# recipeloader.g.combine("lava","air")
-# recipeloader.g.combine("lava","earth")
+recipeloader.g.combine("water", "earth")
+recipeloader.g.combine("air", "water")
+recipeloader.g.combine("fire","water")
+recipeloader.g.combine("earth","fire")
+recipeloader.g.combine("rain","rain")
+recipeloader.g.combine("rain","earth")
+recipeloader.g.combine("fire","mud")
+recipeloader.g.combine("brick","brick")
+recipeloader.g.combine("wall","wall")
+recipeloader.g.combine("house","house")
+recipeloader.g.combine("earth","air")
+recipeloader.g.combine("lava","water")
+recipeloader.g.combine("lava","air")
+recipeloader.g.combine("lava","earth")
 
 main_menu()

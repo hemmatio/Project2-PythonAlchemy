@@ -1,0 +1,202 @@
+[
+    {
+        "NAME": "Carbon",
+        "RECIPES": "$DEFAULT"
+    },
+    {
+        "NAME": "Fluorine",
+        "RECIPES": "$DEFAULT"
+    },
+    {
+        "NAME": "Hydrogen",
+        "RECIPES": "$DEFAULT"
+    },
+    {
+        "NAME": "Nitrogen",
+        "RECIPES": "$DEFAULT"
+    },
+    {
+        "NAME": "Oxygen",
+        "RECIPES": "$DEFAULT"
+    },
+    {
+        "NAME": "Chlorine",
+        "RECIPES": "$DEFAULT"
+    },
+    {
+        "NAME": "Sulfur",
+        "RECIPES": "$DEFAULT"
+    },
+    {
+        "NAME": "Hydrogen Gas",
+        "RECIPES": "hydrogen, hydrogen"
+    },
+    {
+        "NAME": "Oxygen Gas",
+        "RECIPES": "oxygen, oxygen"
+    },
+    {
+        "NAME": "Fluorine Gas",
+        "RECIPES": "fluorine, fluorine"
+    },
+    {
+        "NAME": "Chlorine Gas",
+        "RECIPES": "chlorine, chlorine"
+    },
+    {
+        "NAME": "Water",
+        "RECIPES": "hydrogen gas, oxygen"
+    },
+    {
+        "NAME": "Carbon Monoxide",
+        "RECIPES": "carbon, oxygen"
+    },
+    {
+        "NAME": "Carbon Dioxide",
+        "RECIPES": "carbon, oxygen gas"
+    },
+    {
+        "NAME": "Methane",
+        "RECIPES": "carbon, hydrogen"
+    },
+    {
+        "NAME": "Ethane",
+        "RECIPES": "methane, carbon"
+    },
+    {
+        "NAME": "Propane",
+        "RECIPES": "ethane, carbon"
+    },
+    {
+        "NAME": "Butane",
+        "RECIPES": "propane, carbon"
+    },
+    {
+        "NAME": "Pentane",
+        "RECIPES": "butane, carbon"
+    },
+    {
+        "NAME": "Hexane",
+        "RECIPES": "pentane, carbon"
+    },
+    {
+        "NAME": "Methane",
+        "RECIPES": "carbon, hydrogen"
+    },
+    {
+        "NAME": "Acetic Acid",
+        "RECIPES": "ethanol, oxygen"
+    },
+    {
+        "NAME": "Formic Acid",
+        "RECIPES": "methanol, oxygen"
+    },
+    {
+        "NAME": "Ethylene",
+        "RECIPES": "methane, methane"
+    },
+    {
+        "NAME": "Hydroxide",
+        "RECIPES": "hydrogen, oxygen"
+    },
+    {
+        "NAME": "Methyl Thiol",
+        "RECIPES": "methane, sulfur"
+    },
+    {
+        "NAME": "Ethyl Thiol",
+        "RECIPES": "ethane, sulfur"
+    },
+    {
+        "NAME": "Propyl Thiol",
+        "RECIPES": "propane, sulfur"
+    },
+    {
+        "NAME": "Butyl Thiol",
+        "RECIPES": "butane, sulfur"
+    },
+    {
+        "NAME": "Pentyl Thiol",
+        "RECIPES": "pentane, sulfur"
+    },
+    {
+        "NAME": "Hexyl Thiol",
+        "RECIPES": "hexane, sulfur"
+    },
+    {
+        "NAME": "Methyl Ether",
+        "RECIPES": "methane, oxygen"
+    },
+    {
+        "NAME": "Ethyl Ether",
+        "RECIPES": "ethane, oxygen"
+    },
+    {
+        "NAME": "Propyl Ether",
+        "RECIPES": "propane, oxygen"
+    },
+    {
+        "NAME": "Butyl Ether",
+        "RECIPES": "butane, oxygen"
+    },
+    {
+        "NAME": "Pentyl Ether",
+        "RECIPES": "pentane, oxygen"
+    },
+    {
+        "NAME": "Hexyl Ether",
+        "RECIPES": "hexane, oxygen"
+    },
+    {
+        "NAME": "Methylbenzene",
+        "RECIPES": "methane, benzene"
+    },
+    {
+        "NAME": "Ethylbenzene",
+        "RECIPES": "ethane, benzene"
+    },
+    {
+        "NAME": "Propylbenzene",
+        "RECIPES": "propane, benzene"
+    },
+    {
+        "NAME": "Butylbenzene",
+        "RECIPES": "butane, benzene"
+    },
+    {
+        "NAME": "Pentylbenzene",
+        "RECIPES": "pentane, benzene"
+    },
+    {
+        "NAME": "Hexylbenzene",
+        "RECIPES": "hexane, benzene"
+    },
+    {
+        "NAME": "Benzene",
+        "RECIPES": "propane, propane"
+    },
+    {
+        "NAME": "Methanol",
+        "RECIPES": "methane, hydroxide"
+    },
+    {
+        "NAME": "Ethanol",
+        "RECIPES": "ethane, hydroxide"
+    },
+    {
+        "NAME": "Propanol",
+        "RECIPES": "propane, hydroxide"
+    },
+    {
+        "NAME": "Butanol",
+        "RECIPES": "butane, hydroxide"
+    },
+    {
+        "NAME": "Pentanol",
+        "RECIPES": "pentane, hydroxide"
+    },
+    {
+        "NAME": "Hexanol",
+        "RECIPES": "hexane, hydroxide"
+    }
+]
