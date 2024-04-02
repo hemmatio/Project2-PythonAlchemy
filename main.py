@@ -54,7 +54,7 @@ screen_width, screen_height = 1200, 700
 Screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Menu")
 
-BackGround = pygame.image.load("assets/singed.jpeg")
+BackGround = pygame.image.load("assets/background.png")
 
 def get_font(size):
     return pygame.font.Font("assets/font.ttf", size)
@@ -197,9 +197,11 @@ def play(chemistry: bool):
                     stock_index = None
                 if up_rect.collidepoint(event.pos):
                     if k - 1 >= 0:
+                        pygame.mixer.Sound.play(click_sound)
                         k = k - 1
                 if down_rect.collidepoint(event.pos):
                     if k + 10 < len(g.discovered):
+                        pygame.mixer.Sound.play(click_sound)
                         k = k + 1
 
                 if logo_rect.collidepoint(event.pos):
@@ -241,6 +243,7 @@ def play(chemistry: bool):
 
         pygame.display.flip()
 def options(chemistry: bool):
+    click_sound = pygame.mixer.Sound("assets/click.wav")
     chemupdate = chemistry
     while True:
         options_mouse_pos = pygame.mouse.get_pos()
@@ -277,8 +280,10 @@ def options(chemistry: bool):
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if options_back.checkForInput(options_mouse_pos):
+                    pygame.mixer.Sound.play(click_sound)
                     main_menu(chemupdate)
                 if chembutton.checkForInput(options_mouse_pos):
+                    pygame.mixer.Sound.play(click_sound)
                     if chembutton.clicked:
                         chembutton.clicked = False
                         chemupdate = False
@@ -293,11 +298,12 @@ def main_menu(chemistry: bool):
     This displays the start screen. This will include a title, start button,
     game mode, and quit button.
     """
+    click_sound = pygame.mixer.Sound("assets/click.wav")
     pygame.display.set_caption("Menu")
     while True:
         Screen.blit(BackGround, (0, 0))
         menu_mouse_pos = pygame.mouse.get_pos()
-        menu_text = get_font(100).render("MAIN MENU", True, "#b68f40")
+        menu_text = get_font(74).render("Python Alchemy", True, "#12CDEC")
         menu_rect = menu_text.get_rect(center=(640,100))
 
         play_button = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(640, 250),
@@ -318,10 +324,13 @@ def main_menu(chemistry: bool):
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_button.checkForInput(menu_mouse_pos):
+                    pygame.mixer.Sound.play(click_sound)
                     play(chemistry)
                 if options_button.checkForInput(menu_mouse_pos):
+                    pygame.mixer.Sound.play(click_sound)
                     options(chemistry)
                 if quit_button.checkForInput(menu_mouse_pos):
+                    pygame.mixer.Sound.play(click_sound)
                     pygame.quit()
                     sys.exit()
         pygame.display.update()
