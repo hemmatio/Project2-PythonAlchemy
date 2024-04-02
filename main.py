@@ -180,7 +180,7 @@ def play():
                         elements[stock_index].move_ip(*event.rel)
                         letgo = 1
 
-            #trash bin and arrow function and back to main menu
+            # trash bin and arrow function and back to main menu
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 if trash_bin_rect.collidepoint(event.pos):  # Check if the trash bin is clicked
                     pygame.mixer.Sound.play(click_sound)
