@@ -1,9 +1,12 @@
 import sys
+from typing import Optional
 
 import pygame
 import recipeloader
 import random
-from button import Button
+from button import Button, ButtonStay
+
+
 class Element():
     def __init__(self, x, y, width, height, text, font, text_color, rectangle_color):
         self.rect = pygame.Rect(x, y, width, height)
@@ -56,14 +59,21 @@ BackGround = pygame.image.load("assets/singed.jpeg")
 def get_font(size):
     return pygame.font.Font("assets/font.ttf", size)
 
-def play():
+
+def play(chemistry: bool):
     """
      This displays the main game for the classic mode of little alchemy.
      There are two text boxes to combine elements. The user types in the two
      elements they wish to combine, and the backend determines if its a valid combination.
      There will be a bar on the side containing the name of all of the elements found so far.
      """
-    #bla
+    if not chemistry:
+        with open('recipes.json') as file:
+            g = recipeloader.Graph(file)
+    else:
+        with open('chemistry.json') as file:
+            g = recipeloader.Graph(file)
+
     pygame.display.set_caption("Python Alchemy")
 
     # Colors and Font
@@ -111,7 +121,6 @@ def play():
         Screen.fill(background_color)
 
 
-
         # drawing sidebar
         pygame.draw.rect(Screen, pygame.Color("#efebe0"), sidebar)
 
@@ -121,7 +130,7 @@ def play():
         # adding elements to sidebar and the little circles
         j = 0
         discovered = []
-        for i, value in enumerate(recipeloader.g.discovered[k:(k + 10)], start=k + 1):  # Enumerate with start=k
+        for i, value in enumerate(g.discovered[k:(k + 10)], start=k + 1):  # Enumerate with start=k
             # Create text surface for index
             font2 = pygame.font.Font("assets/Roboto-Regular.ttf", 22)
             index_text = font2.render(str(i), True, pygame.Color(0))
@@ -149,7 +158,7 @@ def play():
             # adding scroll when down arrow is clicked
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_DOWN:
-                    if k + 10 < len(recipeloader.g.discovered):
+                    if k + 10 < len(g.discovered):
                         k = k + 1
                         pygame.mixer.Sound.play(click_sound)
                 if event.key == pygame.K_UP:
@@ -190,7 +199,7 @@ def play():
                     if k - 1 >= 0:
                         k = k - 1
                 if down_rect.collidepoint(event.pos):
-                    if k + 10 < len(recipeloader.g.discovered):
+                    if k + 10 < len(g.discovered):
                         k = k + 1
 
                 if logo_rect.collidepoint(event.pos):
@@ -198,10 +207,10 @@ def play():
                         for element in elements:
                             if not logo_rect.colliderect(element.rect):
                                 pygame.mixer.Sound.play(click_sound)
-                                main_menu()
+                                main_menu(chemistry)
                     else:
                         pygame.mixer.Sound.play(click_sound)
-                        main_menu()
+                        main_menu(chemistry)
 
 
 
@@ -210,7 +219,7 @@ def play():
                 for element in elements:
                     if (stock_index and
                             element != elements[stock_index] and pygame.Rect.colliderect(elements[stock_index].rect, element.rect)):
-                        valid_combo, item_created = recipeloader.g.combine(element.text.lower(), elements[stock_index].text.lower())
+                        valid_combo, item_created = g.combine(element.text.lower(), elements[stock_index].text.lower())
                         if valid_combo:
                             x, y = pygame.mouse.get_pos()
                             elements.append(Element(x - 70, y - 25, 140,  45, item_created, font, text_color, item_color))
@@ -226,26 +235,41 @@ def play():
         # Draws the little arrows when you can go up and down
         if k - 1 >= 0:
             Screen.blit(up_icon, up_rect)
-        if k + 10 < len(recipeloader.g.discovered):
+        if k + 10 < len(g.discovered):
             Screen.blit(down_icon, down_rect)
 
 
         pygame.display.flip()
-def options():
+def options(chemistry: bool):
+    chemupdate = chemistry
     while True:
         options_mouse_pos = pygame.mouse.get_pos()
 
         Screen.fill("white")
 
-        options_text = get_font(45).render("This is the OPTIONS screen.", True, "Black")
-        options_rect = options_text.get_rect(center=(640, 260))
+        options_text = get_font(45).render("Options", True, "Black")
+        options_rect = options_text.get_rect(center=(screen_width // 2 + 15, 35))
         Screen.blit(options_text, options_rect)
 
-        options_back = Button(image=None, pos=(640, 460),
-                              text_input="BACK", font=get_font(75), base_color="Black", hovering_color="Green")
-
+        options_back = Button(image=None, pos=(screen_width - 100, screen_height - 40),
+                              text_input="BACK", font=get_font(40), base_color="Black", hovering_color="Green")
         options_back.changeColor(options_mouse_pos)
         options_back.update(Screen)
+
+        # Chemistry buttons
+        chemtext = get_font(40).render("Chemistry Mode:", True, "Black")
+        chemrect = options_text.get_rect(center=(190, 170))
+        Screen.blit(chemtext, chemrect)
+
+        if chemupdate:
+            chembutton = ButtonStay(image=None, pos=(screen_width - 100, 170),
+                                    text_input="ON", font=get_font(40), base_color="Black", hovering_color="White", clicked=True)
+        else:
+            chembutton = ButtonStay(image=None, pos=(screen_width - 100, 170),
+                                    text_input="OFF", font=get_font(40), base_color="Black", hovering_color="White", clicked=False)
+        chembutton.changeColor(options_mouse_pos)
+        chembutton.update(Screen)
+
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -253,17 +277,23 @@ def options():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if options_back.checkForInput(options_mouse_pos):
-                    main_menu()
+                    main_menu(chemupdate)
+                if chembutton.checkForInput(options_mouse_pos):
+                    if chembutton.clicked:
+                        chembutton.clicked = False
+                        chemupdate = False
+                    else:
+                        chembutton.clicked = True
+                        chemupdate = True
 
         pygame.display.update()
 
-def main_menu():
+def main_menu(chemistry: bool):
     """
     This displays the start screen. This will include a title, start button,
     game mode, and quit button.
     """
     pygame.display.set_caption("Menu")
-
     while True:
         Screen.blit(BackGround, (0, 0))
         menu_mouse_pos = pygame.mouse.get_pos()
@@ -288,28 +318,28 @@ def main_menu():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_button.checkForInput(menu_mouse_pos):
-                    play()
+                    play(chemistry)
                 if options_button.checkForInput(menu_mouse_pos):
-                    options()
+                    options(chemistry)
                 if quit_button.checkForInput(menu_mouse_pos):
                     pygame.quit()
                     sys.exit()
         pygame.display.update()
 
 
-recipeloader.g.combine("water", "earth")
-recipeloader.g.combine("air", "water")
-recipeloader.g.combine("fire","water")
-recipeloader.g.combine("earth","fire")
-recipeloader.g.combine("rain","rain")
-recipeloader.g.combine("rain","earth")
-recipeloader.g.combine("fire","mud")
-recipeloader.g.combine("brick","brick")
-recipeloader.g.combine("wall","wall")
-recipeloader.g.combine("house","house")
-recipeloader.g.combine("earth","air")
-recipeloader.g.combine("lava","water")
-recipeloader.g.combine("lava","air")
-recipeloader.g.combine("lava","earth")
+# g.combine("water", "earth")
+# g.combine("air", "water")
+# recipeloader.g.combine("fire","water")
+# recipeloader.g.combine("earth","fire")
+# recipeloader.g.combine("rain","rain")
+# recipeloader.g.combine("rain","earth")
+# recipeloader.g.combine("fire","mud")
+# recipeloader.g.combine("brick","brick")
+# recipeloader.g.combine("wall","wall")
+# recipeloader.g.combine("house","house")
+# recipeloader.g.combine("earth","air")
+# recipeloader.g.combine("lava","water")
+# recipeloader.g.combine("lava","air")
+# recipeloader.g.combine("lava","earth")
 
-main_menu()
+main_menu(False)

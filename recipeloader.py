@@ -49,7 +49,6 @@ class Graph:
     def load_vertices(self, file: json) -> None:
         """Loads all vertices form the file"""
         data = json.load(file)
-        discoverd = {}
         item_created, recipes = '', []
         for row in data:
             for key in row:
@@ -128,7 +127,3 @@ class Graph:
         for vertex in self.discovered:
             print('     ' + vertex.item)
         print(f'You have discovered {len(self.discovered)}/{total} items so far.')
-
-
-with open('recipes.json') as file:
-    g = Graph(file)
