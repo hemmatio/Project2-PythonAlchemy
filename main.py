@@ -376,6 +376,8 @@ def options(chemistry: bool, discovered: list[str]):
     screen = pygame.display.set_mode((screen_width, screen_height))
     click_sound = pygame.mixer.Sound("assets/click.wav")
     chemupdate = chemistry
+    item1, item2, item3 = '', '', ''
+    item1on, item2on, item3on = False, False, False
     while True:
         options_mouse_pos = pygame.mouse.get_pos()
 
@@ -403,17 +405,6 @@ def options(chemistry: bool, discovered: list[str]):
         screen.blit(savetext, saverect)
         screen.blit(loadtext, loadrect)
 
-        # New combo option
-
-        combotext = get_font(40).render("Add a new combo", True, "White")
-        comborect = chemtext.get_rect(topleft=(350, 550))
-        screen.blit(combotext, comborect)
-
-        combobutton = Button(image=None, pos=(350, 550),
-                            text_input="Add new combo", font=get_font(40), base_color="Black", hovering_color="White")
-        combobutton.changeColor(options_mouse_pos)
-        combobutton.update(screen)
-
         # Save/Load buttons
         saverect = pygame.Rect(screen_width - 195, 258, 185, 60)
         pygame.draw.rect(screen, "Green", saverect)
@@ -428,6 +419,45 @@ def options(chemistry: bool, discovered: list[str]):
                             text_input="LOAD", font=get_font(40), base_color="Black", hovering_color="White")
         loadbutton.changeColor(options_mouse_pos)
         loadbutton.update(screen)
+
+        # New combo option
+
+        combotext = get_font(40).render("Add a New Combo", True, "White")
+        comborect = chemtext.get_rect(center=(screen_width // 2, 470))
+        screen.blit(combotext, comborect)
+
+        if not item1on:
+            item1_button = ButtonStay(image=None, pos=(screen_width // 2 - 300, 540), text_input="item1", font=get_font(24),
+                                        base_color="Black", hovering_color="White", clicked=False)
+        else:
+            item1_button = ButtonStay(image=None, pos=(screen_width // 2 - 300, 540), text_input="item1",
+                                      font=get_font(24),
+                                      base_color="Black", hovering_color="White", clicked=True)
+        item1_button.changeColor(options_mouse_pos)
+        item1_button.update(screen)
+
+        if not item2on:
+            item2_button = ButtonStay(image=None, pos=(screen_width // 2, 540), text_input="item2", font=get_font(24),
+                                      base_color="Black", hovering_color="White", clicked=False)
+        else:
+            item2_button = ButtonStay(image=None, pos=(screen_width // 2, 540), text_input="item2", font=get_font(24),
+                                      base_color="Black", hovering_color="White", clicked=True)
+        item2_button.changeColor(options_mouse_pos)
+        item2_button.update(screen)
+
+        if not item3on:
+            item3_button = ButtonStay(image=None, pos=(screen_width // 2 + 300, 540), text_input="item3", font=get_font(24),
+                                      base_color="Black", hovering_color="White", clicked=False)
+        else:
+            item3_button = ButtonStay(image=None, pos=(screen_width // 2 + 300, 540), text_input="item3",
+                                      font=get_font(24), base_color="Black", hovering_color="White", clicked=True)
+
+        item3_button.changeColor(options_mouse_pos)
+        item3_button.update(screen)
+
+
+
+
 
         if chemupdate:
             chembutton = ButtonStay(image=None, pos=(screen_width - 100, 190), text_input="ON", font=get_font(40),
@@ -462,6 +492,55 @@ def options(chemistry: bool, discovered: list[str]):
                 if loadbutton.checkForInput(options_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     chemistry, discovered = load_save('savefile/save.csv')
+
+                #If the input buttons are clicked
+                if item1_button.checkForInput(options_mouse_pos):
+                    if item1on:
+                        item1_button.clicked = False
+                        item1on = False
+                    else:
+                        item1_button.clicked = True
+                        item1on = True
+                        item2on, item3on = False, False
+                        item2_button.clicked, item3_button.clicked = False, False
+
+                if item2_button.checkForInput(options_mouse_pos):
+                    if item2on:
+                        item2_button.clicked = False
+                        item2on = False
+                    else:
+                        item2_button.clicked = True
+                        item2on = True
+                        item1on, item3on = False, False
+                        item1_button.clicked, item3_button.clicked = False, False
+
+                if item3_button.checkForInput(options_mouse_pos):
+                    if item3on:
+                        item3_button.clicked = False
+                        item3on = False
+                    else:
+                        item3_button.clicked = True
+                        item3on = True
+                        item1on, item2on = False, False
+                        item1_button.clicked, item2_button.clicked = False, False
+
+            # If any of the buttons are clicked get user text input
+            if item1on:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_BACKSPACE:
+                        item1 = item1[:-1]
+                    elif event.key == pygame.K_RETURN:
+                        item1on = False
+                        item1_button = False
+                    else:
+                        item1 += event.unicode
+
+        # Draws the text input
+        if item1on:
+            item1surface = get_font(30).render(item1, True, pygame.Color('White'))
+            screen.blit(item1surface, (0, 0))
+
+
 
         pygame.display.update()
 
