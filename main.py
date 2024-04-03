@@ -253,10 +253,16 @@ def play(chemistry: bool, discovered: list[str]):
             # Create and draw element
             element = Element(screen_width - 190, 40 + j, 140, 45, value.item.title(), font, text_color, item_color)
             discovered.append(element)
+            if element.text_surface.get_width() + 10 >= 140:
+                element.rect.w = element.text_surface.get_width() + 10
+                element.text_rect = element.text_surface.get_rect(center=element.rect.center)
             element.draw(screen)
             j += 60
         # prints all elements on the screen
         for element in elements:
+            if element.text_surface.get_width() + 10 >= 140:
+                element.rect.w = element.text_surface.get_width() + 10
+                element.text_rect = element.text_surface.get_rect(center=element.rect.center)
             element.draw(screen)
 
         for event in pygame.event.get():
