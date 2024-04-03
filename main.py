@@ -18,12 +18,19 @@ This file is Copyright (c) 2024 Omid Hemmati, Yianni Culmone, Neyl Nasr, Benjami
 """
 
 import sys
-from typing import Optional
-
 import pygame
 import recipeloader
 import random
 from button import Button, ButtonStay
+
+
+def main():
+    """
+    The main function that gets ran upon starting the file. This starts the program through Pygame.
+    """
+    pygame.init()
+    pygame.display.set_caption("Menu")
+    main_menu(False)
 
 
 class Element:
@@ -129,13 +136,6 @@ class Element:
         outline.blit(base, base_pos)
         return outline
 
-pygame.init()  # TODO: All this code as well as the other initializing code needs to be ran under the main block. Also, the main block should be at the top of the file.
-
-screen_width, screen_height = 1200, 700
-Screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Menu")
-
-BackGround = pygame.image.load("assets/background.png")
 
 def get_font(size):
     """
@@ -150,11 +150,10 @@ def play(chemistry: bool):
     """
     Launches the main gameplay loop.
 
-    Preconditions:
-    - chemistry is a boolean indicating whether to use chemistry mode.
-
     :param chemistry: If True, uses chemistry recipes; otherwise, uses default recipes.
     """
+    screen_width, screen_height = 1200, 700
+    screen = pygame.display.set_mode((screen_width, screen_height))
     if not chemistry:
         with open('recipes.json') as file:
             g = recipeloader.Graph(file)
@@ -204,16 +203,13 @@ def play(chemistry: bool):
     letgo = 0
     stock_index = 0
 
-
     while True:
-        Screen.fill(background_color)
-
-
+        screen.fill(background_color)
         # drawing sidebar
-        pygame.draw.rect(Screen, pygame.Color("#efebe0"), sidebar)
+        pygame.draw.rect(screen, pygame.Color("#efebe0"), sidebar)
 
         # drawing logo
-        Screen.blit(logo_icon, logo_rect)
+        screen.blit(logo_icon, logo_rect)
 
         # adding elements to sidebar and the little circles
         j = 0
@@ -226,20 +222,20 @@ def play(chemistry: bool):
             # Adjust position if the index is double-digit
             index_x = screen_width - 225 if i < 10 else screen_width - 232
             index_y = 50 + j
-            pygame.draw.circle(Screen, (150, 150, 150, 50), (screen_width - 219, index_y + 14), 17)
+            pygame.draw.circle(screen, (150, 150, 150, 50), (screen_width - 219, index_y + 14), 17)
 
             # Position index text beside the element
             index_rect = index_text.get_rect(topleft=(index_x, index_y))
-            Screen.blit(index_text, index_rect)
+            screen.blit(index_text, index_rect)
 
             # Create and draw element
             element = Element(screen_width - 190, 40 + j, 140, 45, value.item.title(), font, text_color, item_color)
             discovered.append(element)
-            element.draw(Screen)
+            element.draw(screen)
             j += 60
-        #prints all elements on the screen
+        # prints all elements on the screen
         for element in elements:
-            element.draw(Screen)
+            element.draw(screen)
 
         for event in pygame.event.get():
 
@@ -261,7 +257,8 @@ def play(chemistry: bool):
                 for discover in discovered:
                     if discover.is_clicked(event.pos):
                         pygame.mixer.Sound.play(click_sound)
-                        elements.append(Element(400 + random.randint(-100, 100), 300 + random.randint(-100, 100), 140, 45, discover.text.title(), font, text_color, item_color))
+                        elements.append(Element(400 + random.randint(-100, 100), 300 + random.randint(-100, 100),
+                                                140, 45, discover.text.title(), font, text_color, item_color))
 
                 # drags the item
                 for num, element in enumerate(elements):
@@ -306,11 +303,13 @@ def play(chemistry: bool):
             if not holding and letgo == 1:
                 for element in elements:
                     if (stock_index and
-                            element != elements[stock_index] and pygame.Rect.colliderect(elements[stock_index].rect, element.rect)):
+                            element != elements[stock_index] and
+                            pygame.Rect.colliderect(elements[stock_index].rect, element.rect)):
                         valid_combo, item_created = g.combine(element.text.lower(), elements[stock_index].text.lower())
                         if valid_combo:
                             x, y = pygame.mouse.get_pos()
-                            elements.append(Element(x - 70, y - 25, 140,  45, item_created, font, text_color, item_color))
+                            elements.append(Element(x - 70, y - 25, 140,  45,
+                                                    item_created, font, text_color, item_color))
                             elements.remove(elements[stock_index])
                             elements.remove(element)
                             letgo = 0
@@ -318,52 +317,60 @@ def play(chemistry: bool):
                             break
 
         # Draw the trash bin
-        Screen.blit(trash_bin_icon, trash_bin_rect)
+        screen.blit(trash_bin_icon, trash_bin_rect)
 
         # Draws the little arrows when you can go up and down
         if k - 1 >= 0:
-            Screen.blit(up_icon, up_rect)
+            screen.blit(up_icon, up_rect)
         if k + 10 < len(g.discovered):
-            Screen.blit(down_icon, down_rect)
+            screen.blit(down_icon, down_rect)
 
         # Draws the number of items currently found
         font3 = pygame.font.Font("assets/Roboto-Regular.ttf", 20)
         discover_text = font3.render(f"Discovered: {len(g.discovered)} / {len(g._vertices)}", True, "Black")
         discover_rect = discover_text.get_rect(topleft=(screen_width - 225, screen_height - 30))
-        Screen.blit(discover_text, discover_rect)
+        screen.blit(discover_text, discover_rect)
 
         pygame.display.flip()
+
+
 def options(chemistry: bool):
+    """
+    Displays the options menu to toggle game settings.
+
+    :param chemistry: The current state of chemistry mode, used to toggle the setting.
+    """
+    screen_width, screen_height = 1200, 700
+    screen = pygame.display.set_mode((screen_width, screen_height))
     click_sound = pygame.mixer.Sound("assets/click.wav")
     chemupdate = chemistry
     while True:
         options_mouse_pos = pygame.mouse.get_pos()
 
-        Screen.fill("white")
+        screen.fill("white")
 
         options_text = get_font(45).render("Options", True, "Black")
         options_rect = options_text.get_rect(center=(screen_width // 2 + 15, 35))
-        Screen.blit(options_text, options_rect)
+        screen.blit(options_text, options_rect)
 
         options_back = Button(image=None, pos=(screen_width - 100, screen_height - 40),
                               text_input="BACK", font=get_font(40), base_color="Black", hovering_color="Green")
         options_back.changeColor(options_mouse_pos)
-        options_back.update(Screen)
+        options_back.update(screen)
 
         # Chemistry buttons
         chemtext = get_font(40).render("Chemistry Mode:", True, "Black")
         chemrect = options_text.get_rect(center=(190, 170))
-        Screen.blit(chemtext, chemrect)
+        screen.blit(chemtext, chemrect)
 
         if chemupdate:
-            chembutton = ButtonStay(image=None, pos=(screen_width - 100, 170),
-                                    text_input="ON", font=get_font(40), base_color="Black", hovering_color="White", clicked=True)
+            chembutton = ButtonStay(image=None, pos=(screen_width - 100, 170), text_input="ON", font=get_font(40),
+                                    base_color="Black", hovering_color="White", clicked=True)
         else:
-            chembutton = ButtonStay(image=None, pos=(screen_width - 100, 170),
-                                    text_input="OFF", font=get_font(40), base_color="Black", hovering_color="White", clicked=False)
+            chembutton = ButtonStay(image=None, pos=(screen_width - 100, 170), text_input="OFF", font=get_font(40),
+                                    base_color="Black", hovering_color="White", clicked=False)
         chembutton.changeColor(options_mouse_pos)
-        chembutton.update(Screen)
-
+        chembutton.update(screen)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -384,30 +391,35 @@ def options(chemistry: bool):
 
         pygame.display.update()
 
+
 def main_menu(chemistry: bool):
     """
-    This displays the start screen. This will include a title, start button,
-    game mode, and quit button.
+    Displays the main menu and handles user interaction with the menu options.
+
+    :param chemistry: The current state of chemistry mode, affecting how the game is initialized.
     """
+    screen_width, screen_height = 1200, 700
+    screen = pygame.display.set_mode((screen_width, screen_height))
+    background = pygame.image.load("assets/background.png")
     click_sound = pygame.mixer.Sound("assets/click.wav")
     pygame.display.set_caption("Menu")
     while True:
-        Screen.blit(BackGround, (0, 0))
+        screen.blit(background, (0, 0))
         menu_mouse_pos = pygame.mouse.get_pos()
         menu_text = get_font(74).render("Python Alchemy", True, "#12CDEC")
-        menu_rect = menu_text.get_rect(center=(640,100))
+        menu_rect = menu_text.get_rect(center=(640, 100))
 
         play_button = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(640, 250),
-                             text_input="PLAY",font = get_font(75), base_color = "#d7fcd4", hovering_color = "White")
+                             text_input="PLAY", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
         options_button = Button(image=pygame.image.load("assets/Options Rect.png"), pos=(640, 400),
-                             text_input="OPTIONS", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
+                                text_input="OPTIONS", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
         quit_button = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(640, 550),
                              text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        Screen.blit(menu_text, menu_rect)
+        screen.blit(menu_text, menu_rect)
 
         for button in [play_button, options_button, quit_button]:
             button.changeColor(menu_mouse_pos)
-            button.update(Screen)
+            button.update(screen)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -427,19 +439,5 @@ def main_menu(chemistry: bool):
         pygame.display.update()
 
 
-# g.combine("water", "earth")
-# g.combine("air", "water")
-# recipeloader.g.combine("fire","water")
-# recipeloader.g.combine("earth","fire")
-# recipeloader.g.combine("rain","rain")
-# recipeloader.g.combine("rain","earth")
-# recipeloader.g.combine("fire","mud")
-# recipeloader.g.combine("brick","brick")
-# recipeloader.g.combine("wall","wall")
-# recipeloader.g.combine("house","house")
-# recipeloader.g.combine("earth","air")
-# recipeloader.g.combine("lava","water")
-# recipeloader.g.combine("lava","air")
-# recipeloader.g.combine("lava","earth")
-
-main_menu(False)
+if __name__ == "__main__":
+    main()
