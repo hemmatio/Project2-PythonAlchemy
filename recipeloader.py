@@ -68,7 +68,7 @@ class _Vertex:
         self.item = item
         self.neighbours = {}
 
-# takes in a list of items and mutates g.discovered to be a list of vertices
+
 class Graph:
     """
     A graph class representing the relationships between elements through vertices and edges.

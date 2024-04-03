@@ -151,6 +151,7 @@ def play(chemistry: bool, discovered: list[str]):
     Launches the main gameplay loop.
 
     :param chemistry: If True, uses chemistry recipes; otherwise, uses default recipes.
+    :param discovered: A list of discovered items, used to maintain the user's progress.
     """
     screen_width, screen_height = 1200, 700
     screen = pygame.display.set_mode((screen_width, screen_height))
@@ -170,7 +171,6 @@ def play(chemistry: bool, discovered: list[str]):
     text_color = pygame.Color("#bc259d")
     font = pygame.font.Font("assets/Roboto-Regular.ttf", 24)
     item_color = pygame.Color(0)
-
 
     # initializing the sidebar
     sidebar_width = 250
@@ -344,6 +344,7 @@ def options(chemistry: bool, discovered: list[str]):
     Displays the options menu to toggle game settings.
 
     :param chemistry: The current state of chemistry mode, used to toggle the setting.
+    :param discovered: A list of discovered items, used to maintain the user's progress.
     """
     background = pygame.image.load("assets/optionsbackground.png")
     screen_width, screen_height = 1200, 700
@@ -434,6 +435,7 @@ def main_menu(chemistry: bool, discovered: list[str]):
     Displays the main menu and handles user interaction with the menu options.
 
     :param chemistry: The current state of chemistry mode, affecting how the game is initialized.
+    :param discovered: A list of discovered items, used to maintain the user's progress.
     """
     screen_width, screen_height = 1200, 700
     screen = pygame.display.set_mode((screen_width, screen_height))
