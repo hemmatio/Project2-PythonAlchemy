@@ -68,7 +68,7 @@ class _Vertex:
         self.item = item
         self.neighbours = {}
 
-
+# takes in a list of items and mutates g.discovered to be a list of vertices
 class Graph:
     """
     A graph class representing the relationships between elements through vertices and edges.
@@ -99,6 +99,38 @@ class Graph:
         self._vertices = {}
         self.discovered = []
         self.load_vertices(file)
+
+    def update(self, items: list[str]):
+        """
+        Updates the discovered vertices in self to be in accordance to items. The original discovered vertices
+        will always be a subset of the updated discovered vertices.
+        Preconditions:
+        - all the items are the items of existing vertices in self
+        :param items: The list of items that is used to update self.discovered
+        """
+        vertices = []
+        # if all the items in discovered are not in items, then it doesn't mutate
+        for item in items:
+            if item not in self._vertices:
+                raise ValueError
+            vertices.append(self._vertices[item])
+        if all(vertex.item in items for vertex in self.discovered):
+            self.discovered = vertices
+
+    def downdate(self) -> list[str]:
+        """
+        Return a list of the items given by the currently discovered vertices
+        Preconditions:
+        - all the items in self.discovered are in self._vertices
+        :return: a list of the items in self.discovered
+        """
+        items = []
+        for vertex in self.discovered:
+            if vertex not in self._vertices.values():
+                raise ValueError
+            else:
+                items.append(vertex.item)
+        return items
 
     def get_vertices(self) -> dict[str, _Vertex]:
         """

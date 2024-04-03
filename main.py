@@ -30,7 +30,7 @@ def main():
     """
     pygame.init()
     pygame.display.set_caption("Menu")
-    main_menu(False)
+    main_menu(False, [])
 
 
 class Element:
@@ -146,7 +146,7 @@ def get_font(size):
     return pygame.font.Font("assets/font.ttf", size)
 
 
-def play(chemistry: bool):
+def play(chemistry: bool, discovered: list[str]):
     """
     Launches the main gameplay loop.
 
@@ -160,6 +160,8 @@ def play(chemistry: bool):
     else:
         with open('chemistry.json') as file:
             g = recipeloader.Graph(file)
+
+    g.update(discovered)
 
     pygame.display.set_caption("Python Alchemy")
 
@@ -294,10 +296,12 @@ def play(chemistry: bool):
                         for element in elements:
                             if not logo_rect.colliderect(element.rect):
                                 pygame.mixer.Sound.play(click_sound)
-                                main_menu(chemistry)
+                                update_discovered = g.downdate()
+                                main_menu(chemistry, update_discovered)
                     else:
                         pygame.mixer.Sound.play(click_sound)
-                        main_menu(chemistry)
+                        update_discovered = g.downdate()
+                        main_menu(chemistry, update_discovered)
 
             # Combine items if not holding
             if not holding and letgo == 1:
@@ -334,7 +338,7 @@ def play(chemistry: bool):
         pygame.display.flip()
 
 
-def options(chemistry: bool):
+def options(chemistry: bool, discovered: list[str]):
     """
     Displays the options menu to toggle game settings.
 
@@ -379,7 +383,9 @@ def options(chemistry: bool):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if options_back.checkForInput(options_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
-                    main_menu(chemupdate)
+                    if chemupdate != chemistry:
+                        discovered = []
+                    main_menu(chemupdate, discovered)
                 if chembutton.checkForInput(options_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     if chembutton.clicked:
@@ -392,7 +398,7 @@ def options(chemistry: bool):
         pygame.display.update()
 
 
-def main_menu(chemistry: bool):
+def main_menu(chemistry: bool, discovered: list[str]):
     """
     Displays the main menu and handles user interaction with the menu options.
 
@@ -428,10 +434,10 @@ def main_menu(chemistry: bool):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_button.checkForInput(menu_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
-                    play(chemistry)
+                    play(chemistry, discovered)
                 if options_button.checkForInput(menu_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
-                    options(chemistry)
+                    options(chemistry, discovered)
                 if quit_button.checkForInput(menu_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     pygame.quit()
