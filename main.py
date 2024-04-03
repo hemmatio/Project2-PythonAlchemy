@@ -38,9 +38,28 @@ class Element:
         A class representing an interactive element within the game. Each element has a label,
         can be clicked, moved, and drawn onto the game screen.
 
+        Instance Attributes:
+        - x: The int x-coordinate of the element's position.
+        - y: The int y-coordinate of the element's position.
+        - width: The int width of the element.
+        - height: The int height of the element.
+        - text: The str text displayed on the element.
+        - font: The pygame.font.Font used for the element's text.
+        - text_color: The pygame.Color of the text.
+        - rectangle_color: The background pygame.Color of the element.
+
         Representation Invariants:
         - width and height must be positive integers representing a reasonable display resolution.
         """
+    x: int
+    y: int
+    width: int
+    height: int
+    text: str
+    font: pygame.font.Font
+    text_color: pygame.color
+    rectangle_color: pygame.color
+
     def __init__(self, x, y, width, height, text, font, text_color, rectangle_color):
         """
         Initializes an Element with specified properties.
