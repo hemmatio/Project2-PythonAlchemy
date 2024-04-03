@@ -184,7 +184,7 @@ def play(chemistry: bool, discovered: list[str], extra_items: list[tuple]):
     # adds the combos made by the user
     for combo in extra_items:
         item1, item2, item3 = combo
-        g.new_combo(item1, item2, item3)
+        g.new_combo(item1.lower(), item2.lower(), item3.lower())
 
     # adds the saved discovered items
     g.update(discovered)
