@@ -249,6 +249,7 @@ class Graph:
         elif item1 in self._vertices[item2].neighbours:
             return False
         return True
+
     def new_combo(self, item1, item2, item3) -> None:
         """
         This method adds a new combination of two elements if both elements already exist and their combination does not
