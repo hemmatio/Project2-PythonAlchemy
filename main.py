@@ -439,6 +439,16 @@ def options(chemistry: bool, discovered: list[str], extra_items):
         addbutton.changeColor(options_mouse_pos)
         addbutton.update(screen)
 
+        plustext = get_font(40).render("+", True, "White")
+        plusrect = plustext.get_rect(center=(screen_width // 2 - 150, 540))
+
+        screen.blit(plustext, plusrect)
+
+        equaltext = get_font(40).render("=", True, "White")
+        equalrect = equaltext.get_rect(center=(screen_width // 2 + 150, 540))
+
+        screen.blit(equaltext, equalrect)
+
         if not item1on:
             item1_button = ButtonStay(image=None, pos=(screen_width // 2 - 300, 540), text_input="item1", font=get_font(24),
                                         base_color="Black", hovering_color="White", clicked=False)
