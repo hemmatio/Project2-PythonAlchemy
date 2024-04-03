@@ -38,9 +38,28 @@ class Element:
         A class representing an interactive element within the game. Each element has a label,
         can be clicked, moved, and drawn onto the game screen.
 
+        Instance Attributes:
+        - x: The int x-coordinate of the element's position.
+        - y: The int y-coordinate of the element's position.
+        - width: The int width of the element.
+        - height: The int height of the element.
+        - text: The str text displayed on the element.
+        - font: The pygame.font.Font used for the element's text.
+        - text_color: The pygame.Color of the text.
+        - rectangle_color: The background pygame.Color of the element.
+
         Representation Invariants:
         - width and height must be positive integers representing a reasonable display resolution.
         """
+    x: int
+    y: int
+    width: int
+    height: int
+    text: str
+    font: pygame.font.Font
+    text_color: pygame.color
+    rectangle_color: pygame.color
+
     def __init__(self, x, y, width, height, text, font, text_color, rectangle_color):
         """
         Initializes an Element with specified properties.
@@ -234,10 +253,16 @@ def play(chemistry: bool, discovered: list[str]):
             # Create and draw element
             element = Element(screen_width - 190, 40 + j, 140, 45, value.item.title(), font, text_color, item_color)
             discovered.append(element)
+            if element.text_surface.get_width() + 10 >= 140:
+                element.rect.w = element.text_surface.get_width() + 10
+                element.text_rect = element.text_surface.get_rect(center=element.rect.center)
             element.draw(screen)
             j += 60
         # prints all elements on the screen
         for element in elements:
+            if element.text_surface.get_width() + 10 >= 140:
+                element.rect.w = element.text_surface.get_width() + 10
+                element.text_rect = element.text_surface.get_rect(center=element.rect.center)
             element.draw(screen)
 
         for event in pygame.event.get():
@@ -377,6 +402,17 @@ def options(chemistry: bool, discovered: list[str]):
         loadrect = savetext.get_rect(topleft=(15, 370))
         screen.blit(savetext, saverect)
         screen.blit(loadtext, loadrect)
+
+        # New combo option
+
+        combotext = get_font(40).render("Add a new combo", True, "White")
+        comborect = chemtext.get_rect(topleft=(350, 550))
+        screen.blit(combotext, comborect)
+
+        combobutton = Button(image=None, pos=(350, 550),
+                            text_input="Add new combo", font=get_font(40), base_color="Black", hovering_color="White")
+        combobutton.changeColor(options_mouse_pos)
+        combobutton.update(screen)
 
         # Save/Load buttons
         saverect = pygame.Rect(screen_width - 195, 258, 185, 60)
