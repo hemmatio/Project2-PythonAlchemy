@@ -327,7 +327,7 @@ def play(chemistry: bool):
 
         # Draws the number of items currently found
         font3 = pygame.font.Font("assets/Roboto-Regular.ttf", 20)
-        discover_text = font3.render(f"Discovered: {len(g.discovered)} / {len(g._vertices)}", True, "Black")
+        discover_text = font3.render(f"Discovered: {len(g.discovered)} / {len(g.get_vertices())}", True, "Black")
         discover_rect = discover_text.get_rect(topleft=(screen_width - 225, screen_height - 30))
         screen.blit(discover_text, discover_rect)
 

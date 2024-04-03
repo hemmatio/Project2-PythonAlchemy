@@ -100,6 +100,13 @@ class Graph:
         self.discovered = []
         self.load_vertices(file)
 
+    def get_vertices(self) -> dict[str, _Vertex]:
+        """
+        Gets the vertices of the graph
+        :return: the vertices of the graph
+        """
+        return self._vertices
+
     def load_vertices(self, file: json) -> None:
         """
         Loads all vertices from the file and updates the graph structure accordingly.
@@ -177,18 +184,18 @@ class Graph:
         discovered_items = {vertex.item for vertex in self.discovered}
         if item1 not in discovered_items or item2 not in discovered_items:
             # print('You may not craft with items you have not yet discovered.')
-            return (False, None)
+            return False, None
         if item2 not in self._vertices[item1].neighbours:
             # print('This is not a valid crafting recipe.')
-            return (False, None)
+            return False, None
         else:
             crafted_item = self._vertices[item1].neighbours[item2]
             if crafted_item in self.discovered:
                 # print(f"You have already discovered {crafted_item.item}.")
-                return (True, crafted_item.item.title())
+                return True, crafted_item.item.title()
             self.discovered.append(crafted_item)
             # print(f'You have discovered {crafted_item.item}! Good job')
-            return (True, crafted_item.item.title())
+            return True, crafted_item.item.title()
 
     def inventory(self) -> None:
         """
