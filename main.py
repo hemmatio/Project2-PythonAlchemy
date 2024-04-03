@@ -171,6 +171,7 @@ def play(chemistry: bool, discovered: list[str]):
     font = pygame.font.Font("assets/Roboto-Regular.ttf", 24)
     item_color = pygame.Color(0)
 
+
     # initializing the sidebar
     sidebar_width = 250
     sidebar = pygame.Rect(screen_width - sidebar_width, 0, sidebar_width, screen_height)
@@ -344,8 +345,7 @@ def options(chemistry: bool, discovered: list[str]):
 
     :param chemistry: The current state of chemistry mode, used to toggle the setting.
     """
-    # write_save(discovered, chemistry)
-    # chemistry, discovered = load_save('savefile/save.csv')
+    background = pygame.image.load("assets/optionsbackground.png")
     screen_width, screen_height = 1200, 700
     screen = pygame.display.set_mode((screen_width, screen_height))
     click_sound = pygame.mixer.Sound("assets/click.wav")
@@ -353,26 +353,26 @@ def options(chemistry: bool, discovered: list[str]):
     while True:
         options_mouse_pos = pygame.mouse.get_pos()
 
-        screen.fill("white")
+        screen.blit(background, (0, 0))
 
-        options_text = get_font(45).render("Options", True, "Black")
+        options_text = get_font(45).render("Options", True, "White")
         options_rect = options_text.get_rect(center=(screen_width // 2 + 15, 35))
         screen.blit(options_text, options_rect)
 
         options_back = Button(image=None, pos=(screen_width - 100, screen_height - 40),
-                              text_input="BACK", font=get_font(40), base_color="Black", hovering_color="Green")
+                              text_input="BACK", font=get_font(40), base_color="White", hovering_color="Green")
         options_back.changeColor(options_mouse_pos)
         options_back.update(screen)
 
         # Chemistry buttons
-        chemtext = get_font(40).render("Chemistry Mode:", True, "Black")
+        chemtext = get_font(40).render("Chemistry Mode:", True, "White")
         chemrect = chemtext.get_rect(topleft=(15, 170))
         screen.blit(chemtext, chemrect)
 
         # Save/Load text
-        savetext = get_font(40).render("Write Save:", True, "Black")
+        savetext = get_font(40).render("Write Save:", True, "White")
         saverect = savetext.get_rect(topleft=(15, 270))
-        loadtext = get_font(40).render("Load Save:", True, "Black")
+        loadtext = get_font(40).render("Load Save:", True, "White")
         loadrect = savetext.get_rect(topleft=(15, 370))
         screen.blit(savetext, saverect)
         screen.blit(loadtext, loadrect)
@@ -393,10 +393,10 @@ def options(chemistry: bool, discovered: list[str]):
         loadbutton.update(screen)
 
         if chemupdate:
-            chembutton = ButtonStay(image=None, pos=(screen_width - 100, 170), text_input="ON", font=get_font(40),
+            chembutton = ButtonStay(image=None, pos=(screen_width - 100, 190), text_input="ON", font=get_font(40),
                                     base_color="Black", hovering_color="White", clicked=True)
         else:
-            chembutton = ButtonStay(image=None, pos=(screen_width - 100, 170), text_input="OFF", font=get_font(40),
+            chembutton = ButtonStay(image=None, pos=(screen_width - 100, 190), text_input="OFF", font=get_font(40),
                                     base_color="Black", hovering_color="White", clicked=False)
         chembutton.changeColor(options_mouse_pos)
         chembutton.update(screen)
