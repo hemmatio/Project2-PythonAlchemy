@@ -30,7 +30,7 @@ def main():
     """
     pygame.init()
     pygame.display.set_caption("Menu")
-    main_menu(False, [])
+    main_menu(False, [], [])
 
 
 class Element:
@@ -165,7 +165,7 @@ def get_font(size):
     return pygame.font.Font("assets/font.ttf", size)
 
 
-def play(chemistry: bool, discovered: list[str]):
+def play(chemistry: bool, discovered: list[str], extra_items: list[tuple]):
     """
     Launches the main gameplay loop.
 
@@ -181,6 +181,12 @@ def play(chemistry: bool, discovered: list[str]):
         with open('chemistry.json') as file:
             g = recipeloader.Graph(file)
 
+    # adds the combos made by the user
+    for combo in extra_items:
+        item1, item2, item3 = combo
+        g.new_combo(item1, item2, item3)
+
+    # adds the saved discovered items
     g.update(discovered)
 
     pygame.display.set_caption("Python Alchemy")
@@ -323,11 +329,11 @@ def play(chemistry: bool, discovered: list[str]):
                             if not logo_rect.colliderect(element.rect):
                                 pygame.mixer.Sound.play(click_sound)
                                 update_discovered = g.downdate()
-                                main_menu(chemistry, update_discovered)
+                                main_menu(chemistry, update_discovered, extra_items)
                     else:
                         pygame.mixer.Sound.play(click_sound)
                         update_discovered = g.downdate()
-                        main_menu(chemistry, update_discovered)
+                        main_menu(chemistry, update_discovered, extra_items)
 
             # Combine items if not holding
             if not holding and letgo == 1:
@@ -364,7 +370,7 @@ def play(chemistry: bool, discovered: list[str]):
         pygame.display.flip()
 
 
-def options(chemistry: bool, discovered: list[str]):
+def options(chemistry: bool, discovered: list[str], extra_items):
     """
     Displays the options menu to toggle game settings.
 
@@ -378,7 +384,6 @@ def options(chemistry: bool, discovered: list[str]):
     chemupdate = chemistry
     item1, item2, item3 = '', '', ''
     item1on, item2on, item3on = False, False, False
-    created = []
     while True:
         options_mouse_pos = pygame.mouse.get_pos()
 
@@ -482,7 +487,7 @@ def options(chemistry: bool, discovered: list[str]):
                     pygame.mixer.Sound.play(click_sound)
                     if chemupdate != chemistry:
                         discovered = []
-                    main_menu(chemupdate, discovered)
+                    main_menu(chemupdate, discovered, extra_items)
                 if chembutton.checkForInput(options_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     if chembutton.clicked:
@@ -498,8 +503,9 @@ def options(chemistry: bool, discovered: list[str]):
                     pygame.mixer.Sound.play(click_sound)
                     chemistry, discovered = load_save('savefile/save.csv')
                 if addbutton.checkForInput(options_mouse_pos):
-                    created.append((item1, item2, item3))
-                    print(created)
+                    pygame.mixer.Sound.play(click_sound)
+                    extra_items.append((item1, item2, item3))
+                    print(extra_items)
                     item1, item2, item3 = "", "", ""
                     item1on, item2on, item3on = False, False, False
 
@@ -584,7 +590,7 @@ def options(chemistry: bool, discovered: list[str]):
         pygame.display.update()
 
 
-def main_menu(chemistry: bool, discovered: list[str]):
+def main_menu(chemistry: bool, discovered: list[str], extra: list[tuple]):
     """
     Displays the main menu and handles user interaction with the menu options.
 
@@ -621,10 +627,10 @@ def main_menu(chemistry: bool, discovered: list[str]):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_button.checkForInput(menu_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
-                    play(chemistry, discovered)
+                    play(chemistry, discovered, extra)
                 if options_button.checkForInput(menu_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
-                    options(chemistry, discovered)
+                    options(chemistry, discovered, extra)
                 if quit_button.checkForInput(menu_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     pygame.quit()
