@@ -239,3 +239,20 @@ class Graph:
         for vertex in self.discovered:
             print('     ' + vertex.item)
         print(f'You have discovered {len(self.discovered)}/{total} items so far.')
+
+    def possible_new_combo(self, item1, item2) -> bool:
+        """
+        This method returns wheither you can create a new element with element 1 and element 2:
+        """
+        if (item1 not in self._vertices) or (item2 not in self._vertices):
+            return False
+        elif item1 in self._vertices[item2].neighbours:
+            return False
+        return True
+    def new_combo(self, item1, item2) -> None:
+        """
+        This method adds a new combination of two elements if both elements already exist and their combination does not
+        """
+        if self.possible_new_combo(item1, item2):
+            self._vertices[item2].neighbours.update(item1)
+            self._vertices[item1].neighbours.update(item2)
