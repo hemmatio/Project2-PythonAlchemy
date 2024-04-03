@@ -344,6 +344,8 @@ def options(chemistry: bool, discovered: list[str]):
 
     :param chemistry: The current state of chemistry mode, used to toggle the setting.
     """
+    # write_save(discovered, chemistry)
+    # chemistry, discovered = load_save('savefile/save.csv')
     screen_width, screen_height = 1200, 700
     screen = pygame.display.set_mode((screen_width, screen_height))
     click_sound = pygame.mixer.Sound("assets/click.wav")
@@ -364,8 +366,31 @@ def options(chemistry: bool, discovered: list[str]):
 
         # Chemistry buttons
         chemtext = get_font(40).render("Chemistry Mode:", True, "Black")
-        chemrect = options_text.get_rect(center=(190, 170))
+        chemrect = chemtext.get_rect(topleft=(15, 170))
         screen.blit(chemtext, chemrect)
+
+        # Save/Load text
+        savetext = get_font(40).render("Write Save:", True, "Black")
+        saverect = savetext.get_rect(topleft=(15, 270))
+        loadtext = get_font(40).render("Load Save:", True, "Black")
+        loadrect = savetext.get_rect(topleft=(15, 370))
+        screen.blit(savetext, saverect)
+        screen.blit(loadtext, loadrect)
+
+        # Save/Load buttons
+        saverect = pygame.Rect(screen_width - 195, 258, 185, 60)
+        pygame.draw.rect(screen, "Green", saverect)
+        savebutton = Button(image=None, pos=(screen_width - 100, 290),
+                            text_input="SAVE", font=get_font(40), base_color="Black", hovering_color="White")
+        savebutton.changeColor(options_mouse_pos)
+        savebutton.update(screen)
+
+        loadrect = pygame.Rect(screen_width - 195, 358, 185, 60)
+        pygame.draw.rect(screen, "Red", loadrect)
+        loadbutton = Button(image=None, pos=(screen_width - 100, 390),
+                            text_input="LOAD", font=get_font(40), base_color="Black", hovering_color="White")
+        loadbutton.changeColor(options_mouse_pos)
+        loadbutton.update(screen)
 
         if chemupdate:
             chembutton = ButtonStay(image=None, pos=(screen_width - 100, 170), text_input="ON", font=get_font(40),
@@ -380,7 +405,7 @@ def options(chemistry: bool, discovered: list[str]):
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 if options_back.checkForInput(options_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     if chemupdate != chemistry:
@@ -394,6 +419,12 @@ def options(chemistry: bool, discovered: list[str]):
                     else:
                         chembutton.clicked = True
                         chemupdate = True
+                if savebutton.checkForInput(options_mouse_pos):
+                    pygame.mixer.Sound.play(click_sound)
+                    write_save(discovered, chemistry)
+                if loadbutton.checkForInput(options_mouse_pos):
+                    pygame.mixer.Sound.play(click_sound)
+                    chemistry, discovered = load_save('savefile/save.csv')
 
         pygame.display.update()
 
@@ -443,6 +474,32 @@ def main_menu(chemistry: bool, discovered: list[str]):
                     pygame.quit()
                     sys.exit()
         pygame.display.update()
+
+
+def write_save(discovered: list[str], chemistry: bool):
+    """
+    Writes the currently discovered items and the gamemode into the save file save.txt
+    :param discovered: The currently discovered items
+    :param chemistry: The current mode
+    """
+    with open('savefile/save.csv', 'w') as file:
+        file.write(f"{chemistry}\n")
+        for item in discovered:
+            file.write(f"{item}\n")
+
+
+def load_save(filedirectory: str) -> tuple[bool, list[str]]:
+    """
+    Returns a tuple of a bool and a list, where the bool indicates the gamemode and the list indicates
+    the discovered items.
+    :param filedirectory:
+    :return:
+    """
+    with open(filedirectory, 'r') as file:
+        lines = file.readlines()
+        chemistry = lines[0].strip() == 'True'
+        discovered = [line.strip() for line in lines[1:]]
+        return chemistry, discovered
 
 
 if __name__ == "__main__":
