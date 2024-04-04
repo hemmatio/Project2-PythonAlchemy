@@ -70,7 +70,7 @@ class Button:
             screen.blit(self.image, self.rect)
         screen.blit(self.text, self.text_rect)
 
-    def checkForInput(self, position):
+    def checkforinput(self, position):
         """
         Checks if the button is being clicked based on the mouse position.
 
