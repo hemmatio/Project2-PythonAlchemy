@@ -12,6 +12,7 @@ expressly prohibited.
 
 This file is Copyright (c) 2024 Omid Hemmati, Yianni Culmone, Neyl Nasr, Benjamin Gavriely
 """
+from typing import Any
 import pygame
 
 
@@ -36,18 +37,18 @@ class Button:
    - self.text_input is a non-empty string.
    - self.base_color and self.hovering_color are tuples representing RGB color values.
    """
-    image: pygame.Surface
+    image: Any
     x_pos: int
     y_pos: int
     font: pygame.font
     base_color: str
     hovering_color: str
-    text_input: pygame.Surface
+    text_input: str
     text: pygame.Surface
     rect: pygame.rect
     text_rect: pygame.rect
 
-    def __init__(self, image: pygame.Surface, pos: tuple, text_input: pygame.Surface, font: pygame.font,
+    def __init__(self, image: Any, pos: tuple, text_input: str, font: pygame.font,
                  base_color: str, hovering_color: str) -> None:
         """
         Initializes a Button object.
@@ -133,7 +134,7 @@ class ButtonStay(Button):
     """
     clicked: bool
 
-    def __init__(self, image: pygame.Surface, pos: tuple, text_input: pygame.Surface, font: pygame.font.Font,
+    def __init__(self, image: Any, pos: tuple, text_input: str, font: pygame.font.Font,
                  base_color: str, hovering_color: str, clicked: bool = False) -> None:
         """
         Initializes a ButtonStay object with an additional clicked state.
