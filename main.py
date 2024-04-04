@@ -125,7 +125,7 @@ class Element:
         self.text_rect = self.text_surface.get_rect(center=self.rect.center)
 
     def render_with_outline(self, text: str, font: pygame.font.Font,
-                            text_color: str, outline_color: str, outline_width: int) -> pygame.Surface:
+                            text_color: str, outline_color: pygame.Color, outline_width: int) -> pygame.Surface:
         """
         Renders the element's text with an outline and returns a Surface object.
 
@@ -399,7 +399,7 @@ def options(chemistry: bool, discovered: list[str], extra_items: list) -> None:
 
         options_back = Button(image=None, pos=(screen_width - 100, screen_height - 40),
                               text_input="BACK", font=get_font(40), base_color="White", hovering_color="Green")
-        options_back.changeColor(options_mouse_pos)
+        options_back.changecolor(options_mouse_pos)
         options_back.update(screen)
 
         # Chemistry buttons
@@ -420,14 +420,14 @@ def options(chemistry: bool, discovered: list[str], extra_items: list) -> None:
         pygame.draw.rect(screen, "Green", saverect)
         savebutton = Button(image=None, pos=(screen_width - 100, 290),
                             text_input="SAVE", font=get_font(40), base_color="Black", hovering_color="White")
-        savebutton.changeColor(options_mouse_pos)
+        savebutton.changecolor(options_mouse_pos)
         savebutton.update(screen)
 
         loadrect = pygame.Rect(screen_width - 195, 358, 185, 60)
         pygame.draw.rect(screen, "Red", loadrect)
         loadbutton = Button(image=None, pos=(screen_width - 100, 390),
                             text_input="LOAD", font=get_font(40), base_color="Black", hovering_color="White")
-        loadbutton.changeColor(options_mouse_pos)
+        loadbutton.changecolor(options_mouse_pos)
         loadbutton.update(screen)
 
         # New combo option
@@ -440,7 +440,7 @@ def options(chemistry: bool, discovered: list[str], extra_items: list) -> None:
 
         addbutton = Button(image=None, pos=(screen_width // 2, 470),
                            text_input="Add a New Combo", font=get_font(40), base_color="White", hovering_color="Purple")
-        addbutton.changeColor(options_mouse_pos)
+        addbutton.changecolor(options_mouse_pos)
         addbutton.update(screen)
 
         plustext = get_font(40).render("+", True, "White")
@@ -460,7 +460,7 @@ def options(chemistry: bool, discovered: list[str], extra_items: list) -> None:
             item1_button = ButtonStay(image=None, pos=(screen_width // 2 - 300, 540), text_input="item1",
                                       font=get_font(24),
                                       base_color="Black", hovering_color="White", clicked=True)
-        item1_button.changeColor(options_mouse_pos)
+        item1_button.changecolor(options_mouse_pos)
         item1_button.update(screen)
 
         if not item2on:
@@ -469,7 +469,7 @@ def options(chemistry: bool, discovered: list[str], extra_items: list) -> None:
         else:
             item2_button = ButtonStay(image=None, pos=(screen_width // 2, 540), text_input="item2", font=get_font(24),
                                       base_color="Black", hovering_color="White", clicked=True)
-        item2_button.changeColor(options_mouse_pos)
+        item2_button.changecolor(options_mouse_pos)
         item2_button.update(screen)
 
         if not item3on:
@@ -479,7 +479,7 @@ def options(chemistry: bool, discovered: list[str], extra_items: list) -> None:
             item3_button = ButtonStay(image=None, pos=(screen_width // 2 + 300, 540), text_input="item3",
                                       font=get_font(24), base_color="Black", hovering_color="White", clicked=True)
 
-        item3_button.changeColor(options_mouse_pos)
+        item3_button.changecolor(options_mouse_pos)
         item3_button.update(screen)
 
         if chemupdate:
@@ -488,7 +488,7 @@ def options(chemistry: bool, discovered: list[str], extra_items: list) -> None:
         else:
             chembutton = ButtonStay(image=None, pos=(screen_width - 100, 190), text_input="OFF", font=get_font(40),
                                     base_color="Black", hovering_color="White", clicked=False)
-        chembutton.changeColor(options_mouse_pos)
+        chembutton.changecolor(options_mouse_pos)
         chembutton.update(screen)
 
         for event in pygame.event.get():
@@ -644,7 +644,7 @@ def main_menu(chemistry: bool, discovered: list[str], extra: list[tuple]) -> Non
         screen.blit(menu_text, menu_rect)
 
         for button in [play_button, options_button, quit_button]:
-            button.changeColor(menu_mouse_pos)
+            button.changecolor(menu_mouse_pos)
             button.update(screen)
 
         for event in pygame.event.get():

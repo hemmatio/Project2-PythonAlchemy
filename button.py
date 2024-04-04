@@ -36,11 +36,23 @@ class Button:
    - self.text_input is a non-empty string.
    - self.base_color and self.hovering_color are tuples representing RGB color values.
    """
-    def __init__(self, image, pos, text_input, font, base_color, hovering_color):
+    image: pygame.Surface
+    x_pos: int
+    y_pos: int
+    font: pygame.font
+    base_color: str
+    hovering_color: str
+    text_input: pygame.Surface
+    text: pygame.Surface
+    rect: pygame.rect
+    text_rect: pygame.rect
+
+    def __init__(self, image, pos, text_input, font, base_color, hovering_color) -> None:
         """
         Initializes a Button object.
 
-        :param image: A Pygame Surface object to be used as the button's image. If None, the button will display text only.
+        :param image: A Pygame Surface object to be used as the button's image.
+        If None, the button will display text only.
         :param pos: A tuple containing the x and y coordinates for the button's position.
         :param text_input: The text to be displayed on the button.
         :param font: A Pygame font object for rendering the button's text.
@@ -59,7 +71,7 @@ class Button:
         self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
         self.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))
 
-    def update(self, screen):
+    def update(self, screen) -> None:
         """
         Draws the button onto the given Pygame window surface, updating its appearance.
 
@@ -70,7 +82,7 @@ class Button:
             screen.blit(self.image, self.rect)
         screen.blit(self.text, self.text_rect)
 
-    def checkforinput(self, position):
+    def checkforinput(self, position) -> bool:
         """
         Checks if the button is being clicked based on the mouse position.
 
@@ -83,7 +95,7 @@ class Button:
             return True
         return False
 
-    def changeColor(self, position):
+    def changecolor(self, position) -> None:
         """
         Changes the button's text color based on the mouse's position (hover effect).
 
@@ -118,7 +130,7 @@ class ButtonStay(Button):
         - rect (pygame.Rect): The rectangular area of the button.
         - text_rect (pygame.Rect): The rectangular area for the button's text.
     """
-    def __init__(self, image, pos, text_input, font, base_color, hovering_color, clicked=False):
+    def __init__(self, image, pos, text_input, font, base_color, hovering_color, clicked=False) -> None:
         """
         Initializes a ButtonStay object with an additional clicked state.
 
@@ -133,7 +145,7 @@ class ButtonStay(Button):
         super().__init__(image, pos, text_input, font, base_color, hovering_color)
         self.clicked = clicked
 
-    def update(self, screen):
+    def update(self, screen) -> None:
         """
         Draws the button onto the given Pygame window surface, with its appearance adjusted
         based on its clicked state. The background color changes to indicate the button's state.
@@ -157,3 +169,13 @@ class ButtonStay(Button):
         if self.image is not None:
             screen.blit(self.image, self.rect)
         screen.blit(self.text, self.text_rect)
+
+
+if __name__ == "__main__":
+    import python_ta
+    python_ta.check_all(config={
+        'extra-imports': ['sys', 'pygame', 'recipeloader', 'random', 'button', ],
+        'allowed-io': [],  # the names (strs) of functions that call print/open/input
+        'max-line-length': 120,
+        'no-member': False
+    })

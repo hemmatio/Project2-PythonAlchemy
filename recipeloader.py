@@ -19,7 +19,6 @@ This file is Copyright (c) 2024 Omid Hemmati, Yianni Culmone, Neyl Nasr, Benjami
 from __future__ import annotations
 from typing import Optional
 import json
-import pythonta
 
 
 def split_text(text: str) -> list[tuple]:
@@ -85,7 +84,7 @@ class Graph:
     _vertices: dict[str, _Vertex]
     discovered: list[_Vertex]
 
-    def __init__(self, file: json):
+    def __init__(self, file: json) -> None:
         """
         A graph class representing the relationships between elements through vertices and edges.
 
@@ -101,7 +100,7 @@ class Graph:
         self.discovered = []
         self.load_vertices(file)
 
-    def update(self, items: list[str]):
+    def update(self, items: list[str]) -> None:
         """
         Updates the discovered vertices in self to be in accordance to items. The original discovered vertices
         will always be a subset of the updated discovered vertices.
@@ -258,11 +257,12 @@ class Graph:
         if self.possible_new_combo(item1, item2):
             self.add_edge(item3, item1, item2)
 
+
 if __name__ == "__main__":
+    import python_ta
     python_ta.check_all(config={
         'extra-imports': ['sys', 'pygame', 'recipeloader', 'random', 'button', ],
         'allowed-io': [],  # the names (strs) of functions that call print/open/input
         'max-line-length': 120,
         'no-member': False
     })
-    main()
