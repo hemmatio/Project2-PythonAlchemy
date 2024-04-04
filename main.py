@@ -167,7 +167,7 @@ def get_font(size: int) -> pygame.font.Font:
     :param size: The size of the fonrt in pixels
     :return: pygame font object
     """
-    return pygame.font.Font("assets/font.ttf", size)
+    return pygame.font.Font("font.ttf", size)
 
 
 def play(chemistry: bool, discovered: list[str], extra_items: list[tuple]) -> None:
@@ -199,7 +199,7 @@ def play(chemistry: bool, discovered: list[str], extra_items: list[tuple]) -> No
     # Colors and Font
     background_color = pygame.Color('#f7f6f1')
     text_color = pygame.Color("#bc259d")
-    font = pygame.font.Font("assets/Roboto-Regular.ttf", 24)
+    font = pygame.font.Font("Roboto-Regular.ttf", 24)
     item_color = pygame.Color(0)
 
     # initializing the sidebar
@@ -207,27 +207,27 @@ def play(chemistry: bool, discovered: list[str], extra_items: list[tuple]) -> No
     sidebar = pygame.Rect(screen_width - sidebar_width, 0, sidebar_width, screen_height)
 
     # initializing the trash bin
-    trash_bin_icon = pygame.image.load("assets/trash.png")  # Load the trash bin icon
+    trash_bin_icon = pygame.image.load("trash.png")  # Load the trash bin icon
     trash_bin_rect = trash_bin_icon.get_rect(
         topleft=(10, screen_height - trash_bin_icon.get_height() - 10))  # Position it at the bottom left
 
     # initilazing the logo
-    logo_icon = pygame.image.load("assets/Logo.png")
+    logo_icon = pygame.image.load("Logo.png")
     logo_rect = logo_icon.get_rect(
         topleft=(5, 2))
 
     # initilzazing the arrows
-    up_icon = pygame.image.load("assets/up.png")
+    up_icon = pygame.image.load("up.png")
     up_rect = up_icon.get_rect(topleft=(screen_width - 134, 8))
-    down_icon = pygame.image.load("assets/down.png")
+    down_icon = pygame.image.load("down.png")
     down_rect = down_icon.get_rect(topleft=(screen_width - 134, screen_height - 67))
 
     # initializing the sounds
-    combine_sound1 = pygame.mixer.Sound("assets/combine1.wav")
-    combine_sound2 = pygame.mixer.Sound("assets/combine2.wav")
-    combine_sound3 = pygame.mixer.Sound("assets/combine3.wav")
+    combine_sound1 = pygame.mixer.Sound("combine1.wav")
+    combine_sound2 = pygame.mixer.Sound("combine2.wav")
+    combine_sound3 = pygame.mixer.Sound("combine3.wav")
     combine_sounds = [combine_sound1, combine_sound2, combine_sound3]
-    click_sound = pygame.mixer.Sound("assets/click.wav")
+    click_sound = pygame.mixer.Sound("click.wav")
 
     # initializing elementary elements
     elements = []
@@ -249,7 +249,7 @@ def play(chemistry: bool, discovered: list[str], extra_items: list[tuple]) -> No
         discovered = []
         for i, value in enumerate(g.discovered[k:(k + 10)], start=k + 1):  # Enumerate with start=k
             # Create text surface for index
-            font2 = pygame.font.Font("assets/Roboto-Regular.ttf", 22)
+            font2 = pygame.font.Font("Roboto-Regular.ttf", 22)
             index_text = font2.render(str(i), True, pygame.Color(0))
 
             # Adjust position if the index is double-digit
@@ -366,7 +366,7 @@ def play(chemistry: bool, discovered: list[str], extra_items: list[tuple]) -> No
             screen.blit(down_icon, down_rect)
 
         # Draws the number of items currently found
-        font3 = pygame.font.Font("assets/Roboto-Regular.ttf", 20)
+        font3 = pygame.font.Font("Roboto-Regular.ttf", 20)
         discover_text = font3.render(f"Discovered: {len(g.discovered)} / {len(g.get_vertices())}", True, "Black")
         discover_rect = discover_text.get_rect(topleft=(screen_width - 225, screen_height - 30))
         screen.blit(discover_text, discover_rect)
@@ -381,10 +381,10 @@ def options(chemistry: bool, discovered: list[str], extra_items: list) -> None:
     :param chemistry: The current state of chemistry mode, used to toggle the setting.
     :param discovered: A list of discovered items, used to maintain the user's progress.
     """
-    background = pygame.image.load("assets/optionsbackground.png")
+    background = pygame.image.load("optionsbackground.png")
     screen_width, screen_height = 1200, 700
     screen = pygame.display.set_mode((screen_width, screen_height))
-    click_sound = pygame.mixer.Sound("assets/click.wav")
+    click_sound = pygame.mixer.Sound("click.wav")
     chemupdate = chemistry
     item1, item2, item3 = '', '', ''
     item1on, item2on, item3on = False, False, False
@@ -626,8 +626,8 @@ def main_menu(chemistry: bool, discovered: list[str], extra: list[tuple]) -> Non
     """
     screen_width, screen_height = 1200, 700
     screen = pygame.display.set_mode((screen_width, screen_height))
-    background = pygame.image.load("assets/background.png")
-    click_sound = pygame.mixer.Sound("assets/click.wav")
+    background = pygame.image.load("background.png")
+    click_sound = pygame.mixer.Sound("click.wav")
     pygame.display.set_caption("Menu")
     while True:
         screen.blit(background, (0, 0))
@@ -635,11 +635,11 @@ def main_menu(chemistry: bool, discovered: list[str], extra: list[tuple]) -> Non
         menu_text = get_font(74).render("Python Alchemy", True, "#12CDEC")
         menu_rect = menu_text.get_rect(center=(640, 100))
 
-        play_button = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(640, 250),
+        play_button = Button(image=pygame.image.load("Play Rect.png"), pos=(640, 250),
                              text_input="PLAY", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        options_button = Button(image=pygame.image.load("assets/Options Rect.png"), pos=(640, 400),
+        options_button = Button(image=pygame.image.load("Options Rect.png"), pos=(640, 400),
                                 text_input="OPTIONS", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        quit_button = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(640, 550),
+        quit_button = Button(image=pygame.image.load("Quit Rect.png"), pos=(640, 550),
                              text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
         screen.blit(menu_text, menu_rect)
 
@@ -671,7 +671,7 @@ def write_save(discovered: list[str], chemistry: bool) -> None:
     :param discovered: The currently discovered items
     :param chemistry: The current mode
     """
-    with open('savefile/save.csv', 'w') as file:
+    with open('save.csv', 'w') as file:
         file.write(f"{chemistry}\n")
         for item in discovered:
             file.write(f"{item}\n")
