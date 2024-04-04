@@ -17,12 +17,12 @@ expressly prohibited.
 This file is Copyright (c) 2024 Omid Hemmati, Yianni Culmone, Neyl Nasr, Benjamin Gavriely
 """
 
+import random
 import sys
 import pygame
-import recipeloader
-import random
-from button import Button, ButtonStay
 import python_ta
+import recipeloader
+from button import Button, ButtonStay
 
 
 def main() -> None:
@@ -125,7 +125,8 @@ class Element:
         self.rect.move_ip(dx, dy)
         self.text_rect = self.text_surface.get_rect(center=self.rect.center)
 
-    def render_with_outline(self, text, font, text_color, outline_color, outline_width) -> pygame.Surface:
+    def render_with_outline(self, text: str, font: pygame.font.Font,
+                            text_color: str, outline_color: str, outline_width: int) -> pygame.Surface:
         """
         Renders the element's text with an outline and returns a Surface object.
 
@@ -161,7 +162,7 @@ class Element:
         return outline
 
 
-def get_font(size) -> pygame.font.Font:
+def get_font(size: int) -> pygame.font.Font:
     """
     Gets a font using the provided font.ttf file in the assets folder
     :param size: The size of the fonrt in pixels
@@ -343,13 +344,12 @@ def play(chemistry: bool, discovered: list[str], extra_items: list[tuple]) -> No
             # Combine items if not holding
             if not holding and letgo == 1:
                 for element in elements:
-                    if (stock_index and
-                            element != elements[stock_index] and
-                            pygame.Rect.colliderect(elements[stock_index].rect, element.rect)):
+                    if (stock_index and element != elements[stock_index]
+                            and pygame.Rect.colliderect(elements[stock_index].rect, element.rect)):
                         valid_combo, item_created = g.combine(element.text.lower(), elements[stock_index].text.lower())
                         if valid_combo:
                             x, y = pygame.mouse.get_pos()
-                            elements.append(Element(x - 70, y - 25, 140,  45,
+                            elements.append(Element(x - 70, y - 25, 140, 45,
                                                     item_created, font, text_color, item_color))
                             elements.remove(elements[stock_index])
                             elements.remove(element)
@@ -375,7 +375,7 @@ def play(chemistry: bool, discovered: list[str], extra_items: list[tuple]) -> No
         pygame.display.flip()
 
 
-def options(chemistry: bool, discovered: list[str], extra_items) -> None:
+def options(chemistry: bool, discovered: list[str], extra_items: list) -> None:
     """
     Displays the options menu to toggle game settings.
 
@@ -584,33 +584,33 @@ def options(chemistry: bool, discovered: list[str], extra_items) -> None:
         # Draws the text input
         if item1on:
             item1surface = get_font(30).render(item1, True, pygame.Color('White'))
-            text_rect = item1surface.get_rect(center=(screen_width//2, 600))
+            text_rect = item1surface.get_rect(center=(screen_width // 2, 600))
             if len(item1) > 5:
-                underlinesurface = get_font(6).render(item1*5, True, pygame.Color('White'))
+                underlinesurface = get_font(6).render(item1 * 5, True, pygame.Color('White'))
             else:
-                underlinesurface = get_font(6).render("whiteline"*3, True, pygame.Color('White'))
+                underlinesurface = get_font(6).render("whiteline" * 3, True, pygame.Color('White'))
             underline_rect = underlinesurface.get_rect(center=(screen_width // 2, 620))
             pygame.draw.rect(screen, "White", underline_rect)
             screen.blit(item1surface, text_rect)
 
         if item2on:
             item2surface = get_font(30).render(item2, True, pygame.Color('White'))
-            text_rect = item2surface.get_rect(center=(screen_width//2, 600))
+            text_rect = item2surface.get_rect(center=(screen_width // 2, 600))
             if len(item2) > 5:
-                underlinesurface = get_font(6).render(item2*5, True, pygame.Color('White'))
+                underlinesurface = get_font(6).render(item2 * 5, True, pygame.Color('White'))
             else:
-                underlinesurface = get_font(6).render("whiteline"*3, True, pygame.Color('White'))
+                underlinesurface = get_font(6).render("whiteline" * 3, True, pygame.Color('White'))
             underline_rect = underlinesurface.get_rect(center=(screen_width // 2, 620))
             pygame.draw.rect(screen, "White", underline_rect)
             screen.blit(item2surface, text_rect)
 
         if item3on:
             item3surface = get_font(30).render(item3, True, pygame.Color('White'))
-            text_rect = item3surface.get_rect(center=(screen_width//2, 600))
+            text_rect = item3surface.get_rect(center=(screen_width // 2, 600))
             if len(item3) > 5:
-                underlinesurface = get_font(6).render(item3*5, True, pygame.Color('White'))
+                underlinesurface = get_font(6).render(item3 * 5, True, pygame.Color('White'))
             else:
-                underlinesurface = get_font(6).render("whiteline"*3, True, pygame.Color('White'))
+                underlinesurface = get_font(6).render("whiteline" * 3, True, pygame.Color('White'))
             underline_rect = underlinesurface.get_rect(center=(screen_width // 2, 620))
             pygame.draw.rect(screen, "White", underline_rect)
             screen.blit(item3surface, text_rect)
