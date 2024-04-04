@@ -181,5 +181,6 @@ if __name__ == "__main__":
         'extra-imports': ['sys', 'pygame', 'recipeloader', 'random', 'button', ],
         'allowed-io': [],  # the names (strs) of functions that call print/open/input
         'max-line-length': 120,
-        'no-member': False
+        'no-member': False,
+        'max-args': 8
     })
