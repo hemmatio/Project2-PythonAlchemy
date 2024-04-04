@@ -19,6 +19,7 @@ This file is Copyright (c) 2024 Omid Hemmati, Yianni Culmone, Neyl Nasr, Benjami
 from __future__ import annotations
 from typing import Optional
 import json
+import pythonta
 
 
 def split_text(text: str) -> list[tuple]:
@@ -201,7 +202,7 @@ class Graph:
         v1.neighbours.update({item2: v0})
         v2.neighbours.update({item1: v0})
 
-    def combine(self, item1, item2) -> tuple[bool, Optional[str]]:
+    def combine(self, item1: str, item2: str) -> tuple[bool, Optional[str]]:
         """
         Attempts to combine two items and discover a new item. Updates the discovered list
         if the combination is successful.
@@ -240,7 +241,7 @@ class Graph:
             print('     ' + vertex.item)
         print(f'You have discovered {len(self.discovered)}/{total} items so far.')
 
-    def possible_new_combo(self, item1, item2) -> bool:
+    def possible_new_combo(self, item1: str, item2: str) -> bool:
         """
         This method returns wheither you can create a new element with element 1 and element 2:
         """
@@ -250,9 +251,18 @@ class Graph:
             return False
         return True
 
-    def new_combo(self, item1, item2, item3) -> None:
+    def new_combo(self, item1: str, item2: str, item3: str) -> None:
         """
         This method adds a new combination of two elements if both elements already exist and their combination does not
         """
         if self.possible_new_combo(item1, item2):
             self.add_edge(item3, item1, item2)
+
+if __name__ == "__main__":
+    python_ta.check_all(config={
+        'extra-imports': ['sys', 'pygame', 'recipeloader', 'random', 'button', ],
+        'allowed-io': [],  # the names (strs) of functions that call print/open/input
+        'max-line-length': 120,
+        'no-member': False
+    })
+    main()
