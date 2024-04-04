@@ -692,4 +692,20 @@ def load_save(filedirectory: str) -> tuple[bool, list[str]]:
 
 
 if __name__ == "__main__":
+
+    import python_ta
+    python_ta.check_all(config={
+        'extra-imports': ['sys', 'pygame', 'recipeloader', 'random', 'button', 'json'],
+        'allowed-io': [],  # the names (strs) of functions that call print/open/input
+        'max-line-length': 120,
+        'no-member': False,
+        'max-nested-blocks': 7,
+        'max-locals': 56,
+        'max-branches': 53,
+        'max-statements': 184,
+        'max-args': 9,
+        'disable': ['W4701', 'E1101', 'E9998']
+
+    })
+
     main()
