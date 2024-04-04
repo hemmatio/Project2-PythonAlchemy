@@ -514,7 +514,7 @@ def options(chemistry: bool, discovered: list[str], extra_items: list) -> None:
                     write_save(discovered, chemistry)
                 if loadbutton.checkforinput(options_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
-                    chemistry, discovered = load_save('savefile/save.csv')
+                    chemistry, discovered = load_save('save.csv')
                 if addbutton.checkforinput(options_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     extra_items.append((item1, item2, item3))
