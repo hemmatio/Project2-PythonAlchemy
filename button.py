@@ -183,5 +183,7 @@ if __name__ == "__main__":
         'allowed-io': [],  # the names (strs) of functions that call print/open/input
         'max-line-length': 120,
         'no-member': False,
-        'max-args': 8
+        'max-args': 8,
+        'max-attributes': 10,
+        'disable': ['forbidden - io']
     })
