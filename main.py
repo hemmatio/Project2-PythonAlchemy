@@ -493,12 +493,12 @@ def options(chemistry: bool, discovered: list[str], extra_items):
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                if options_back.checkForInput(options_mouse_pos):
+                if options_back.checkforinput(options_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     if chemupdate != chemistry:
                         discovered = []
                     main_menu(chemupdate, discovered, extra_items)
-                if chembutton.checkForInput(options_mouse_pos):
+                if chembutton.checkforinput(options_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     if chembutton.clicked:
                         chembutton.clicked = False
@@ -506,20 +506,20 @@ def options(chemistry: bool, discovered: list[str], extra_items):
                     else:
                         chembutton.clicked = True
                         chemupdate = True
-                if savebutton.checkForInput(options_mouse_pos):
+                if savebutton.checkforinput(options_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     write_save(discovered, chemistry)
-                if loadbutton.checkForInput(options_mouse_pos):
+                if loadbutton.checkforinput(options_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     chemistry, discovered = load_save('savefile/save.csv')
-                if addbutton.checkForInput(options_mouse_pos):
+                if addbutton.checkforinput(options_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     extra_items.append((item1, item2, item3))
                     item1, item2, item3 = "", "", ""
                     item1on, item2on, item3on = False, False, False
 
                 # If the input buttons are clicked
-                if item1_button.checkForInput(options_mouse_pos):
+                if item1_button.checkforinput(options_mouse_pos):
                     if item1on:
                         item1_button.clicked = False
                         item1on = False
@@ -529,7 +529,7 @@ def options(chemistry: bool, discovered: list[str], extra_items):
                         item2on, item3on = False, False
                         item2_button.clicked, item3_button.clicked = False, False
 
-                if item2_button.checkForInput(options_mouse_pos):
+                if item2_button.checkforinput(options_mouse_pos):
                     if item2on:
                         item2_button.clicked = False
                         item2on = False
@@ -539,7 +539,7 @@ def options(chemistry: bool, discovered: list[str], extra_items):
                         item1on, item3on = False, False
                         item1_button.clicked, item3_button.clicked = False, False
 
-                if item3_button.checkForInput(options_mouse_pos):
+                if item3_button.checkforinput(options_mouse_pos):
                     if item3on:
                         item3_button.clicked = False
                         item3on = False
@@ -649,13 +649,13 @@ def main_menu(chemistry: bool, discovered: list[str], extra: list[tuple]):
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if play_button.checkForInput(menu_mouse_pos):
+                if play_button.checkforinput(menu_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     play(chemistry, discovered, extra)
-                if options_button.checkForInput(menu_mouse_pos):
+                if options_button.checkforinput(menu_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     options(chemistry, discovered, extra)
-                if quit_button.checkForInput(menu_mouse_pos):
+                if quit_button.checkforinput(menu_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     pygame.quit()
                     sys.exit()
