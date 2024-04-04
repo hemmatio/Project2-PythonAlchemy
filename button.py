@@ -95,6 +95,7 @@ class Button:
         else:
             self.text = self.font.render(self.text_input, True, self.base_color)
 
+
 class ButtonStay(Button):
     """
     Extends the Button class to create a toggle button that visually indicates its current state

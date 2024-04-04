@@ -450,8 +450,8 @@ def options(chemistry: bool, discovered: list[str], extra_items):
         screen.blit(equaltext, equalrect)
 
         if not item1on:
-            item1_button = ButtonStay(image=None, pos=(screen_width // 2 - 300, 540), text_input="item1", font=get_font(24),
-                                        base_color="Black", hovering_color="White", clicked=False)
+            item1_button = ButtonStay(image=None, pos=(screen_width // 2 - 300, 540), text_input="item1",
+                                      font=get_font(24), base_color="Black", hovering_color="White", clicked=False)
         else:
             item1_button = ButtonStay(image=None, pos=(screen_width // 2 - 300, 540), text_input="item1",
                                       font=get_font(24),
@@ -469,15 +469,14 @@ def options(chemistry: bool, discovered: list[str], extra_items):
         item2_button.update(screen)
 
         if not item3on:
-            item3_button = ButtonStay(image=None, pos=(screen_width // 2 + 300, 540), text_input="item3", font=get_font(24),
-                                      base_color="Black", hovering_color="White", clicked=False)
+            item3_button = ButtonStay(image=None, pos=(screen_width // 2 + 300, 540), text_input="item3",
+                                      font=get_font(24), base_color="Black", hovering_color="White", clicked=False)
         else:
             item3_button = ButtonStay(image=None, pos=(screen_width // 2 + 300, 540), text_input="item3",
                                       font=get_font(24), base_color="Black", hovering_color="White", clicked=True)
 
         item3_button.changeColor(options_mouse_pos)
         item3_button.update(screen)
-
 
         if chemupdate:
             chembutton = ButtonStay(image=None, pos=(screen_width - 100, 190), text_input="ON", font=get_font(40),
@@ -518,7 +517,7 @@ def options(chemistry: bool, discovered: list[str], extra_items):
                     item1, item2, item3 = "", "", ""
                     item1on, item2on, item3on = False, False, False
 
-                #If the input buttons are clicked
+                # If the input buttons are clicked
                 if item1_button.checkForInput(options_mouse_pos):
                     if item1on:
                         item1_button.clicked = False
