@@ -47,7 +47,8 @@ class Button:
     rect: pygame.rect
     text_rect: pygame.rect
 
-    def __init__(self, image, pos, text_input, font, base_color, hovering_color) -> None:
+    def __init__(self, image: pygame.Surface, pos: tuple, text_input: pygame.Surface, font: pygame.font,
+                 base_color: str, hovering_color: str) -> None:
         """
         Initializes a Button object.
 
@@ -71,7 +72,7 @@ class Button:
         self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
         self.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))
 
-    def update(self, screen) -> None:
+    def update(self, screen: pygame.Surface) -> None:
         """
         Draws the button onto the given Pygame window surface, updating its appearance.
 
@@ -82,7 +83,7 @@ class Button:
             screen.blit(self.image, self.rect)
         screen.blit(self.text, self.text_rect)
 
-    def checkforinput(self, position) -> bool:
+    def checkforinput(self, position: tuple) -> bool:
         """
         Checks if the button is being clicked based on the mouse position.
 
@@ -95,7 +96,7 @@ class Button:
             return True
         return False
 
-    def changecolor(self, position) -> None:
+    def changecolor(self, position: tuple) -> None:
         """
         Changes the button's text color based on the mouse's position (hover effect).
 
@@ -130,7 +131,10 @@ class ButtonStay(Button):
         - rect (pygame.Rect): The rectangular area of the button.
         - text_rect (pygame.Rect): The rectangular area for the button's text.
     """
-    def __init__(self, image, pos, text_input, font, base_color, hovering_color, clicked=False) -> None:
+    clicked: bool
+
+    def __init__(self, image: pygame.Surface, pos: tuple, text_input: pygame.Surface, font: pygame.font.Font,
+                 base_color: str, hovering_color: str, clicked: bool = False) -> None:
         """
         Initializes a ButtonStay object with an additional clicked state.
 
@@ -145,7 +149,7 @@ class ButtonStay(Button):
         super().__init__(image, pos, text_input, font, base_color, hovering_color)
         self.clicked = clicked
 
-    def update(self, screen) -> None:
+    def update(self, screen: pygame.Surface) -> None:
         """
         Draws the button onto the given Pygame window surface, with its appearance adjusted
         based on its clicked state. The background color changes to indicate the button's state.
