@@ -22,6 +22,7 @@ import pygame
 import recipeloader
 import random
 from button import Button, ButtonStay
+import python_ta
 
 
 def main():
@@ -688,4 +689,10 @@ def load_save(filedirectory: str) -> tuple[bool, list[str]]:
 
 
 if __name__ == "__main__":
+    python_ta.check_all(config={
+        'extra-imports': ['sys', 'pygame', 'recipeloader', 'random', 'button', ],  # the names (strs) of imported modules
+        'allowed-io': [],  # the names (strs) of functions that call print/open/input
+        'max-line-length': 120,
+        'no-member': False
+    })
     main()
