@@ -229,17 +229,6 @@ class Graph:
             # print(f'You have discovered {crafted_item.item}! Good job')
             return True, crafted_item.item.title()
 
-    def inventory(self) -> None:
-        """
-        Prints a list of all the items that have been discovered so far, along with a
-        count of discovered items versus total items.
-        """
-        total = len(self._vertices)
-        print('INVENTORY:')
-        for vertex in self.discovered:
-            print('     ' + vertex.item)
-        print(f'You have discovered {len(self.discovered)}/{total} items so far.')
-
     def possible_new_combo(self, item1: str, item2: str) -> bool:
         """
         This method returns wheither you can create a new element with element 1 and element 2:
@@ -261,7 +250,7 @@ class Graph:
 if __name__ == "__main__":
     import python_ta
     python_ta.check_all(config={
-        'extra-imports': ['sys', 'pygame', 'recipeloader', 'random', 'button', ],
+        'extra-imports': ['sys', 'pygame', 'recipeloader', 'random', 'button', 'json'],
         'allowed-io': [],  # the names (strs) of functions that call print/open/input
         'max-line-length': 120,
         'no-member': False
