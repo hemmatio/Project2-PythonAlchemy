@@ -20,7 +20,6 @@ This file is Copyright (c) 2024 Omid Hemmati, Yianni Culmone, Neyl Nasr, Benjami
 import random
 import sys
 import pygame
-import python_ta
 import recipeloader
 from button import Button, ButtonStay
 
@@ -693,10 +692,4 @@ def load_save(filedirectory: str) -> tuple[bool, list[str]]:
 
 
 if __name__ == "__main__":
-    python_ta.check_all(config={
-        'extra-imports': ['sys', 'pygame', 'recipeloader', 'random', 'button', ],
-        'allowed-io': [],  # the names (strs) of functions that call print/open/input
-        'max-line-length': 120,
-        'no-member': False
-    })
     main()

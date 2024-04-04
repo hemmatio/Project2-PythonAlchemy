@@ -1,6 +1,7 @@
 # CSC111 Project 2 Python Alchemy: Needed Libraries
 # Graphics and user interface
 pygame==2.5.2
+python-ta==2.7.0
 
 # Note:
 # It seems although these other libraries are installed by default, however in case they are not, the used libraries are as follows:
