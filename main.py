@@ -515,12 +515,8 @@ def options(chemistry: bool, discovered: list[str], extra_items):
                 if addbutton.checkForInput(options_mouse_pos):
                     pygame.mixer.Sound.play(click_sound)
                     extra_items.append((item1, item2, item3))
-                    print(extra_items)
                     item1, item2, item3 = "", "", ""
                     item1on, item2on, item3on = False, False, False
-
-
-
 
                 #If the input buttons are clicked
                 if item1_button.checkForInput(options_mouse_pos):
@@ -585,16 +581,34 @@ def options(chemistry: bool, discovered: list[str], extra_items):
         if item1on:
             item1surface = get_font(30).render(item1, True, pygame.Color('White'))
             text_rect = item1surface.get_rect(center=(screen_width//2, 600))
+            if len(item1) > 5:
+                underlinesurface = get_font(6).render(item1*5, True, pygame.Color('White'))
+            else:
+                underlinesurface = get_font(6).render("whiteline"*3, True, pygame.Color('White'))
+            underline_rect = underlinesurface.get_rect(center=(screen_width // 2, 620))
+            pygame.draw.rect(screen, "White", underline_rect)
             screen.blit(item1surface, text_rect)
 
         if item2on:
             item2surface = get_font(30).render(item2, True, pygame.Color('White'))
             text_rect = item2surface.get_rect(center=(screen_width//2, 600))
+            if len(item2) > 5:
+                underlinesurface = get_font(6).render(item2*5, True, pygame.Color('White'))
+            else:
+                underlinesurface = get_font(6).render("whiteline"*3, True, pygame.Color('White'))
+            underline_rect = underlinesurface.get_rect(center=(screen_width // 2, 620))
+            pygame.draw.rect(screen, "White", underline_rect)
             screen.blit(item2surface, text_rect)
 
         if item3on:
             item3surface = get_font(30).render(item3, True, pygame.Color('White'))
             text_rect = item3surface.get_rect(center=(screen_width//2, 600))
+            if len(item3) > 5:
+                underlinesurface = get_font(6).render(item3*5, True, pygame.Color('White'))
+            else:
+                underlinesurface = get_font(6).render("whiteline"*3, True, pygame.Color('White'))
+            underline_rect = underlinesurface.get_rect(center=(screen_width // 2, 620))
+            pygame.draw.rect(screen, "White", underline_rect)
             screen.blit(item3surface, text_rect)
 
         pygame.display.update()
